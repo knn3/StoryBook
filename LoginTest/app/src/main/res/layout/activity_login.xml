@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+  <TextView
+      android:id="@+id/Register"
+      android:layout_width="277dp"
+      android:layout_height="50dp"
+      android:layout_marginTop="60dp"
+      android:text="Or Register"
+      android:textAlignment="center"
+      android:textColor="#E49903"
+      android:textSize="25sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/LoginButton" />
+
+  <TextView
+      android:id="@+id/Storybook"
+      android:layout_width="419dp"
+      android:layout_height="75dp"
+      android:background="#BFFAB2"
+      android:text="Storybook"
+      android:textAlignment="center"
+      android:textAppearance="@style/TextAppearance.AppCompat.Large"
+      android:textSize="50sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.428"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/storybook"
+      android:layout_width="329dp"
+      android:layout_height="54dp"
+      android:layout_marginTop="88dp"
+      android:background="#00BFFAB2"
+      android:text="Login"
+      android:textAlignment="center"
+      android:textAppearance="@style/TextAppearance.AppCompat.Large"
+      android:textSize="35sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <EditText
+      android:id="@+id/Email"
+      android:layout_width="379dp"
+      android:layout_height="51dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="84dp"
+      android:layout_marginEnd="16dp"
+      android:ems="10"
+      android:hint="Email"
+      android:inputType="textPersonName"
+      android:text="Email"
+      android:textColor="#000000"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/storybook" />
+
+  <EditText
+      android:id="@+id/Password"
+      android:layout_width="379dp"
+      android:layout_height="51dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="50dp"
+      android:layout_marginEnd="16dp"
+      android:ems="10"
+      android:hint="Password"
+      android:inputType="textPersonName"
+      android:text="Password"
+      android:textColor="#000000"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/Email" />
+
+  <Button
+      android:id="@+id/LoginButton"
+      android:layout_width="238dp"
+      android:layout_height="59dp"
+      android:layout_marginTop="68dp"
+      android:text="Login"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/Password" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
