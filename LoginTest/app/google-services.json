@@ -62,6 +62,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087779130449:android:be4eed8fe63a4cd6a03c70",
+        "android_client_info": {
+          "package_name": "com.example.storbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087779130449-u1omup5v38kl0oagopjqbvnqetc1qk92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfb-4lldEUmptp5JliRZN-gtNtuGFMrNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087779130449-u1omup5v38kl0oagopjqbvnqetc1qk92.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

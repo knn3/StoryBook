@@ -3,8 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< Updated upstream:LoginTest/.idea/misc.xml
         <entry key="..\:/GitHub/CMPT-276-Project/LoginTest/app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="..\:/GitHub/CMPT-276-Project/LoginTest/app/src/main/res/layout/activity_register.xml" value="0.536" />
+=======
+        <entry key="..\:/Users/84990/AndroidStudioProjects/storbook/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.141" />
+        <entry key="..\:/Users/84990/AndroidStudioProjects/storbook/app/src/main/res/drawable/ic_launcher_background.xml" value="0.141" />
+        <entry key="..\:/Users/84990/AndroidStudioProjects/storbook/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/gambl/Documents/GitHub/CMPT-276-Project/app/src/main/res/layout/activity_main.xml" value="0.1" />
+>>>>>>> Stashed changes:.idea/misc.xml
       </map>
     </option>
   </component>
