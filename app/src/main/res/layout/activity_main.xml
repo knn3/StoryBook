@@ -45,38 +45,26 @@
             android:textStyle="bold"/>
 
 
-
         <ImageButton
             android:id="@+id/btnct"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_below="@+id/pwd_name"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
             android:background="@drawable/givelove2"
             android:onClick="onctClicked"
-             />
+            tools:ignore="SpeakableTextPresentCheck" />
+
         <TextView
+            android:id="@+id/ct_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ct_name"
-            android:text="I am a caretaker"
             android:layout_below="@id/btnct"
             android:layout_centerHorizontal="true"
+            android:text="I am a caretaker"
             android:textSize="25dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </RelativeLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:id="@+id/createacc"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/loginpage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:text="Create a new account"
-        android:autoLink="all"
-        />
 
 
 </RelativeLayout>

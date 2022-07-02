@@ -8,42 +8,55 @@
 
     <EditText
         android:id="@+id/caretakerEmail"
-        android:layout_width="351dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="224dp"
+        android:layout_width="348dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/caretakerFullName" />
 
     <EditText
         android:id="@+id/caretakerPassword"
-        android:layout_width="353dp"
-        android:layout_height="66dp"
+        android:layout_width="351dp"
+        android:layout_height="50dp"
         android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/caretakerEmail" />
 
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="247dp"
-        android:layout_height="74dp"
-        android:layout_marginTop="52dp"
-        android:text="Register"
+    <EditText
+        android:id="@+id/caretakerPassword2"
+        android:layout_width="351dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/caretakerPassword" />
 
     <Button
-        android:id="@+id/loginLink"
+        android:id="@+id/loginButton"
+        android:layout_width="247dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="56dp"
+        android:text="Register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caretakerPassword2" />
+
+    <Button
+        android:id="@+id/registerLink"
         android:layout_width="196dp"
         android:layout_height="60dp"
         android:text="Account already made? Login"
@@ -51,19 +64,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerButton"
-        app:layout_constraintVertical_bias="0.469" />
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        app:layout_constraintVertical_bias="0.469"
+        android:onClick="loginLinkClicked"/>
 
     <EditText
         android:id="@+id/caretakerFullName"
-        android:layout_width="352dp"
-        android:layout_height="67dp"
-        android:layout_marginBottom="40dp"
+        android:layout_width="351dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="Full Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/caretakerEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/registerLink"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        tools:layout_editor_absoluteX="182dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

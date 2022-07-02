@@ -8,9 +8,9 @@
 
     <EditText
         android:id="@+id/caretakerEmail"
-        android:layout_width="259dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="172dp"
+        android:layout_width="338dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="112dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -20,30 +20,29 @@
 
     <EditText
         android:id="@+id/caretakerPassword"
-        android:layout_width="258dp"
-        android:layout_height="46dp"
+        android:layout_width="343dp"
+        android:layout_height="69dp"
         android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/caretakerEmail" />
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/loginButton"
         android:layout_width="247dp"
         android:layout_height="74dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="88dp"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/caretakerPassword" />
 
     <Button
-        android:id="@+id/loginLink"
+        android:id="@+id/registerLink"
         android:layout_width="196dp"
         android:layout_height="60dp"
         android:text="No account? Register"
@@ -51,7 +50,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerButton"
-        app:layout_constraintVertical_bias="0.595" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBar2"
+        android:onClick="registerLinkClicked" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
