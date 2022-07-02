@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Storbook"
         tools:targetApi="31">
         <activity
+            android:name=".CaretakerRegister"
+            android:exported="false" />
+        <activity
+            android:name=".CaretakerLogin"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
