@@ -25,15 +25,15 @@
             android:textStyle="bold"
             />
 
-            <ImageButton
-                android:id="@+id/btnpwd"
-                android:layout_width="210dp"
-                android:layout_height="210dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/identity"
-                android:background="@drawable/postcard"
-                android:focusableInTouchMode="false"
-                android:onClick="onpwdClicked"/>
+        <ImageButton
+            android:id="@+id/btnpwd"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
+            android:layout_below="@id/identity"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/postcard"
+            android:focusableInTouchMode="false"
+            android:onClick="onpwdClicked" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,7 +55,9 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/givelove2"
             android:onClick="onctClicked"
-             />
+            />
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
