@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Storybook" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Storbook" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#C6DC97</item>
         <item name="colorPrimaryVariant">#C6DC97</item>
