@@ -43,6 +43,10 @@ public class CaretakerLogin extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
+        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            startActivity(new Intent(CaretakerLogin.this, CaretakerMain.class));
+        }
+
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,18 +66,18 @@ public class CaretakerLogin extends AppCompatActivity {
                     mPassword.setError("Password must be more than 6 characters.");
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
+                // progressBar.setVisibility(View.VISIBLE); Delete this as this may cause overload
 
-                //Authenticate the user
+                //Authenticate the user if success, redirect to Caretaker Main Page
 
                 fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                    public void onComplete(@NonNull Task<AuthResult> task) {  
+                        if (task.isSuccessful()) {
                             Toast.makeText(CaretakerLogin.this, "User Logged In.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),CaretakerSerialEntry.class));
-                        }
-                        else{
+                            Intent intent = new Intent(CaretakerLogin.this, CaretakerMain.class);
+                            startActivity(intent);
+                        } else {
                             Toast.makeText(CaretakerLogin.this, "Error!" + task.getException(), Toast.LENGTH_SHORT).show();
                         }
                     }

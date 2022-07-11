@@ -68,16 +68,16 @@ public class CaretakerRegister extends AppCompatActivity {
                     mPassword.setError("Password must be more than 6 characters.");
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
+                // progressBar.setVisibility(View.VISIBLE); Delete this as this may cause overload
 
-                //register the user in firebase
+                //register the user in firebase if success, redirect to Caretaker Main Page
 
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(CaretakerRegister.this, "User Created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),CaretakerSerialEntry.class));
+                            startActivity(new Intent(getApplicationContext(),CaretakerMain.class));
                             
                         }else {
                             Toast.makeText(CaretakerRegister.this, "Error!" + task.getException(), Toast.LENGTH_SHORT).show();
