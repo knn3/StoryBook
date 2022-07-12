@@ -10,25 +10,62 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9396993a-6487-4589-9faf-f127f671ce4d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/java/com/example/storbook/caretakeractivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/java/com/example/storbook/peopleactivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/java/com/example/storbook/pwdactivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/res/drawable/album.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/res/drawable/ancestors.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/res/drawable/dashboard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/res/drawable/family.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/res/drawable/friendship.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/res/drawable/upload.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/res/layout/activity_caretakeractivity.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/res/layout/activity_peopleactivity.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/res/layout/activity_pwdactivity.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storbook/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/storbook.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/storbook.app.androidTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/storbook.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/storbook.app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/storbook.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/storbook.app.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/storbook.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/storbook.app.unitTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/storbook.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/storbook.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storbook/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/storbook/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storbook/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/storbook/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storbook/app/src/main/java/com/example/storbook/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/storbook/app/src/main/java/com/example/storbook/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storbook/app/src/main/res/layout/activity_caretaker_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/storbook/app/src/main/res/layout/activity_caretaker_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storbook/app/src/main/res/layout/activity_caretaker_serial_entry.xml" beforeDir="false" afterPath="$PROJECT_DIR$/storbook/app/src/main/res/layout/activity_caretaker_serial_entry.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storbook/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/storbook/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storbook/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/storbook/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\gambl\.android\avd\Resizable_API_33_1.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\84990\.android\avd\Pixel_2_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2BOnF6ldWAG8UPVabpMnjklEpLu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
