@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Storbook"
         tools:targetApi="31">
         <activity
+            android:name=".PWDMain"
+            android:exported="false" />
+        <activity
+            android:name=".GalleryView"
+            android:exported="false" />
+        <activity
             android:name=".CaretakerMain"
             android:exported="false" />
         <activity

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PWDMain">
+
+    <RelativeLayout
+        android:id="@+id/selectionpage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+
+        <ImageButton
+            android:id="@+id/btngallery"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/album"
+            android:focusableInTouchMode="false"
+            android:onClick="onGalleryClicked" />
+
+        <TextView
+            android:id="@+id/gallery_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btngallery"
+            android:layout_centerHorizontal="true"
+            android:text="Gallery"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+
+        <ImageButton
+            android:id="@+id/btnpeople"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_below="@+id/gallery_name"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ancestors"
+            android:onClick="onPeopleClicked"
+            android:layout_marginTop="43dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/people_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnpeople"
+            android:layout_centerHorizontal="true"
+            android:text="People"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

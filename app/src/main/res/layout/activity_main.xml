@@ -33,6 +33,7 @@
                 android:layout_below="@id/identity"
                 android:background="@drawable/postcard"
                 android:focusableInTouchMode="false"
+                android:layout_marginTop="43dp"
                 android:onClick="onpwdClicked"/>
         <TextView
             android:layout_width="wrap_content"
@@ -52,6 +53,7 @@
             android:layout_below="@+id/pwd_name"
             android:layout_centerInParent="true"
             android:background="@drawable/givelove2"
+            android:layout_marginTop="43dp"
             android:onClick="onctClicked"
             tools:ignore="SpeakableTextPresentCheck" />
 
