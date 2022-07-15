@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,9 +15,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CaretakerRegister extends AppCompatActivity {
     EditText mFullName, mEmail, mPassword, mPhone;
@@ -25,10 +37,23 @@ public class CaretakerRegister extends AppCompatActivity {
     FirebaseAuth fAuth;
     ProgressBar progressBar;
 
+    // get database firestore
+    FirebaseFirestore db;
+
+    public class User {
+        public String email;
+        public String fullName;
+//        public List<String> images;
+
+        public User(String email, String fullName) {
+            this.email = email;
+            this.fullName = fullName;
+        }
+    }
+
     public void loginLinkClicked(View view){
         Intent myIntent = new Intent(CaretakerRegister.this, CaretakerLogin.class);
         CaretakerRegister.this.startActivity(myIntent);
-
     }
 
     @Override
@@ -36,6 +61,10 @@ public class CaretakerRegister extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caretaker_register);
 
+        //Initialize Firestore
+        db = FirebaseFirestore.getInstance();
+
+        // Authentication
         mFullName = findViewById(R.id.caretakerFullName);
         mEmail = findViewById(R.id.caretakerEmail);
         mPassword = findViewById(R.id.caretakerPassword);
@@ -53,6 +82,7 @@ public class CaretakerRegister extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 String email = mEmail.getText().toString().trim();
+                String fullName = mFullName.getText().toString();
                 String password = mPassword.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
@@ -66,7 +96,32 @@ public class CaretakerRegister extends AppCompatActivity {
 
                 if(password.length() < 6){
                     mPassword.setError("Password must be more than 6 characters.");
+                    return;
                 }
+
+
+                // add data to firestore
+                Map<String, Object> user = new HashMap<>();
+                user.put("full_name", fullName);
+                user.put("email", email);
+                user.put("password", password);
+                user.put("media",  new ArrayList<String>());
+
+                db.collection("users").document(email)
+                        .set(user)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(CaretakerRegister.this, "Added to firestore", Toast.LENGTH_SHORT).show();
+
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(CaretakerRegister.this, "Failed to add to firestore", Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
                 // progressBar.setVisibility(View.VISIBLE); Delete this as this may cause overload
 
@@ -87,7 +142,5 @@ public class CaretakerRegister extends AppCompatActivity {
                 });
             }
         });
-
-
     }
 }
