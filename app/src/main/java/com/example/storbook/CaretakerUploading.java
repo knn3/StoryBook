@@ -77,55 +77,6 @@ public class CaretakerUploading extends AppCompatActivity {
 
         storageReference = FirebaseStorage.getInstance().getReference("images/"+fileName);
 
-//        storageReference.putFile(imageUri)
-//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                        binding.imageView.setImageURI(null);
-//                        Toast.makeText(CaretakerUploading.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
-//                        if (progressDialog.isShowing()) {
-//                            progressDialog.dismiss();
-//                        }
-////                        storageReference = FirebaseStorage.getInstance().getReference("images").child(fileName);
-//                        storageReference = FirebaseStorage.getInstance().getReference("images").child(imageUri.getLastPathSegment());
-//
-////                        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-////                            @Override
-////                            public void onSuccess(Uri uri) {
-////                                Toast.makeText(CaretakerUploading.this, "Successfully getDownloadUrl", Toast.LENGTH_SHORT).show();
-////
-////                                downloadedUri = uri.toString();
-////
-////                                email = user.getEmail();
-////
-////                                db.collection("users").document(email).update("media", FieldValue.arrayUnion(downloadedUri))
-////                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-////                                            @Override
-////                                            public void onComplete(@NonNull Task<Void> task) {
-////                                                if(task.isSuccessful()){
-////                                                    Toast.makeText(CaretakerUploading.this, "Successfully Uploaded to Firestore", Toast.LENGTH_SHORT).show();
-////                                                }
-////                                            }
-////                                        });
-////                            }
-////                        });
-//
-////                        downloadedUri = storageReference.getDownloadUrl().toString();
-//
-//
-//
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        if (progressDialog.isShowing()){
-//                            progressDialog.dismiss();
-//                        }
-//                        Toast.makeText(CaretakerUploading.this, "Failed to Upload", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-
-
         // uploading to firestore and cloud storage
         UploadTask uploadTask = storageReference.putFile(imageUri);
         Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
