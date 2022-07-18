@@ -1,0 +1,5 @@
+App should be made with elderly PWD in mind.
+Interface shall have large buttons and text for ease of reading.
+For the PWD, there shall be no complex wording, options, or instructions.
+More complex phrases and terminology may be included on the Caretaker options, but should generally be avoided.
+Color scheme shall be light greens (pastel green, as example) throughout the app.
