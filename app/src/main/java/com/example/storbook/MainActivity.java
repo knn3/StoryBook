@@ -67,6 +67,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        // Double check if the user logged out
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        // Jump to login page if not logged in
+        if(currentUser == null){
+            Intent i = new Intent(MainActivity.this, CaretakerLogin.class);
+            startActivity(i);
+        }
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         // Switch profile of the home page depending on pwd or ct
@@ -87,8 +100,8 @@ public class MainActivity extends AppCompatActivity {
 
     // No gallery rn, so login :)
     public void goGallery(View view){
-        Intent myIntent = new Intent(MainActivity.this, CaretakerLogin.class);
-        MainActivity.this.startActivity(myIntent);
+        //Intent myIntent = new Intent(MainActivity.this, "Gallery".class);
+        //MainActivity.this.startActivity(myIntent);
 
     }
 
