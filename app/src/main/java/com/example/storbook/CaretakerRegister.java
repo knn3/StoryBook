@@ -3,6 +3,7 @@ package com.example.storbook;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -32,11 +33,11 @@ public class CaretakerRegister extends AppCompatActivity {
     TextView mLoginBtn;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
+    FirebaseFirestore db;
 
     public void loginLinkClicked(View view){
         Intent myIntent = new Intent(CaretakerRegister.this, CaretakerLogin.class);
         CaretakerRegister.this.startActivity(myIntent);
-
     }
 
     @Override
@@ -51,6 +52,7 @@ public class CaretakerRegister extends AppCompatActivity {
         mLoginBtn = findViewById(R.id.registerLink);
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
+        db = FirebaseFirestore.getInstance();
 
         if(fAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
@@ -80,7 +82,6 @@ public class CaretakerRegister extends AppCompatActivity {
                 // progressBar.setVisibility(View.VISIBLE); Delete this as this may cause overload
 
                 //register the user in firebase if success, redirect to Caretaker Main Page
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -90,9 +91,11 @@ public class CaretakerRegister extends AppCompatActivity {
 
                             // Add a new document for the new user with generated ID and the other info
                             Map<String, Object> user = new HashMap<>();
-                            user.put("userName", email);
-                            user.put("eMail", userName);
+                            user.put("userName", userName);
+                            user.put("eMail", email);
                             user.put("passWord", password); // Subject to change
+                            user.put("isCareTaker", true);
+
                             db.collection("users")
                                     .document(fAuth.getUid()).set(user);
                         }else {

@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/caretakerEmail"
-        android:layout_width="348dp"
-        android:layout_height="51dp"
+        android:layout_width="351dp"
+        android:layout_height="52dp"
         android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Email"
@@ -22,7 +22,7 @@
     <EditText
         android:id="@+id/caretakerPassword"
         android:layout_width="351dp"
-        android:layout_height="50dp"
+        android:layout_height="52dp"
         android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Password"
@@ -71,7 +71,7 @@
     <EditText
         android:id="@+id/caretakerFullName"
         android:layout_width="351dp"
-        android:layout_height="58dp"
+        android:layout_height="52dp"
         android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="Full Name"

@@ -8,63 +8,71 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="@drawable/setting"
+        android:onClick="goSettingActivity" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="189dp"
+        android:layout_height="58dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="114dp"
+        android:text="@string/home_page"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/editbtn"
+        android:layout_width="144dp"
         android:layout_height="wrap_content"
-        android:id="@+id/loginpage"
-        android:layout_centerHorizontal="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="132dp"
+        android:layout_marginEnd="135dp"
+        android:layout_marginBottom="43dp"
+        android:onClick="goEditPage"
+        android:text="@string/image_edit"
+        android:textColor="#455A64"
+        android:visibility="visible" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Choose your identity"
-            android:id="@+id/identity"
-            android:layout_centerHorizontal="true"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            />
+    <Button
+        android:id="@+id/gallerybtn"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editbtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="140dp"
+        android:layout_marginEnd="143dp"
+        android:layout_marginBottom="30dp"
+        android:onClick="goGallery"
+        android:text="@string/gallery"
+        android:textColor="#455A64" />
 
-            <ImageButton
-                android:id="@+id/btnpwd"
-                android:layout_width="210dp"
-                android:layout_height="210dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/identity"
-                android:background="@drawable/postcard"
-                android:focusableInTouchMode="false"
-                android:onClick="onpwdClicked"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/pwd_name"
-            android:text="I am a user"
-            android:layout_below="@id/btnpwd"
-            android:layout_centerHorizontal="true"
-            android:textSize="25dp"
-            android:textStyle="bold"/>
-
-
-        <ImageButton
-            android:id="@+id/btnct"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_below="@+id/pwd_name"
-            android:layout_centerInParent="true"
-            android:background="@drawable/givelove2"
-            android:onClick="onctClicked"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <TextView
-            android:id="@+id/ct_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnct"
-            android:layout_centerHorizontal="true"
-            android:text="I am a caretaker"
-            android:textSize="25dp"
-            android:textStyle="bold" />
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/profilestatuspic"
+        android:layout_width="44dp"
+        android:layout_height="43dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="12dp"
+        android:layout_toStartOf="@+id/imageButton"
+        app:srcCompat="@drawable/ctstatus" />
 
 
 </RelativeLayout>

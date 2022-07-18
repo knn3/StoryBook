@@ -43,8 +43,9 @@ public class CaretakerLogin extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
+        // Jump to main activity if already logged in
         if (FirebaseAuth.getInstance().getCurrentUser() != null){
-            startActivity(new Intent(CaretakerLogin.this, CaretakerMain.class));
+            startActivity(new Intent(CaretakerLogin.this, MainActivity.class));
         }
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +76,7 @@ public class CaretakerLogin extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {  
                         if (task.isSuccessful()) {
                             Toast.makeText(CaretakerLogin.this, "User Logged In.", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(CaretakerLogin.this, CaretakerMain.class);
+                            Intent intent = new Intent(CaretakerLogin.this, MainActivity.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(CaretakerLogin.this, "Error!" + task.getException(), Toast.LENGTH_SHORT).show();
@@ -85,5 +86,14 @@ public class CaretakerLogin extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Jump to main activity if already logged in
+        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            startActivity(new Intent(CaretakerLogin.this, MainActivity.class));
+        }
     }
 }
