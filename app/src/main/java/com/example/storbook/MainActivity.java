@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Gallery to be accessed here
     public void goGallery(View view){
-        Intent myIntent = new Intent(MainActivity.this, ImagesActivity.class);
+        Intent myIntent = new Intent(MainActivity.this, GalleryActivity.class);
         MainActivity.this.startActivity(myIntent);
     }
 

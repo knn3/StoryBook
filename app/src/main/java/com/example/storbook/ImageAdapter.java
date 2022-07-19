@@ -1,7 +1,10 @@
 package com.example.storbook;
 
 import android.content.Context;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,6 +18,7 @@ import java.util.List;
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
     private Context mContext;
     private List<ImageUrls> mImageUrl;
+    private OnItemClickListener mListener;
 
     public ImageAdapter(Context context, List<ImageUrls> url){
         mContext = context;
@@ -40,13 +44,59 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         return mImageUrl.size();
     }
 
-    public class ImageViewHolder extends RecyclerView.ViewHolder{
+    public class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
         public ImageView imageView;
 
         public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.image_view_upload);
+
+            itemView.setOnClickListener(this);
+            itemView.setOnCreateContextMenuListener(this);
         }
+        
+        @Override
+        public void onClick(View view) {
+            if (mListener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION){
+                    mListener.onItemClick(position);
+                }
+            }
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+            contextMenu.setHeaderTitle("Edit Media");
+            MenuItem delete = contextMenu.add(Menu.NONE, 1,1, "Delete");
+
+            delete.setOnMenuItemClickListener(this);
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
+            if (mListener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION){
+                    switch (menuItem.getItemId()){
+                        case 1:
+                            mListener.onDeleteClick(position);
+                            return true;
+                    }
+                }
+            }
+            return false;
+        }
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+
+        void onDeleteClick (int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
     }
 }

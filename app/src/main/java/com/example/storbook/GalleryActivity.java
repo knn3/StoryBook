@@ -5,29 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImagesActivity extends AppCompatActivity implements ImageAdapter.OnItemClickListener {
+public class GalleryActivity extends AppCompatActivity {
+
     private RecyclerView mRecyclerView;
     private ImageAdapter mAdapter;
 
-    private FirebaseStorage mStorage;
     private FirebaseUser user;
     private FirebaseFirestore mDatabaseRef;
     private List<ImageUrls> mImgUrl;
@@ -35,21 +30,14 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_images);
+        setContentView(R.layout.activity_gallery);
 
-        mRecyclerView = findViewById(R.id.recycler_view);
+        mRecyclerView = findViewById(R.id.gallery_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mImgUrl = new ArrayList<>();
 
-        mAdapter = new ImageAdapter(ImagesActivity.this, mImgUrl);
-
-        mRecyclerView.setAdapter(mAdapter);
-
-        mAdapter.setOnItemClickListener(ImagesActivity.this);
-
-        mStorage = FirebaseStorage.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseRef = FirebaseFirestore.getInstance();
 
@@ -61,43 +49,20 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
                     if(document.exists()){
                         List<String> imgUrls = (List<String>) document.get("media");
 
-                        mImgUrl.clear();
-
                         for (String imgUrl : imgUrls){
                             ImageUrls imageUrl = new ImageUrls(imgUrl);
                             mImgUrl.add(imageUrl);
                         }
 
-                        mAdapter.notifyDataSetChanged();
+                        mAdapter = new ImageAdapter(GalleryActivity.this, mImgUrl);
+
+                        mRecyclerView.setAdapter(mAdapter);
+
                     }
                 }
             }
         });
     }
 
-    @Override
-    public void onItemClick(int position) {
-        Toast.makeText(this, "Normal click at position: " + position, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onDeleteClick(int position) {
-        ImageUrls selectedItem = mImgUrl.get(position);
-        String selectedImg = selectedItem.getUrl();
-
-        // reference to firestore and use url to delete in the array using arrayRemove()
-        mDatabaseRef.collection("users").document(user.getUid()).update("media", FieldValue.arrayRemove(selectedImg));
-
-        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedImg);
-        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(ImagesActivity.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
-                finish();
-                startActivity(new Intent(ImagesActivity.this, ImagesActivity.class));
-            }
-        });
-
-    }
-
 }
+

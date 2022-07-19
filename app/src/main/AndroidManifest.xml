@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Storbook"
         tools:targetApi="31">
         <activity
+            android:name=".GalleryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ImagesActivity"
             android:exported="false" />
         <activity
