@@ -18,7 +18,7 @@ public class CaretakerMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caretaker_main);
 
-        logout = findViewById(R.id.activity); // R.id.logout : name of the logout button
+        logout = findViewById(R.id.logout); // R.id.logout : name of the logout button
 
         // click on Log Out button will logout and redirect to Main page
         logout.setOnClickListener(new View.OnClickListener() {
