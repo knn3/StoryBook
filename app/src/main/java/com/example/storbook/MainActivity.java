@@ -100,8 +100,8 @@ public class MainActivity extends AppCompatActivity {
 
     // No gallery rn, so login :)
     public void goGallery(View view){
-        //Intent myIntent = new Intent(MainActivity.this, "Gallery".class);
-        //MainActivity.this.startActivity(myIntent);
+        Intent myIntent = new Intent(MainActivity.this, ImagesActivity.class);
+        MainActivity.this.startActivity(myIntent);
 
     }
 

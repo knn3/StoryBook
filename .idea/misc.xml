@@ -12,9 +12,11 @@
         <entry key="..\:/Users/gambl/Documents/GitHub/CMPT-276-Project/app/src/main/res/layout/activity_main.xml" value="0.4466666666666667" />
         <entry key="app/src/main/res/layout/activity_caretaker_login.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_caretaker_main.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_caretaker_manage.xml" value="0.28055555555555556" />
         <entry key="app/src/main/res/layout/activity_caretaker_register.xml" value="0.2834544677212484" />
         <entry key="app/src/main/res/layout/activity_caretaker_serial_entry.xml" value="0.3046875" />
         <entry key="app/src/main/res/layout/activity_caretaker_uploading.xml" value="0.26784667968750003" />
+        <entry key="app/src/main/res/layout/activity_images.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3499553222134359" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.14322359982898675" />
         <entry key="app/src/main/res/layout/activity_overall_setting.xml" value="0.3055029199953315" />
@@ -22,6 +24,7 @@
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.3260086340086742" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.14322359982898675" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.14322359982898675" />
+        <entry key="app/src/main/res/layout/image_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/settings_activity.xml" value="0.3046875" />
       </map>
     </option>

@@ -33,7 +33,7 @@ public class CaretakerMain extends AppCompatActivity {
 
     // click on Manage to edit or view statistics
     public void onCtManageClick(View view){
-
+        startActivity(new Intent(CaretakerMain.this, ImagesActivity.class));
     }
 
     // click on Upload Media button will redirect to uploading page
