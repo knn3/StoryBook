@@ -23,6 +23,9 @@
             android:name=".CaretakerManage"
             android:exported="false" />
         <activity
+            android:name=".pwd_activity"
+            android:exported="false" />
+        <activity
             android:name=".PasswordAuth"
             android:exported="false" />
         <activity

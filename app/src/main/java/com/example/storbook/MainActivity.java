@@ -98,11 +98,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // No gallery rn, so login :)
+    public void goFamily(View v){
+        Intent i = new Intent(this, pwd_activity.class);
+        this.startActivity(i);
+    }
+
+    // Gallery to be accessed here
     public void goGallery(View view){
         Intent myIntent = new Intent(MainActivity.this, ImagesActivity.class);
         MainActivity.this.startActivity(myIntent);
-
     }
 
     public void goEditPage(View view){
