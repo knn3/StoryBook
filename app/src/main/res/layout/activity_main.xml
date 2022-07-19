@@ -74,5 +74,19 @@
         android:layout_toStartOf="@+id/imageButton"
         app:srcCompat="@drawable/ctstatus" />
 
+    <Button
+        android:id="@+id/familybtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/gallerybtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginBottom="41dp"
+        android:onClick="goFamily"
+        android:text="Family"
+        android:textColor="#455A64" />
+
 
 </RelativeLayout>

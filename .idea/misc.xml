@@ -6,15 +6,6 @@
         <entry key="..\:/Users/84990/AndroidStudioProjects/storbook/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.141" />
         <entry key="..\:/Users/84990/AndroidStudioProjects/storbook/app/src/main/res/drawable/ic_launcher_background.xml" value="0.141" />
         <entry key="..\:/Users/84990/AndroidStudioProjects/storbook/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/84990/Desktop/276 source/276/app/src/main/res/layout/activity_caretaker_login.xml" value="0.22083333333333333" />
-        <entry key="..\:/Users/84990/Desktop/276 source/276/app/src/main/res/layout/activity_caretaker_main.xml" value="0.1" />
-        <entry key="..\:/Users/84990/Desktop/276 source/276/app/src/main/res/layout/activity_caretaker_register.xml" value="0.13333333333333333" />
-        <entry key="..\:/Users/84990/Desktop/276 source/276/app/src/main/res/layout/activity_caretaker_serial_entry.xml" value="0.22083333333333333" />
-        <entry key="..\:/Users/84990/Desktop/276 source/276/app/src/main/res/layout/activity_caretaker_uploading.xml" value="0.22083333333333333" />
-        <entry key="..\:/Users/84990/Desktop/276 source/276/app/src/main/res/layout/activity_main.xml" value="0.22083333333333333" />
-        <entry key="..\:/Users/84990/Desktop/276 source/276/app/src/main/res/layout/activity_password_auth.xml" value="0.22083333333333333" />
-        <entry key="..\:/Users/84990/Desktop/276 source/276/app/src/main/res/layout/activity_pwd.xml" value="0.1578125" />
-        <entry key="..\:/Users/84990/Desktop/276 source/276/app/src/main/res/layout/activity_setting.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/gambl/Documents/GitHub/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_login.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/gambl/Documents/GitHub/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_register.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/gambl/Documents/GitHub/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_serial_entry.xml" value="0.4466666666666667" />
@@ -28,6 +19,7 @@
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.14322359982898675" />
         <entry key="app/src/main/res/layout/activity_overall_setting.xml" value="0.3055029199953315" />
         <entry key="app/src/main/res/layout/activity_password_auth.xml" value="0.2812115611321042" />
+        <entry key="app/src/main/res/layout/activity_pwd.xml" value="0.1899365367180417" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.3260086340086742" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.14322359982898675" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.14322359982898675" />
