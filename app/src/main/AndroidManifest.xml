@@ -17,6 +17,14 @@
         android:theme="@style/Theme.Storbook"
         tools:targetApi="31">
         <activity
+            android:name=".FamilyMemberCreatePage"
+            android:exported="false" />
+        <activity
+            android:name=".FamilyMemberPage"
+            android:exported="false"
+            android:label="@string/title_activity_family_member_page"
+            android:theme="@style/Theme.Storbook.NoActionBar" />
+        <activity
             android:name=".pwd_activity"
             android:exported="false" />
         <activity

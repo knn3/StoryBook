@@ -93,8 +93,7 @@ public class CaretakerRegister extends AppCompatActivity {
                             Map<String, Object> user = new HashMap<>();
                             user.put("userName", userName);
                             user.put("eMail", email);
-                            user.put("passWord", password); // Subject to change
-                            user.put("isCareTaker", true);
+                            user.put("passWord", password);
 
                             db.collection("users")
                                     .document(fAuth.getUid()).set(user);
