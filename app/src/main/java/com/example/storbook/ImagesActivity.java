@@ -37,6 +37,7 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_images);
 
+        // set up recycler view
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -49,20 +50,26 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
 
         mAdapter.setOnItemClickListener(ImagesActivity.this);
 
+        // get firebase instances
         mStorage = FirebaseStorage.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseRef = FirebaseFirestore.getInstance();
 
+        // get whole document with user's UID
         mDatabaseRef.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()){
+                    //get document
                     DocumentSnapshot document = task.getResult();
                     if(document.exists()){
+
+                        // direct to media field
                         List<String> imgUrls = (List<String>) document.get("media");
 
                         mImgUrl.clear();
 
+                        //loop through each entry of array media to get each image url
                         for (String imgUrl : imgUrls){
                             ImageUrls imageUrl = new ImageUrls(imgUrl);
                             mImgUrl.add(imageUrl);
@@ -75,6 +82,8 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         });
     }
 
+
+    // normal click on image
     @Override
     public void onItemClick(int position) {
         Toast.makeText(this, "Normal click at position: " + position, Toast.LENGTH_SHORT).show();
@@ -82,17 +91,21 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
 
     @Override
     public void onDeleteClick(int position) {
+        // get the url of the image clicked
         ImageUrls selectedItem = mImgUrl.get(position);
         String selectedImg = selectedItem.getUrl();
 
         // reference to firestore and use url to delete in the array using arrayRemove()
         mDatabaseRef.collection("users").document(user.getUid()).update("media", FieldValue.arrayRemove(selectedImg));
 
+        // delete image in firebase cloud storage
         StorageReference imageRef = mStorage.getReferenceFromUrl(selectedImg);
         imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(ImagesActivity.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
+
+                // after deleted, refresh the activity to render the images again
                 finish();
                 startActivity(new Intent(ImagesActivity.this, ImagesActivity.class));
             }
