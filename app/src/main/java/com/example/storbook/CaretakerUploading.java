@@ -143,4 +143,10 @@ public class CaretakerUploading extends AppCompatActivity {
             binding.imageView.setImageURI(imageUri);
         }
     }
+
+    //back button
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, CaretakerMain.class);
+        this.startActivity(myIntent);
+    }
 }

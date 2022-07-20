@@ -209,4 +209,10 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
             isAvatarset = false;
         }
     }
+
+    //back button
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
+        this.startActivity(myIntent);
+    }
 }

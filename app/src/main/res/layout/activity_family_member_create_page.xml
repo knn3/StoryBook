@@ -59,4 +59,12 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="69dp"
+        android:layout_height="59dp"
+        android:background="#00FFFFFF"
+        android:onClick="onBackClick"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

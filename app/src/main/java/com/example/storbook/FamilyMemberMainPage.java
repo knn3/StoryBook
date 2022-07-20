@@ -39,4 +39,10 @@ public class FamilyMemberMainPage extends AppCompatActivity {
             addFM.setEnabled(false);
         }
     }
+
+    //back button
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, pwd_activity.class);
+        this.startActivity(myIntent);
+    }
 }

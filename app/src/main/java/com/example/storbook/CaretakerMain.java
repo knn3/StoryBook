@@ -40,4 +40,10 @@ public class CaretakerMain extends AppCompatActivity {
     public void onCtUploadClick(View view){
         startActivity(new Intent(CaretakerMain.this, CaretakerUploading.class));
     }
+
+    //back button
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, MainActivity.class);
+        this.startActivity(myIntent);
+    }
 }
