@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/Caretakerbtn"
-        android:layout_width="154dp"
-        android:layout_height="48dp"
+        android:layout_width="200dp"
+        android:layout_height="64dp"
         android:layout_marginBottom="76dp"
         android:onClick="switchCTmode"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,6 +25,20 @@
         android:onClick="goHomepage"
         android:text="@string/back"
         android:textColor="#455A64"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/StatusText"
+        android:layout_width="294dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="52dp"
+        android:gravity="center"
+        android:text="In Cared Mode"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
