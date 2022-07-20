@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CaretakerRegister">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue"
+        app:logo="@drawable/gallery"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:subtitle="Register page"
+        app:title="@string/app_name"
+        app:titleMarginStart="90dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/enter"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter your full name:"
+            android:textColor="@color/text_color2"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:id="@+id/name"
+            />
+        <EditText
+            android:id="@+id/caretakerFullName"
+            android:layout_width="351dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/name"
+            android:ems="10"
+            android:hint="Full Name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Email"
+            android:text="Enter your Email:"
+            android:textColor="@color/text_color2"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:textSize="30sp"
+            android:layout_below="@+id/caretakerFullName"
+            android:textStyle="bold"
+            ></TextView>
+
+        <EditText
+            android:id="@+id/caretakerEmail"
+            android:layout_width="351dp"
+            android:layout_height="52dp"
+            android:layout_below="@+id/Email"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress">
+
+        </EditText>
+
+
+        <TextView
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/caretakerEmail"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="Enter your password: "
+            android:textColor="@color/text_color2"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/caretakerPassword"
+            android:layout_width="351dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+           android:layout_below="@+id/password"
+            />
+        <EditText
+            android:id="@+id/caretakerPassword2"
+            android:layout_width="351dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:ems="10"
+            android:hint="Repeat Password"
+            android:inputType="textPassword"
+            android:layout_below="@+id/caretakerPassword"/>
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="247dp"
+        android:layout_height="74dp"
+        android:layout_below="@+id/enter"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/text_color"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Register">
+
+    </Button>
+    <Button
+        android:id="@+id/registerLink"
+        android:layout_width="196dp"
+        android:layout_height="60dp"
+        android:text="Account already made? Login"
+        android:textColor="@color/text_color"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/loginButton"
+        android:onClick="loginLinkClicked"/>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_below="@+id/registerLink"
+        />
+
+</RelativeLayout>

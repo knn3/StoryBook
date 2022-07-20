@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-mergeDebugResources-47:\\layout\\activity_setting.xml",
+        "source": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-main-50:\\layout\\activity_setting.xml"
+    },
+    {
+        "merged": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-mergeDebugResources-47:\\layout\\activity_password_auth.xml",
+        "source": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-main-50:\\layout\\activity_password_auth.xml"
+    },
+    {
+        "merged": "com.example.storbook.app-mergeDebugResources-47:/layout/activity_caretaker_register.xml",
+        "source": "com.example.storbook.app-main-50:/layout/activity_caretaker_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-mergeDebugResources-47:\\layout\\activity_caretaker_uploading.xml",
+        "source": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-main-50:\\layout\\activity_caretaker_uploading.xml"
+    },
+    {
+        "merged": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-mergeDebugResources-47:\\layout\\activity_caretaker_main.xml",
+        "source": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-main-50:\\layout\\activity_caretaker_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-mergeDebugResources-47:\\layout\\activity_pwd.xml",
+        "source": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-main-50:\\layout\\activity_pwd.xml"
+    },
+    {
+        "merged": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-mergeDebugResources-47:\\layout\\activity_gallery.xml",
+        "source": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-main-50:\\layout\\activity_gallery.xml"
+    },
+    {
+        "merged": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-mergeDebugResources-47:\\layout\\activity_caretaker_login.xml",
+        "source": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-main-50:\\layout\\activity_caretaker_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-mergeDebugResources-47:\\layout\\activity_caretaker_serial_entry.xml",
+        "source": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-main-50:\\layout\\activity_caretaker_serial_entry.xml"
+    },
+    {
+        "merged": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-mergeDebugResources-47:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-main-50:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-mergeDebugResources-47:\\layout\\activity_caretaker_register.xml",
+        "source": "C:\\Users\\84990\\.gradle\\daemon\\7.3.3\\com.example.storbook.app-main-50:\\layout\\activity_caretaker_register.xml"
+    },
+    {
+        "merged": "com.example.storbook.app-mergeDebugResources-47:/layout/activity_gallery.xml",
+        "source": "com.example.storbook.app-main-50:/layout/activity_gallery.xml"
+    },
+    {
+        "merged": "com.example.storbook.app-mergeDebugResources-47:/layout/activity_caretaker_uploading.xml",
+        "source": "com.example.storbook.app-main-50:/layout/activity_caretaker_uploading.xml"
+    }
+]
