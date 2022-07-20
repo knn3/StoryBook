@@ -11,7 +11,7 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/avatar1"
+        android:src="@drawable/album"
         android:layout_marginTop="20dp"/>
 
     <TextView
@@ -141,6 +141,13 @@
 
     </RelativeLayout>
 
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="69dp"
+        android:layout_height="59dp"
+        android:background="#00FFFFFF"
+        android:onClick="onBackClick"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
 
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.bumptech.glide.Glide;
 import com.example.storbook.databinding.ActivityFamilyMemberPageBinding;
@@ -42,4 +43,10 @@ public class FamilyMemberPage extends AppCompatActivity {
         }
 
     }
+    //back button
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
+        this.startActivity(myIntent);
+    }
+
 }
