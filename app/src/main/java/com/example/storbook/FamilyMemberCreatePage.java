@@ -38,7 +38,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
     FirebaseFirestore db;
     FirebaseAuth fAuth;
     Button addFMbtn;
-    EditText mFamilyMemberName, mFamilyMemberRelation;
+    EditText mFamilyMemberName, mFamilyMemberRelation, mFamilyMemberInfo;
     String downloadedUri;
     ProgressDialog progressDialog;
     Uri imageUri, homeUri;
@@ -58,6 +58,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
         // Interactive part initialize
         mFamilyMemberName = (EditText) findViewById(R.id.FamilyNumberName);
         mFamilyMemberRelation = (EditText)findViewById(R.id.FamilyNumberRelation);
+        mFamilyMemberInfo = (EditText)findViewById(R.id.FamilyNumberInfo);
         addFMbtn = (Button) findViewById(R.id.addFMbtn);
         Avatar = (ImageButton)findViewById(R.id.Avatarbtn);
         homeUri = Uri.parse("android.resource://" + getPackageName() + "/drawable/" + "clicktouploadavatar");
@@ -75,20 +76,25 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
     public void uploadFM(View v){
         String FamilyMemberName = mFamilyMemberName.getText().toString();
         String FamilyMemberRelation = mFamilyMemberRelation.getText().toString();
-        // Preconditions
+        String FamilyMemberInfo = mFamilyMemberInfo.getText().toString();
+// Information can be empty
+        if (FamilyMemberInfo.isEmpty()){FamilyMemberInfo = "No Information.";}
 
+        // Preconditions
         // Do nothing if one of the field is empty
         if (FamilyMemberName.isEmpty() || FamilyMemberRelation.isEmpty()) {
-            Toast.makeText(FamilyMemberCreatePage.this, "Fields cannot be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(FamilyMemberCreatePage.this, "Name and relationship cannot be empty", Toast.LENGTH_SHORT).show();
         }
-        // If no avatar selected only the other information will be sent to the database
+
+        // The case If no avatar selected only the other information will be sent to the database
         else if (isAvatarset == false)
         {
             downloadedUri = "";
             Map<String, Object> familyMember = new HashMap<>();
-            familyMember.put("FMName", FamilyMemberName);
-            familyMember.put("FMRelation", FamilyMemberRelation);
-            familyMember.put("Avatar", downloadedUri);
+                familyMember.put("FMName", FamilyMemberName);
+                familyMember.put("FMRelation", FamilyMemberRelation);
+                familyMember.put("Avatar", downloadedUri);
+                familyMember.put("FMInfo", FamilyMemberInfo);
             db.collection("users")
                     .document(fAuth.getUid()).collection("FamilyMember").document(FamilyMemberName).set(familyMember).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -109,6 +115,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
             mFamilyMemberName.getText().clear();
             mFamilyMemberRelation.getText().clear();
         }
+        // The case where the
         else {
             progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading.....");
@@ -146,14 +153,17 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Uri> task) {
                     if (task.isSuccessful()) {
 
+                        String FamilyMemberInfo = mFamilyMemberInfo.getText().toString();
+                        if (FamilyMemberInfo.isEmpty()){FamilyMemberInfo = "No Information.";}
                         // get download Url
                         Uri downloadUri = task.getResult();
                         downloadedUri = downloadUri.toString();
                         //put the family member into the data base.
                         Map<String, Object> familyMember = new HashMap<>();
-                        familyMember.put("FMName", FamilyMemberName);
-                        familyMember.put("FMRelation", FamilyMemberRelation);
-                        familyMember.put("Avatar", downloadedUri);
+                            familyMember.put("FMName", FamilyMemberName);
+                            familyMember.put("FMRelation", FamilyMemberRelation);
+                            familyMember.put("Avatar", downloadedUri);
+                            familyMember.put("FMInfo", FamilyMemberInfo);
                         // Put the new family member into cloud
                         db.collection("users")
                                 .document(fAuth.getUid()).collection("FamilyMember").document(FamilyMemberName).set(familyMember).addOnCompleteListener(new OnCompleteListener<Void>() {
