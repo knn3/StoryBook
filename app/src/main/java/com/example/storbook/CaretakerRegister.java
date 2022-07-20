@@ -54,6 +54,7 @@ public class CaretakerRegister extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         db = FirebaseFirestore.getInstance();
 
+        // if user authenticated, redirect to MainActivity
         if(fAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
             finish();
@@ -66,6 +67,7 @@ public class CaretakerRegister extends AppCompatActivity {
                 String password = mPassword.getText().toString().trim();
                 String userName = mFullName.getText().toString();
 
+                // check requirements of email and password field
                 if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email is Required.");
                     return;

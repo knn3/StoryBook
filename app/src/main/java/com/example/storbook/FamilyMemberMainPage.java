@@ -156,7 +156,9 @@ public class FamilyMemberMainPage extends AppCompatActivity {
         });
 
     }
-
-
-
+    //back button
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, pwd_activity.class);
+        this.startActivity(myIntent);
+    }
 }

@@ -35,6 +35,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         ImageUrls imgCurrent = mImageUrl.get(position);
+        // Using Picasso to load the image to the imageView
         Picasso.with(mContext)
                 .load(imgCurrent.getUrl()).fit().centerCrop().into(holder.imageView);
     }
@@ -55,7 +56,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
         }
-        
+
+        // Normal click
         @Override
         public void onClick(View view) {
             if (mListener != null) {
@@ -66,6 +68,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
             }
         }
 
+        // Create a context menu after do a long click
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
             contextMenu.setHeaderTitle("Edit Media");

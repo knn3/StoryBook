@@ -14,6 +14,7 @@
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
         app:subtitle="caretaker page"
         app:title="@string/app_name"
+        android:onClick="onBackClick"
         app:titleMarginStart="90dp"
         />
     <RelativeLayout
@@ -84,6 +85,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.857" />
-
 
 </RelativeLayout>
