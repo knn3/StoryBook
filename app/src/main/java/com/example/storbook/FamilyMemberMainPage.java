@@ -24,6 +24,19 @@ public class FamilyMemberMainPage extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // The add new family member option is only available for caretakers
+        if (((global) this.getApplication()).isCaretaker()){
+            addFM.setVisibility(View.VISIBLE);
+            addFM.setEnabled(true);
+        }
+        else{
+            addFM.setVisibility(View.INVISIBLE);
+            addFM.setEnabled(false);
+        }
     }
 }

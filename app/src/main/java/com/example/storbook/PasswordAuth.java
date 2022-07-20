@@ -75,6 +75,7 @@ public class PasswordAuth extends AppCompatActivity {
                 if (password.equals(truepwd)) {
                     // If correct set to CT mode and jump back to setting page
                     setToCT();
+                    Toast.makeText(PasswordAuth.this, "Switched to CareTaker mode!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(PasswordAuth.this, Setting.class));
                 } else {
                     // If incorrect display a message and do nothing

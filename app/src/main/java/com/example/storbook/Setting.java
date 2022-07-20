@@ -36,31 +36,41 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Setting extends AppCompatActivity {
+    TextView status;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-
+        status = (TextView) findViewById(R.id.StatusText);
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
         Button v = (Button)findViewById(R.id.Caretakerbtn);
         if(((global) this.getApplication()).isCaretaker()){
-            v.setText("go PWD");
+            v.setText("I am patient");
+            status.setText("In CareTaker Mode");
         }
         else{
-            v.setText("go CareTaker");
+            v.setText("I am CareTaker");
+            status.setText("In Cared Mode");
         }
     }
-
+    //Button to switch the global CT mode on or off
     public void switchCTmode(View v) {
         Button b = (Button) v;
         if (((global) this.getApplication()).isCaretaker()) {
-            b.setText("go PWD");
+            b.setText("I am patient");
+            status.setText("In CareTaker Mode");
             ((global) this.getApplication()).setCaretaker(false);
+            Toast.makeText(Setting.this, "Switched to Patient mode!", Toast.LENGTH_SHORT).show();
+            // To refresh the page
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
         }
         else{
             Intent i = new Intent(this, PasswordAuth.class);

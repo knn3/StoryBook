@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -89,7 +90,18 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
             familyMember.put("FMRelation", FamilyMemberRelation);
             familyMember.put("Avatar", downloadedUri);
             db.collection("users")
-                    .document(fAuth.getUid()).collection("FamilyMember").document(FamilyMemberName).set(familyMember);
+                    .document(fAuth.getUid()).collection("FamilyMember").document(FamilyMemberName).set(familyMember).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Log.d("db", "Upload a family member without avatar to the firestore");
+                            }
+                            else{
+                                Toast.makeText(FamilyMemberCreatePage.this, "Fail to Upload a family member without avatar to firestore", Toast.LENGTH_SHORT).show();
+                                Log.d("db", "Fail to Upload a family member without avatar to the firestore");
+                            }
+                        }
+                    });
             Toast.makeText(FamilyMemberCreatePage.this, "New Family Member Created without avatar!", Toast.LENGTH_SHORT).show();
             // End actions
             isAvatarset = false;
@@ -120,7 +132,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
 
                     //handle progressDialog
                     Avatar.setImageURI(null);
-                    Toast.makeText(FamilyMemberCreatePage.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(FamilyMemberCreatePage.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
                     if (progressDialog.isShowing()) {
                         progressDialog.dismiss();
                         Avatar.setImageURI(homeUri); // change the hint picture back after the uploading tab
@@ -142,22 +154,25 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
                         familyMember.put("FMName", FamilyMemberName);
                         familyMember.put("FMRelation", FamilyMemberRelation);
                         familyMember.put("Avatar", downloadedUri);
+                        // Put the new family member into cloud
                         db.collection("users")
-                                .document(fAuth.getUid()).collection("FamilyMember").document(FamilyMemberName).set(familyMember);
+                                .document(fAuth.getUid()).collection("FamilyMember").document(FamilyMemberName).set(familyMember).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Log.d("db", "Upload a family member with avatar to the firestore");
+                                }
+                                else{
+                                    Toast.makeText(FamilyMemberCreatePage.this, "Fail to Upload to firestore", Toast.LENGTH_SHORT).show();
+                                    Log.d("db", "Fail to Upload a family member with avatar to the firestore");
+                                }
+                            }
+                        });
                         Toast.makeText(FamilyMemberCreatePage.this, "New Family Member Created!", Toast.LENGTH_SHORT).show();
-
-                        //upload downloaded url to specific user on firestore
-                        db.collection("users").document(fAuth.getUid()).update("media", FieldValue.arrayUnion(downloadedUri))
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(FamilyMemberCreatePage.this, "Successfully Uploaded to Firestore", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-
-                    } else {
+                    }
+                    // The case where the upload is unsuccessful
+                    else
+                    {
                         if (progressDialog.isShowing()) {
                             progressDialog.dismiss();
                         }

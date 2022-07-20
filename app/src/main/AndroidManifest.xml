@@ -20,21 +20,26 @@
             android:name=".FamilyMemberCreatePage"
             android:exported="false" />
         <activity
+            android:name=".ImagesActivity"
+            android:exported="false" />
+        <activity
             android:name=".FamilyMemberMainPage"
             android:exported="false"
-            android:label="@string/title_activity_family_member_page"
-            android:theme="@style/Theme.Storbook.NoActionBar" />
+            android:label="@string/title_activity_family_member_page" />
         <activity
             android:name=".pwd_activity"
+            android:theme="@style/Theme.Storbook.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".PasswordAuth"
             android:exported="false" />
         <activity
             android:name=".Setting"
+            android:label="Setting"
             android:exported="false" />
         <activity
             android:name=".CaretakerMain"
+            android:theme="@style/Theme.Storbook.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".CaretakerUploading"
@@ -50,6 +55,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.Storbook.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

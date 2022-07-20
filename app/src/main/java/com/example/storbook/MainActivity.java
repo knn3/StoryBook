@@ -87,13 +87,13 @@ public class MainActivity extends AppCompatActivity {
         if (((global) this.getApplication()).isCaretaker()){
             profileImage.setImageResource(R.drawable.ctstatus);
             Button b = (Button)findViewById(R.id.editbtn);
-            b.setContextClickable(true);
+            b.setEnabled(true);
             b.setVisibility(View.VISIBLE);
         }
         else{
             profileImage.setImageResource(R.drawable.pwdstatus);
             Button b = (Button)findViewById(R.id.editbtn);
-            b.setContextClickable(false);
+            b.setEnabled(false);
             b.setVisibility(View.INVISIBLE);
         }
     }
