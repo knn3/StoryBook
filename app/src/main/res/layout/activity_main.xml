@@ -8,6 +8,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue"
+        app:logo="@drawable/gallery"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:subtitle="create page"
+        app:title="@string/app_name"
+        app:titleMarginStart="90dp"
+        />
+
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="43dp"
@@ -19,21 +31,7 @@
         android:background="@drawable/setting"
         android:onClick="goSettingActivity" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="189dp"
-        android:layout_height="58dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="114dp"
-        android:text="@string/home_page"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="28sp"
-        android:textStyle="bold" />
+
 
     <Button
         android:id="@+id/editbtn"
@@ -78,6 +76,7 @@
         android:id="@+id/familybtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_above="@+id/gallerybtn"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
