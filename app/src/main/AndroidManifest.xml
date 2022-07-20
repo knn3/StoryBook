@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Storbook"
         tools:targetApi="31">
         <activity
+            android:name=".FamilyMemberPage"
+            android:exported="false" />
+        <activity
             android:name=".GalleryActivity"
             android:exported="false" />
         <activity
@@ -31,19 +34,19 @@
             android:label="@string/title_activity_family_member_page" />
         <activity
             android:name=".pwd_activity"
-            android:theme="@style/Theme.Storbook.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Storbook.NoActionBar" />
         <activity
             android:name=".PasswordAuth"
             android:exported="false" />
         <activity
             android:name=".Setting"
-            android:label="Setting"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Setting" />
         <activity
             android:name=".CaretakerMain"
-            android:theme="@style/Theme.Storbook.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Storbook.NoActionBar" />
         <activity
             android:name=".CaretakerUploading"
             android:exported="false" />
@@ -58,8 +61,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.Storbook.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Storbook.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
