@@ -78,7 +78,7 @@ public class Setting extends AppCompatActivity {
         }
     }
 
-    public void goHomepage(View v){
+    public void onBackClick(View v){
         Intent i = new Intent(this, MainActivity.class);
         this.startActivity(i);
     }
