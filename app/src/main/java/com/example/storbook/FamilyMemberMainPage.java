@@ -161,10 +161,5 @@ public class FamilyMemberMainPage extends AppCompatActivity {
         Intent myIntent = new Intent(this, pwd_activity.class);
         this.startActivity(myIntent);
     }
-
-    //back button
-    public void onBackClick(View v){
-        Intent myIntent = new Intent(this, pwd_activity.class);
-        this.startActivity(myIntent);
-    }
+    
 }
