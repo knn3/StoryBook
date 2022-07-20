@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -111,6 +112,12 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
             }
         });
 
+    }
+
+    //back button
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, CaretakerMain.class);
+        this.startActivity(myIntent);
     }
 
 }

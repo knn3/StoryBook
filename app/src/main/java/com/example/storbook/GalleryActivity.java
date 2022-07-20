@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -62,6 +64,12 @@ public class GalleryActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    //back button
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, MainActivity.class);
+        this.startActivity(myIntent);
     }
 
 }
