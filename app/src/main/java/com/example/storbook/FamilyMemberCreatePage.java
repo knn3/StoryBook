@@ -195,6 +195,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
             Avatar.setImageURI(homeUri);
             mFamilyMemberName.getText().clear();
             mFamilyMemberRelation.getText().clear();
+            mFamilyMemberInfo.getText().clear();
         }
     }
 

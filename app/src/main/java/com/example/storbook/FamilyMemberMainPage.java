@@ -36,7 +36,7 @@ public class FamilyMemberMainPage extends AppCompatActivity {
     List<String> mName;
     List<String> mRelation;
     List<String> mInfo;
-    int FMcount;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,7 @@ public class FamilyMemberMainPage extends AppCompatActivity {
         mName = new ArrayList<>();
         mRelation = new ArrayList<>();
         mInfo = new ArrayList<>();
-        FMcount = 0;
+
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseRef = FirebaseFirestore.getInstance();
@@ -129,6 +129,7 @@ public class FamilyMemberMainPage extends AppCompatActivity {
                                     mInfo.add(aFM.get("FMInfo").toString());
                                     FamilyMember familyMember = new FamilyMember(aFM.get("FMName").toString(),aFM.get("FMRelation").toString(),aFM.get("FMInfo").toString(),thispic);
                                     FMarray.add(familyMember);
+                                    // Refresh the list for each iteration
                                     FM_listAdapter listAdapter = new FM_listAdapter(FamilyMemberMainPage.this,FMarray);
                                     binding.FamilyMemberlist.setAdapter(listAdapter);
                                 }
