@@ -20,7 +20,7 @@
             android:name=".FamilyMemberCreatePage"
             android:exported="false" />
         <activity
-            android:name=".FamilyMemberPage"
+            android:name=".FamilyMemberMainPage"
             android:exported="false"
             android:label="@string/title_activity_family_member_page"
             android:theme="@style/Theme.Storbook.NoActionBar" />
