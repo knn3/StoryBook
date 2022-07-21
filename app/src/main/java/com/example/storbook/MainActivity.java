@@ -86,9 +86,14 @@ public class MainActivity extends AppCompatActivity {
         profileImage = (ImageView)findViewById(R.id.profilestatuspic);
         if (((global) this.getApplication()).isCaretaker()){
             profileImage.setImageResource(R.drawable.ctstatus);
-            Button b = (Button)findViewById(R.id.editbtn);
-            b.setEnabled(true);
-            b.setVisibility(View.VISIBLE);
+            Button editbtn = (Button)findViewById(R.id.editbtn);
+            editbtn.setEnabled(true);
+            Button uploadbtn = (Button)findViewById(R.id.uploadBtn);
+            uploadbtn.setVisibility(View.VISIBLE);
+            Button managebtn = (Button)findViewById(R.id.manage);
+            uploadbtn.setVisibility(View.VISIBLE);
+            Button uploadbtn = (Button)findViewById(R.id.uploadBtn);
+            uploadbtn.setVisibility(View.VISIBLE);
         }
         else{
             profileImage.setImageResource(R.drawable.pwdstatus);
@@ -98,14 +103,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void goFamily(View v){
-        Intent i = new Intent(this, pwd_activity.class);
+    public void goManage(View v){
+        Intent i = new Intent(this, CaretakerManage.class);
         this.startActivity(i);
     }
 
     // Gallery to be accessed here
-    public void goGallery(View view){
-        Intent myIntent = new Intent(MainActivity.this, ImagesActivity.class);
+    public void goUpload(View view){
+        Intent myIntent = new Intent(MainActivity.this, CaretakerUploading.class);
         MainActivity.this.startActivity(myIntent);
     }
 
