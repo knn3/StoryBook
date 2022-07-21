@@ -20,4 +20,10 @@ public class pwd_activity extends AppCompatActivity {
         Intent i = new Intent(this, peopleActivity.class);
         this.startActivity(i);
     }
+
+    //back button
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, MainActivity.class);
+        this.startActivity(myIntent);
+    }
 }

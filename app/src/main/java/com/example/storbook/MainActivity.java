@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        // Jump to login page if not logged in
+
+        // Jump to login page if did not log in
         if(currentUser == null){
             Intent i = new Intent(MainActivity.this, CaretakerLogin.class);
             startActivity(i);
@@ -105,10 +106,11 @@ public class MainActivity extends AppCompatActivity {
 
     // Gallery to be accessed here
     public void goGallery(View view){
-        Intent myIntent = new Intent(MainActivity.this, ImagesActivity.class);
+        Intent myIntent = new Intent(MainActivity.this, GalleryActivity.class);
         MainActivity.this.startActivity(myIntent);
     }
 
+    // direct to main page of Caretaker
     public void goEditPage(View view){
         Intent myIntent = new Intent(MainActivity.this, CaretakerMain.class);
         MainActivity.this.startActivity(myIntent);

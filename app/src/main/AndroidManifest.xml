@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name=".UserActivity"
+            android:name=".FamilyMemberPage"
             android:exported="false" />
         <activity
             android:name=".peopleActivity"
