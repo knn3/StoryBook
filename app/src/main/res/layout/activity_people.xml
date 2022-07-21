@@ -12,6 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/blue"
         app:logo="@drawable/gallery"
+        android:onClick="onBackClick"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
         app:subtitle="view people"
         app:title="@string/app_name"

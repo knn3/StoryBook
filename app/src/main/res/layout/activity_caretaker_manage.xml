@@ -6,5 +6,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CaretakerManage">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue"
+        app:logo="@drawable/gallery"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:subtitle="manage page"
+        app:title="@string/app_name"
+        android:onClick="onBackClick"
+        app:titleMarginStart="90dp"
+        />
+    <RelativeLayout
+        android:id="@+id/manageinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin3">
 
+        <ImageButton
+            android:id="@+id/fammanage"
+            android:layout_width="@dimen/photo_size"
+            android:layout_height="@dimen/photo_size"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/family"
+            android:onClick="manageFamily" />
+
+
+        <ImageButton
+            android:id="@+id/managepho"
+            android:layout_width="@dimen/photo_size"
+            android:layout_height="@dimen/photo_size"
+            android:layout_below="@+id/fammanage"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin2"
+            android:background="@drawable/dashboard"
+            android:text="Manage friends"
+            android:textColor="#455A64"
+            android:visibility="visible" />
+
+
+        <ImageButton
+            android:id="@+id/manggefriends"
+            android:layout_width="@dimen/photo_size"
+            android:layout_height="@dimen/photo_size"
+            android:layout_marginLeft="60dp"
+            android:layout_toRightOf="@+id/fammanage"
+            android:background="@drawable/friendship"
+            android:onClick="managefriends" />
+
+        <TextView
+            android:id="@+id/upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fammanage"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="Manage family"
+            android:textColor="@color/text_color"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/managefam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fammanage"
+            android:layout_toRightOf="@+id/upload"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="Manage friends"
+            android:textColor="@color/text_color"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/datainfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/managepho"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin2"
+            android:text="View data"
+            android:textColor="@color/text_color"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
 </RelativeLayout>

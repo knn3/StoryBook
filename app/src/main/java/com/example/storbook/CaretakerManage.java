@@ -15,8 +15,20 @@ public class CaretakerManage extends AppCompatActivity {
     }
 
     //back button
-    public void onBackClick(View v){
-        Intent myIntent = new Intent(this, CaretakerMain.class);
+    public void onBackClick(View v) {
+        Intent myIntent = new Intent(this, MainActivity.class);
         this.startActivity(myIntent);
+    }
+
+    public void manageFamily(View view) {
+        Intent i = new Intent(this, FamilyMemberCreatePage.class);
+        this.startActivity(i);
+
+    }
+
+    public void managefriends(View view) {
+        Intent i = new Intent(this, friends_page.class);
+        this.startActivity(i);
+
     }
 }

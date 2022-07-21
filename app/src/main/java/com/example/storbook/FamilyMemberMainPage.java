@@ -159,7 +159,7 @@ public class FamilyMemberMainPage extends AppCompatActivity {
     }
     //back button
     public void onBackClick(View v){
-        Intent myIntent = new Intent(this, pwd_activity.class);
+        Intent myIntent = new Intent(this, peopleActivity.class);
         this.startActivity(myIntent);
     }
     

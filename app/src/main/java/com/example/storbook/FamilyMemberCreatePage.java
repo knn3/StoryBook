@@ -225,5 +225,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
     public void onBackClick(View v){
         Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
         this.startActivity(myIntent);
+
+
     }
 }

@@ -1,5 +1,7 @@
 package com.example.storbook;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
@@ -35,5 +37,10 @@ public class friends_page extends AppCompatActivity {
                 new String[]{"photo", "name"},
                 new int[]{R.id.ImageView_id, R.id.TextView_id});//relate to layout
         gridView.setAdapter(adapter);//relate GridView to Adapter
+    }
+
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, peopleActivity.class);
+        this.startActivity(myIntent);
     }
 }

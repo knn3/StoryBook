@@ -7,12 +7,12 @@
         <entry key="..\:/Users/84990/AndroidStudioProjects/storbook/app/src/main/res/drawable/ic_launcher_background.xml" value="0.141" />
         <entry key="..\:/Users/84990/AndroidStudioProjects/storbook/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1525" />
-        <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_login.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_login.xml" value="0.14705882352941177" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_main.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_manage.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_register.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_serial_entry.xml" value="0.4466666666666667" />
-        <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_uploading.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_uploading.xml" value="0.13025210084033614" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_family_member_create_page.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_family_member_main_page.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_family_member_page.xml" value="0.14739583333333334" />
@@ -25,6 +25,7 @@
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_pwd.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_setting.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_user.xml" value="0.21979166666666666" />
+        <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/family_member_list_item.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/image_item.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/list_item.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/toolbar.xml" value="0.1962962962962963" />
