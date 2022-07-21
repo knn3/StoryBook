@@ -11,16 +11,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -35,6 +32,7 @@ import android.text.util.Linkify;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -85,37 +83,53 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         // Switch profile of the home page depending on pwd or ct
         profileImage = (ImageView)findViewById(R.id.profilestatuspic);
+        View pwdpage=findViewById(R.id.pwd_page);
+        View ctpage=findViewById(R.id.caretakerinfo);
+        Toolbar mtoolbar=findViewById(R.id.toolbar);
+        // Switch profile of the home page depending on pwd or ct
+        profileImage = (ImageView)findViewById(R.id.profilestatuspic);
         if (((global) this.getApplication()).isCaretaker()){
             profileImage.setImageResource(R.drawable.ctstatus);
-            Button b = (Button)findViewById(R.id.editbtn);
-            b.setEnabled(true);
-            b.setVisibility(View.VISIBLE);
+            pwdpage.setVisibility(View.INVISIBLE);
+            pwdpage.setEnabled(false);
+            ctpage.setEnabled(true);
+            ctpage.setVisibility(View.VISIBLE);
+            mtoolbar.setSubtitle("Caretaker page");
+
         }
         else{
             profileImage.setImageResource(R.drawable.pwdstatus);
-            Button b = (Button)findViewById(R.id.editbtn);
-            b.setEnabled(false);
-            b.setVisibility(View.INVISIBLE);
+            ctpage.setVisibility(View.INVISIBLE);
+            ctpage.setEnabled(false);
+            pwdpage.setEnabled(true);
+            pwdpage.setVisibility(View.VISIBLE);
+            mtoolbar.setSubtitle("pwd page");
         }
     }
 
-    public void goFamily(View v){
-        Intent i = new Intent(this, pwd_activity.class);
+    public void goManage(View v){
+        Intent i = new Intent(this, CaretakerManage.class);
         this.startActivity(i);
     }
 
     // Gallery to be accessed here
-    public void goGallery(View view){
-        Intent myIntent = new Intent(MainActivity.this, GalleryActivity.class);
+    public void goUpload(View view){
+        Intent myIntent = new Intent(MainActivity.this, CaretakerUploading.class);
         MainActivity.this.startActivity(myIntent);
     }
 
-    // direct to main page of Caretaker
-    public void goEditPage(View view){
-        Intent myIntent = new Intent(MainActivity.this, CaretakerMain.class);
-        MainActivity.this.startActivity(myIntent);
+    public void goStat (View view){
+        //Intent myIntent = new Intent(MainActivity.this, CaretakerMain.class);
+       // MainActivity.this.startActivity(myIntent);
     }
+    public void goGallery (View view){
 
+    }
+    public void goPeople (View view){
+        Intent myIntent = new Intent(MainActivity.this, peopleActivity.class);
+        MainActivity.this.startActivity(myIntent);
+
+    }
     public void goSettingActivity(View v){
         Intent myIntent = new Intent(MainActivity.this, Setting.class);
         MainActivity.this.startActivity(myIntent);
