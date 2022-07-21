@@ -49,16 +49,18 @@ public class GalleryActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     DocumentSnapshot document = task.getResult();
                     if(document.exists()){
-                        List<String> imgUrls = (List<String>) document.get("media");
+                        // No gallery building if no media uploaded
+                        if (document.getData().get("media") != null) {
+                            List<String> imgUrls = (List<String>) document.get("media");
+                            for (String imgUrl : imgUrls) {
+                                ImageUrls imageUrl = new ImageUrls(imgUrl);
+                                mImgUrl.add(imageUrl);
+                            }
 
-                        for (String imgUrl : imgUrls){
-                            ImageUrls imageUrl = new ImageUrls(imgUrl);
-                            mImgUrl.add(imageUrl);
+                            mAdapter = new ImageAdapter(GalleryActivity.this, mImgUrl);
+
+                            mRecyclerView.setAdapter(mAdapter);
                         }
-
-                        mAdapter = new ImageAdapter(GalleryActivity.this, mImgUrl);
-
-                        mRecyclerView.setAdapter(mAdapter);
 
                     }
                 }
