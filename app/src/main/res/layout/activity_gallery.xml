@@ -5,17 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GalleryActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue"
+        app:logo="@drawable/gallery"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:subtitle="gallery page"
+        app:title="@string/app_name"
+        android:onClick="onBackClick"
+        app:titleMarginStart="90dp"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gallery_view"
+        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="69dp"
-        android:layout_height="59dp"
-        android:background="#00FFFFFF"
-        android:onClick="onBackClick"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
 </RelativeLayout>
