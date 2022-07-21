@@ -10,11 +10,13 @@
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_main.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_manage.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_register.xml" value="0.22083333333333333" />
-        <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_serial_entry.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_serial_entry.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_caretaker_uploading.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_family_member_create_page.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_family_member_main_page.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_family_member_page.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_friends_page.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_gallery.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_images.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_main.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/84990/Desktop/my branch/CMPT-276-Project/CMPT-276-Project/app/src/main/res/layout/activity_password_auth.xml" value="0.22083333333333333" />
@@ -33,15 +35,12 @@
         <entry key="app/src/main/res/layout/activity_caretaker_serial_entry.xml" value="0.3046875" />
         <entry key="app/src/main/res/layout/activity_caretaker_uploading.xml" value="0.26784667968750003" />
         <entry key="app/src/main/res/layout/activity_family_member_create_page.xml" value="0.32853271124693667" />
-        <entry key="app/src/main/res/layout/activity_family_member_main_page.xml" value="0.2750809061488673" />
-        <entry key="app/src/main/res/layout/activity_family_member_page.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3499553222134359" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.14322359982898675" />
         <entry key="app/src/main/res/layout/activity_overall_setting.xml" value="0.3055029199953315" />
         <entry key="app/src/main/res/layout/activity_password_auth.xml" value="0.2812115611321042" />
         <entry key="app/src/main/res/layout/activity_pwd.xml" value="0.1899365367180417" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.3260086340086742" />
-        <entry key="app/src/main/res/layout/family_member_list_item.xml" value="0.2639751552795031" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.2624283117430492" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.14322359982898675" />
         <entry key="app/src/main/res/layout/settings_activity.xml" value="0.3046875" />
