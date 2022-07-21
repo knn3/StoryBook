@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        // Jump to login page if not logged in
+
+        // Jump to login page if did not log in
         if(currentUser == null){
             Intent i = new Intent(MainActivity.this, CaretakerLogin.class);
             startActivity(i);
