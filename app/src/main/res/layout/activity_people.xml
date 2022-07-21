@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pwd_activity">
+    tools:context=".peopleActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -14,63 +13,62 @@
         android:background="@color/blue"
         app:logo="@drawable/gallery"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:subtitle="user page"
+        app:subtitle="view people"
         app:title="@string/app_name"
-        app:titleMarginStart="90dp" />
+        app:titleMarginStart="90dp"
+        />
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:id="@+id/pws_page"
+        android:id="@+id/people_page"
         android:layout_centerHorizontal="true">
 
 
+
         <ImageButton
-            android:id="@+id/albumbtn"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:id="@+id/familybtn"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/album"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:background="@drawable/family"
             android:focusableInTouchMode="false"
-            android:onClick="onalbumClicked"/>
+            android:onClick="onfamilyClicked" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/album_name"
-            android:text="View album"
-            android:layout_below="@id/albumbtn"
+            android:id="@+id/family_name"
+            android:textColor="@color/text_color"
+            android:text="View my Family"
+            android:layout_below="@id/familybtn"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_centerHorizontal="true"
-            android:textSize="35dp"
-            android:textColor="@color/text_color"
+            android:textSize="30dp"
             android:textStyle="bold"/>
-
-
-
         <ImageButton
-            android:id="@+id/peoplebtn"
+            android:id="@+id/friendbtn"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_below="@+id/album_name"
+            android:layout_below="@+id/family_name"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/ancestors"
-            android:onClick="onpeopleClicked"
+            android:background="@drawable/friendship"
+            android:onClick="onfriendClicked"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/people_page"
+            android:id="@+id/friend_name"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:text="View people"
-            android:layout_below="@id/peoplebtn"
-            android:layout_centerHorizontal="true"
+            android:text="View my Friends"
             android:textColor="@color/text_color"
-            android:textSize="35dp"
+            android:layout_below="@id/friendbtn"
+            android:layout_centerHorizontal="true"
+            android:textSize="30dp"
             android:textStyle="bold"/>
     </RelativeLayout>
-
 
 </RelativeLayout>

@@ -14,14 +14,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Storbook"
+        android:theme="@style/Theme.Storbook.NoActionBar"
         tools:targetApi="31">
+
+        <activity
+            android:name=".friends_page"
+            android:exported="false">
+
+        </activity>
+
         <activity
             android:name=".UserActivity"
             android:exported="false" />
         <activity
-            android:name=".friends_page"
+            android:name=".peopleActivity"
             android:exported="false" />
+
         <activity
             android:name=".FamilyMemberCreatePage"
             android:exported="false" />

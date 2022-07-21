@@ -17,7 +17,7 @@ public class pwd_activity extends AppCompatActivity {
 
     }
     public void onpeopleClicked(View view) {
-        Intent i = new Intent(this, FamilyMemberMainPage.class);
+        Intent i = new Intent(this, peopleActivity.class);
         this.startActivity(i);
     }
 }
