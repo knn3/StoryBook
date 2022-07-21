@@ -68,6 +68,9 @@
             android:name=".CaretakerLogin"
             android:exported="false" />
         <activity
+            android:name=".GalleryActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Storbook.NoActionBar">
