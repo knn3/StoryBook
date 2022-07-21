@@ -1,67 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CaretakerUploading">
 
-    <TextView
-        android:id="@+id/show_caretaker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="I am a caretaker"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038" />
+    <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/blue"
+    app:logo="@drawable/gallery"
+    app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+    app:subtitle="upload page"
+    app:title="@string/app_name"
+    app:titleMarginStart="90dp"
+    />
 
-    <Button
-        android:id="@+id/selectImagebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Image"
-        app:layout_constraintBottom_toTopOf="@+id/uploadBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/show_caretaker"
-        app:layout_constraintVertical_bias="0.879" />
 
-    <Button
-        android:id="@+id/uploadBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="192dp"
-        android:text="Upload Image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        app:layout_constraintBottom_toTopOf="@+id/selectImagebtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.643"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="@dimen/activity_horizontal_margin2"
+        android:layout_centerHorizontal="true"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="69dp"
-        android:layout_height="59dp"
-        android:background="#00FFFFFF"
-        android:onClick="onBackClick"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+    <Button
+        android:id="@+id/selectImagebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="@dimen/activity_horizontal_margin2"
+        android:layout_centerHorizontal="true"
+        android:text="Select Image"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/imageView"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        />
+
+    <Button
+        android:id="@+id/uploadBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginBottom="192dp"
+        android:textColor="@color/text_color"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="Upload Image"
+        android:layout_below="@+id/selectImagebtn"
+        android:layout_marginTop="@dimen/activity_horizontal_margin2"/>
+
+
+</RelativeLayout>

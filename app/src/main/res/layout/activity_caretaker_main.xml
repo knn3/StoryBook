@@ -20,7 +20,8 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/toolbar"
         android:id="@+id/caretaker_page"
         android:layout_centerHorizontal="true">
 
@@ -79,6 +80,9 @@
         android:text="Log Out"
         android:layout_below="@+id/caretaker_page"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_centerHorizontal="true"
