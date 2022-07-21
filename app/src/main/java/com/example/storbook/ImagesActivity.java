@@ -64,19 +64,21 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
                     //get document
                     DocumentSnapshot document = task.getResult();
                     if(document.exists()){
+                        // No gallery building if no media uploaded
+                        if (document.getData().get("media") != null) {
+                            // direct to media field
+                            List<String> imgUrls = (List<String>) document.get("media");
 
-                        // direct to media field
-                        List<String> imgUrls = (List<String>) document.get("media");
+                            mImgUrl.clear();
 
-                        mImgUrl.clear();
+                            //loop through each entry of array media to get each image url
+                            for (String imgUrl : imgUrls) {
+                                ImageUrls imageUrl = new ImageUrls(imgUrl);
+                                mImgUrl.add(imageUrl);
+                            }
 
-                        //loop through each entry of array media to get each image url
-                        for (String imgUrl : imgUrls){
-                            ImageUrls imageUrl = new ImageUrls(imgUrl);
-                            mImgUrl.add(imageUrl);
+                            mAdapter.notifyDataSetChanged();
                         }
-
-                        mAdapter.notifyDataSetChanged();
                     }
                 }
             }
@@ -87,7 +89,7 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
     // normal click on image
     @Override
     public void onItemClick(int position) {
-        Toast.makeText(this, "Normal click at position: " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Hold to edit", Toast.LENGTH_SHORT).show();
     }
 
     @Override
