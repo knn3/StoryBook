@@ -5,27 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue"
+        app:logo="@drawable/gallery"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:subtitle="create page"
+        app:title="@string/app_name"
+        app:titleMarginStart="90dp"
+        />
 
     <RelativeLayout
         android:layout_width="wrap_content"
+        android:id="@+id/info"
+        android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin2"
         android:layout_height="wrap_content">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="@dimen/photo_size2"
-        android:layout_height="@dimen/photo_size2"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/icon"
-        android:src="@drawable/album"
-        >
-    </de.hdodenhof.circleimageview.CircleImageView>
-
+        <ImageButton
+            android:id="@+id/Avafrbtn"
+            android:layout_width="225dp"
+            android:layout_height="189dp"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:onClick="selectImage"
+            android:scaleType="fitCenter"
+            tools:srcCompat="@tools:sample/avatars" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/icon"
-        android:layout_marginTop="@dimen/activity_horizontal_margin2"
+        android:layout_below="@+id/Avafrbtn"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="Name:"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -33,6 +47,7 @@
         android:id="@+id/nameinfo"
 
         />
+
         <EditText
             android:id="@+id/friendsname"
             android:layout_width="351dp"
@@ -40,7 +55,7 @@
             android:layout_below="@+id/nameinfo"
             android:ems="10"
             android:hint="Enter the Name"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -86,5 +101,18 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
     </RelativeLayout>
+    <Button
+        android:id="@+id/addFRbtn"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/info"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="128dp"
+        android:onClick="uploadFR"
+        android:text="ADD"
+        android:textColor="@color/text_color"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
