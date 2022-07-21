@@ -2,6 +2,7 @@ package com.example.storbook;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.Application;
 import android.content.Intent;
@@ -44,7 +45,9 @@ public class CaretakerRegister extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caretaker_register);
+        Toolbar mtoolbar=findViewById(R.id.toolbar);
 
+        mtoolbar.setSubtitle("Register");
         mFullName = findViewById(R.id.caretakerFullName);
         mEmail = findViewById(R.id.caretakerEmail);
         mPassword = findViewById(R.id.caretakerPassword);
@@ -87,7 +90,7 @@ public class CaretakerRegister extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(CaretakerRegister.this, "User Created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),CaretakerMain.class));
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
                             // Add a new document for the new user with generated ID and the other info
                             Map<String, Object> user = new HashMap<>();

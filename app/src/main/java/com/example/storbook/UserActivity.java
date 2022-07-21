@@ -3,6 +3,7 @@ package com.example.storbook;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -47,6 +48,9 @@ public class UserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        Toolbar mtoolbar=findViewById(R.id.toolbar);
+
+        mtoolbar.setSubtitle("friends create");
 
         // Initialize database
         fAuth = FirebaseAuth.getInstance();

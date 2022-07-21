@@ -1,8 +1,6 @@
 package com.example.storbook;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,27 +14,24 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    Button logout;
     private static ImageView profileImage;
     int[] images = {R.drawable.pwdstatus,R.drawable.ctstatus};
 
@@ -46,7 +41,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        logout=findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                finish();
+            }
+        });
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         // Jump to login page if not logged in
@@ -133,5 +136,6 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(MainActivity.this, Setting.class);
         MainActivity.this.startActivity(myIntent);
     }
+
 
 }

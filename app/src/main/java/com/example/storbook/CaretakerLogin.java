@@ -2,6 +2,7 @@ package com.example.storbook;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,6 +36,9 @@ public class CaretakerLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caretaker_login);
+        Toolbar mtoolbar=findViewById(R.id.toolbar);
+
+        mtoolbar.setSubtitle("login page");
 
         mEmail = findViewById(R.id.caretakerEmail);
         mPassword = findViewById(R.id.caretakerPassword);

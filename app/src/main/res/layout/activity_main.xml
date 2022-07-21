@@ -8,17 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/blue"
-        app:logo="@drawable/gallery"
-        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:subtitle="create page"
-        app:title="@string/app_name"
-        app:titleMarginStart="90dp"
-        />
+    <include layout="@layout/toolbar"/>
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -169,5 +159,16 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_centerHorizontal="true"
+        android:text="Log Out"
+        android:textColor="@color/text_color"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

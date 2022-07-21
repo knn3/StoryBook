@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.storbook">
+    package="com.example.storbook" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -15,35 +15,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Storbook.NoActionBar"
-        tools:targetApi="31">
-
+        tools:targetApi="31" >
         <activity
             android:name=".friends_page"
-            android:exported="false">
-
+            android:exported="false" >
         </activity>
-
         <activity
             android:name=".UserActivity"
             android:exported="false" />
         <activity
             android:name=".peopleActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName="com.example.storbook.MainActivity" />
 
         <activity
             android:name=".FamilyMemberCreatePage"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName="com.example.storbook.FamilyMemberMainPage" />
+
         <activity
             android:name=".ImagesActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName="com.example.storbook.MainActivity" />
+
         <activity
             android:name=".FamilyMemberMainPage"
             android:exported="false"
             android:label="@string/title_activity_family_member_page" />
-        <activity
-            android:name=".pwd_activity"
-            android:exported="false"
-            android:theme="@style/Theme.Storbook.NoActionBar" />
         <activity
             android:name=".PasswordAuth"
             android:exported="false" />
@@ -52,15 +50,13 @@
             android:exported="false"
             android:label="Setting" />
         <activity
-            android:name=".CaretakerMain"
-            android:exported="false"
-            android:theme="@style/Theme.Storbook.NoActionBar" />
-        <activity
             android:name=".CaretakerUploading"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName="com.example.storbook.MainActivity" />
         <activity
             android:name=".CaretakerSerialEntry"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".CaretakerRegister"
             android:exported="false" />
@@ -70,7 +66,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Storbook.NoActionBar">
+            android:theme="@style/Theme.Storbook.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

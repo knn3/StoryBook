@@ -3,6 +3,7 @@ package com.example.storbook;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -45,6 +46,9 @@ public class CaretakerUploading extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Toolbar mtoolbar=findViewById(R.id.toolbar);
+        mtoolbar.setSubtitle("Uploading photos");
         binding = ActivityCaretakerUploadingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.selectImagebtn.setOnClickListener(new View.OnClickListener(){
