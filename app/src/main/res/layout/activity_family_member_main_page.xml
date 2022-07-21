@@ -16,8 +16,15 @@
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <ListView
-        android:layout_width="409dp"
-        android:layout_height="833dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="1dp" />
+        android:id="@+id/FamilyMemberlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/family_member_list_item" />
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="69dp"
+        android:layout_height="59dp"
+        android:background="#00FFFFFF"
+        android:onClick="onBackClick"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
