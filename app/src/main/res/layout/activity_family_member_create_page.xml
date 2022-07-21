@@ -53,22 +53,32 @@
 
             />
 
-    <EditText
-        android:id="@+id/FamilyNumberName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:ems="10"
-        android:layout_below="@+id/FamilyNumberRelation"
-        android:hint="Name"
-        android:inputType="text"
-        android:textSize="30sp"/>
+        <EditText
+            android:id="@+id/FamilyNumberName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/FamilyNumberRelation"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="text"
+            android:textSize="30sp" />
+        <EditText
+            android:id="@+id/FamilyNumberInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/FamilyNumberName"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:ems="10"
+            android:hint="Family member Info"
+            android:inputType="text"
+            android:textSize="30sp" />
         <Button
             android:id="@+id/addFMbtn"
             android:layout_width="120dp"
             android:layout_height="80dp"
             android:layout_marginBottom="128dp"
-            android:layout_below="@id/FamilyNumberName"
+            android:layout_below="@id/FamilyNumberInfo"
             android:layout_centerHorizontal="true"
             android:textColor="@color/text_color"
             android:textStyle="bold"
