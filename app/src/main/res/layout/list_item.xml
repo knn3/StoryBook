@@ -13,7 +13,6 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:id="@+id/people1">
 
 
@@ -38,34 +37,6 @@
                 />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_toRightOf="@+id/people1"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin2"
-            android:layout_height="wrap_content"
-            android:id="@+id/people2">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="@dimen/photo_size"
-                android:layout_height="@dimen/photo_size"
-                android:id="@+id/photo2"
-
-                />
-
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/name2"
-                android:text="someone"
-                android:layout_below="@+id/photo2"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                />
-
-
-        </RelativeLayout>
 
 
 
