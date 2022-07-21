@@ -44,11 +44,12 @@
 
 
     <RelativeLayout
+        android:id="@+id/caretakerinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin2"
         android:layout_below="@+id/toolbar"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin3">
 
         <ImageButton
             android:id="@+id/uploadBtn"
@@ -57,16 +58,6 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:background="@drawable/upload"
             android:onClick="goUpload" />
-
-        <TextView
-            android:id="@+id/Upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/uploadBtn"
-            android:text="Upload photos"
-            android:textColor="@color/text_color"
-            android:textSize="25dp"
-            android:textStyle="bold" />
 
 
         <ImageButton
@@ -77,7 +68,7 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/photo_size"
             android:background="@drawable/dashboard"
-            android:onClick="goEditPage"
+            android:onClick="goGallery"
             android:text="@string/image_edit"
             android:textColor="#455A64"
             android:visibility="visible" />
@@ -93,15 +84,28 @@
             android:onClick="goManage" />
 
         <TextView
+            android:id="@+id/upload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/uploadBtn"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin3"
-            android:layout_toRightOf="@+id/Upload"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="Upload photos"
+            android:textColor="@color/text_color"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/manage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/uploadBtn"
+            android:layout_toRightOf="@+id/upload"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:text="Manage"
             android:textColor="@color/text_color"
             android:textSize="25dp"
             android:textStyle="bold" />
+
 
         <TextView
             android:id="@+id/datainfo"
@@ -115,6 +119,54 @@
             android:textStyle="bold" />
 
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/pwd_page"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/gallerybtn"
+            android:layout_width="@dimen/photo_size2"
+            android:layout_height="@dimen/photo_size2"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/album"
+            android:onClick="goGallery" />
+
+
+        <ImageButton
+            android:id="@+id/peoplebtn"
+            android:layout_width="@dimen/photo_size2"
+            android:layout_height="@dimen/photo_size2"
+            android:layout_below="@+id/gallery"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_horizontal_margin2"
+            android:background="@drawable/ancestors"
+            android:onClick="goPeople" />
+
+        <TextView
+            android:id="@+id/gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gallerybtn"
+            android:layout_centerHorizontal="true"
+            android:text="View Gallery"
+            android:textColor="@color/text_color"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/peoplebtn"
+            android:layout_centerHorizontal="true"
+            android:text="View People"
+            android:textColor="@color/text_color"
+            android:textSize="35dp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 
