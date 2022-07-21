@@ -130,8 +130,8 @@
         android:layout_height="wrap_content">
         <ImageButton
             android:id="@+id/gallerybtn"
-            android:layout_width="@dimen/photo_size2"
-            android:layout_height="@dimen/photo_size2"
+            android:layout_width="@dimen/photo_size"
+            android:layout_height="@dimen/photo_size"
             android:layout_centerHorizontal="true"
             android:background="@drawable/album"
             android:onClick="goGallery" />
@@ -139,8 +139,8 @@
 
         <ImageButton
             android:id="@+id/peoplebtn"
-            android:layout_width="@dimen/photo_size2"
-            android:layout_height="@dimen/photo_size2"
+            android:layout_width="@dimen/photo_size"
+            android:layout_height="@dimen/photo_size"
             android:layout_below="@+id/gallery"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/activity_horizontal_margin2"
@@ -168,6 +168,19 @@
             android:textSize="35dp"
             android:textStyle="bold" />
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Log Out"
+        android:textColor="@color/text_color"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
 
 
 </RelativeLayout>
