@@ -9,13 +9,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.MediaController;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.example.storbook.databinding.ActivityCaretakerUploadingBinding;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,7 +33,7 @@ import java.util.Locale;
 public class CaretakerUploading extends AppCompatActivity {
 
     ActivityCaretakerUploadingBinding binding;
-    Uri imageUri;
+    Uri mediaUrl;
     StorageReference storageReference;
     ProgressDialog progressDialog;
     FirebaseUser user;
@@ -47,6 +47,12 @@ public class CaretakerUploading extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityCaretakerUploadingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+        binding.videoView.setVisibility(View.INVISIBLE);
+
         binding.selectImagebtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -54,13 +60,17 @@ public class CaretakerUploading extends AppCompatActivity {
             }
         });
 
-        db = FirebaseFirestore.getInstance();
-        user = FirebaseAuth.getInstance().getCurrentUser();
-
         binding.uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 uploadImage();
+            }
+        });
+
+        binding.videoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectVideo();
             }
         });
     }
@@ -79,7 +89,7 @@ public class CaretakerUploading extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference("images/"+fileName);
 
         // uploading to firestore and cloud storage
-        UploadTask uploadTask = storageReference.putFile(imageUri);
+        UploadTask uploadTask = storageReference.putFile(mediaUrl);
         Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -134,13 +144,30 @@ public class CaretakerUploading extends AppCompatActivity {
         startActivityForResult(intent, 100);
     }
 
+    private void selectVideo(){
+        Intent intent = new Intent();
+        intent.setType("video/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, 101);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 100 && data != null && data.getData() != null){
-            imageUri = data.getData();
-            binding.imageView.setImageURI(imageUri);
+            mediaUrl = data.getData();
+            binding.videoView.setVisibility(View.INVISIBLE);
+            binding.imageView.setImageURI(mediaUrl);
+        }
+        else if (requestCode == 101 && data != null && data.getData() != null){
+            mediaUrl = data.getData();
+            binding.videoView.setVisibility(View.VISIBLE);
+            binding.videoView.setVideoURI(mediaUrl);
+
+            MediaController mediaController = new MediaController(this);
+            binding.videoView.setMediaController(mediaController);
+            mediaController.setAnchorView(binding.videoView);
         }
     }
 
