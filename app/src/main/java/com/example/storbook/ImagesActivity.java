@@ -118,7 +118,7 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
 
     //back button
     public void onBackClick(View v){
-        Intent myIntent = new Intent(this, CaretakerMain.class);
+        Intent myIntent = new Intent(this, CaretakerManage.class);
         this.startActivity(myIntent);
     }
 

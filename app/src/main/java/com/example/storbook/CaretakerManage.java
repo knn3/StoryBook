@@ -26,9 +26,16 @@ public class CaretakerManage extends AppCompatActivity {
 
     }
 
-    public void managefriends(View view) {
+    public void manageFriends(View view) {
         Intent i = new Intent(this, friends_page.class);
         this.startActivity(i);
 
     }
+
+    public void manageGallery(View view){
+        Intent intent = new Intent(this, ImagesActivity.class);
+        this.startActivity(intent);
+        finish();
+    }
+
 }

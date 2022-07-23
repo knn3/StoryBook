@@ -18,6 +18,7 @@
         android:onClick="onBackClick"
         app:titleMarginStart="90dp"
         />
+
     <RelativeLayout
         android:id="@+id/manageinfo"
         android:layout_width="wrap_content"
@@ -36,16 +37,16 @@
 
 
         <ImageButton
-            android:id="@+id/managepho"
+            android:id="@+id/managePhoto"
             android:layout_width="@dimen/photo_size"
             android:layout_height="@dimen/photo_size"
             android:layout_below="@+id/fammanage"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_horizontal_margin2"
-            android:background="@drawable/dashboard"
-            android:text="Manage friends"
+            android:background="@drawable/album"
             android:textColor="#455A64"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:onClick="manageGallery"/>
 
 
         <ImageButton
@@ -55,7 +56,7 @@
             android:layout_marginLeft="60dp"
             android:layout_toRightOf="@+id/fammanage"
             android:background="@drawable/friendship"
-            android:onClick="managefriends" />
+            android:onClick="manageFriends" />
 
         <TextView
             android:id="@+id/upload"
@@ -73,8 +74,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fammanage"
-            android:layout_toRightOf="@+id/upload"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_toRightOf="@+id/upload"
             android:text="Manage friends"
             android:textColor="@color/text_color"
             android:textSize="25dp"
@@ -85,9 +86,12 @@
             android:id="@+id/datainfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/managepho"
+            android:layout_below="@+id/managePhoto"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="13dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin2"
-            android:text="View data"
+            android:layout_marginTop="2dp"
+            android:text="Manage Gallery"
             android:textColor="@color/text_color"
             android:textSize="25dp"
             android:textStyle="bold" />
