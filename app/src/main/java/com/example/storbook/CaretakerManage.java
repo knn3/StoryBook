@@ -21,7 +21,7 @@ public class CaretakerManage extends AppCompatActivity {
     }
 
     public void manageFamily(View view) {
-        Intent i = new Intent(this, FamilyMemberCreatePage.class);
+        Intent i = new Intent(this, FamilyMemberMainPage.class);
         this.startActivity(i);
 
     }

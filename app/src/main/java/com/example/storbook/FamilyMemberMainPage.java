@@ -159,7 +159,14 @@ public class FamilyMemberMainPage extends AppCompatActivity {
     }
     //back button
     public void onBackClick(View v){
-        Intent myIntent = new Intent(this, peopleActivity.class);
+        Intent myIntent;
+        // Go back to the manage page if in caretaker mode
+        if (((global) this.getApplication()).isCaretaker()){
+            myIntent = new Intent (this, CaretakerManage.class);
+        }
+        else {
+            myIntent = new Intent(this, peopleActivity.class);
+        }
         this.startActivity(myIntent);
     }
     
