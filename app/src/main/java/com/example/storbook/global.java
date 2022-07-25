@@ -1,6 +1,10 @@
 package com.example.storbook;
 
 import android.app.Application;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,6 +17,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -71,7 +78,8 @@ public class global extends Application {
                                     FamilyMember familyMember = new FamilyMember(aFM.get("FMName").toString(),aFM.get("FMRelation").toString(),aFM.get("FMInfo").toString(),thispic);
                                     AllFMembers.add(familyMember);
                                 }
-                                Toast.makeText(getApplicationContext(), "Local Family Member Refreshed from cloud!", Toast.LENGTH_SHORT).show();
+                                // Occurs too often so crossed out for now
+                                //Toast.makeText(getApplicationContext(), "Local Family Member Refreshed from cloud!", Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 Toast.makeText(getApplicationContext(), "Refresh member data from online failed", Toast.LENGTH_SHORT).show();
@@ -109,4 +117,5 @@ public class global extends Application {
         }
         return avatars;
     }
+
 }

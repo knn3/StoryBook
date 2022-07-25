@@ -59,9 +59,11 @@ public class FamilyMemberMainPage extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        FM_listAdapter listAdapter = new FM_listAdapter(FamilyMemberMainPage.this,((global) this.getApplication()).AllFMembers);
-        binding.FamilyMemberlist.setAdapter(listAdapter);
+        //Refresh the page with the stored information
+        if (!((global) this.getApplication()).AllFMembers.isEmpty()) {
+            FM_listAdapter listAdapter = new FM_listAdapter(FamilyMemberMainPage.this, ((global) this.getApplication()).AllFMembers);
+            binding.FamilyMemberlist.setAdapter(listAdapter);
+        }
         // The add new family member option is only available for caretakers
         if (((global) this.getApplication()).isCaretaker()){
             binding.AddFM.setVisibility(View.VISIBLE);

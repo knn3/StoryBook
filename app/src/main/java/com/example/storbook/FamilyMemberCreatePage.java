@@ -90,6 +90,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
         else if (isAvatarset == false)
         {
             downloadedUri = "";
+            FamilyMember newFM = new FamilyMember(FamilyMemberName, FamilyMemberRelation, FamilyMemberInfo, downloadedUri);
             Map<String, Object> familyMember = new HashMap<>();
                 familyMember.put("FMName", FamilyMemberName);
                 familyMember.put("FMRelation", FamilyMemberRelation);
@@ -115,9 +116,11 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
             mFamilyMemberName.getText().clear();
             mFamilyMemberRelation.getText().clear();
             mFamilyMemberInfo.getText().clear();
+            ((global) this.getApplication()).AllFMembers.add(newFM);
         }
         // The case avatar is selected
         else {
+            FamilyMember newFM = new FamilyMember(FamilyMemberName, FamilyMemberRelation, FamilyMemberInfo, downloadedUri);
             progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading.....");
             progressDialog.show();
@@ -196,6 +199,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
             Avatar.setImageURI(homeUri);
             mFamilyMemberName.getText().clear();
             mFamilyMemberRelation.getText().clear();
+            ((global) this.getApplication()).AllFMembers.add(newFM);
         }
         ((global) this.getApplication()).refreshFMlist();
     }
