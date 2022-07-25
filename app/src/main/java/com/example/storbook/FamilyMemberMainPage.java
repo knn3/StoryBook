@@ -45,10 +45,6 @@ public class FamilyMemberMainPage extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-
-
-
-
         Intent i = new Intent(this, FamilyMemberCreatePage.class);
         binding.AddFM.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -63,6 +59,9 @@ public class FamilyMemberMainPage extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        FM_listAdapter listAdapter = new FM_listAdapter(FamilyMemberMainPage.this,((global) this.getApplication()).AllFMembers);
+        binding.FamilyMemberlist.setAdapter(listAdapter);
         // The add new family member option is only available for caretakers
         if (((global) this.getApplication()).isCaretaker()){
             binding.AddFM.setVisibility(View.VISIBLE);
@@ -72,8 +71,7 @@ public class FamilyMemberMainPage extends AppCompatActivity {
             binding.AddFM.setVisibility(View.INVISIBLE);
             binding.AddFM.setEnabled(false);
         }
-
-
+/*
         // Retrieve the family members from the database
         mImgUrl = new ArrayList<>();
         mName = new ArrayList<>();
@@ -130,27 +128,36 @@ public class FamilyMemberMainPage extends AppCompatActivity {
                                     FamilyMember familyMember = new FamilyMember(aFM.get("FMName").toString(),aFM.get("FMRelation").toString(),aFM.get("FMInfo").toString(),thispic);
                                     FMarray.add(familyMember);
                                     // Refresh the list for each iteration
-                                    FM_listAdapter listAdapter = new FM_listAdapter(FamilyMemberMainPage.this,FMarray);
-                                    binding.FamilyMemberlist.setAdapter(listAdapter);
+                                    //FM_listAdapter listAdapter = new FM_listAdapter(FamilyMemberMainPage.this,FMarray);
+                                    //binding.FamilyMemberlist.setAdapter(listAdapter);
                                 }
                             }
                             else {
-                                Toast.makeText(FamilyMemberMainPage.this, "Failed to Retreive from database", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(FamilyMemberMainPage.this, "Failed to Retrieve from database", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
                 });
+
+ */
+
         binding.FamilyMemberlist.setClickable(true);
         //Set each item on list clickable and when click it will direct to the family member's page
+
+        ArrayList<String> FmNames = ((global) this.getApplication()).getFMnamees();
+        ArrayList<String> FmRelations = ((global) this.getApplication()).getFMrelations();
+        ArrayList<String> FmInfos = ((global) this.getApplication()).getFMinfos();
+        ArrayList<String> FmAvatars = ((global) this.getApplication()).getFMavatars();
+
         binding.FamilyMemberlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                 Intent i = new Intent(FamilyMemberMainPage.this, FamilyMemberPage.class);
-                i.putExtra("Name",mName.get(position));
-                i.putExtra("Relation",mRelation.get(position));
-                i.putExtra("imageID", mImgUrl.get(position));
-                i.putExtra("Info", mInfo.get(position));
+                i.putExtra("Name",FmNames.get(position));
+                i.putExtra("Relation",FmRelations.get(position));
+                i.putExtra("imageID", FmAvatars.get(position));
+                i.putExtra("Info", FmInfos.get(position));
                 startActivity(i);
 
             }

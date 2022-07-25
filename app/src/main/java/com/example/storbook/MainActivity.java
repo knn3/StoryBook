@@ -55,14 +55,9 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(MainActivity.this, CaretakerLogin.class);
             startActivity(i);
         }
-        // Switch profile picture depending on pwd or ct
 
-        /*
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentSnapshot docRef = db.collection("users").document(currentUser.getUid()).get().getResult();
-        boolean isCT = (boolean) docRef.get("isCareTaker");
-         */
-
+        // Refresh the local FM list
+        ((global) this.getApplication()).refreshFMlist();
     }
 
     @Override

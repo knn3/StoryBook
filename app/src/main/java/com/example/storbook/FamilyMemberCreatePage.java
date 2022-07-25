@@ -103,7 +103,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
                                 Log.d("db", "Upload a family member without avatar to the firestore");
                             }
                             else{
-                                Toast.makeText(FamilyMemberCreatePage.this, "Fail to Upload a family member without avatar to firestore", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(FamilyMemberCreatePage.this, "Fail to Upload a family member without avatar to cloud", Toast.LENGTH_SHORT).show();
                                 Log.d("db", "Fail to Upload a family member without avatar to the firestore");
                             }
                         }
@@ -114,8 +114,9 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
             Avatar.setImageURI(homeUri);
             mFamilyMemberName.getText().clear();
             mFamilyMemberRelation.getText().clear();
+            mFamilyMemberInfo.getText().clear();
         }
-        // The case where the
+        // The case avatar is selected
         else {
             progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading.....");
@@ -195,8 +196,8 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
             Avatar.setImageURI(homeUri);
             mFamilyMemberName.getText().clear();
             mFamilyMemberRelation.getText().clear();
-            mFamilyMemberInfo.getText().clear();
         }
+        ((global) this.getApplication()).refreshFMlist();
     }
 
     public void selectImage(View v){

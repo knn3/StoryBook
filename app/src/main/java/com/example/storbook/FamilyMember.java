@@ -3,7 +3,7 @@ package com.example.storbook;
 public class FamilyMember {
     String name, relationship, info;
 
-    private String mImageUrl;
+    String mImageUrl;
 
 
 

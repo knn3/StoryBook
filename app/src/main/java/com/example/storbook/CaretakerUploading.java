@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.MediaController;
 import android.widget.Toast;
@@ -26,8 +27,11 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 
 public class CaretakerUploading extends AppCompatActivity {
@@ -42,6 +46,13 @@ public class CaretakerUploading extends AppCompatActivity {
     String email;
     String downloadedUri;
 
+    // The member that the media linked to (limit to one)
+    String Belonged;
+    ArrayList<String> FMnames;
+
+    // picture, video, audio
+    String MeidaType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +63,7 @@ public class CaretakerUploading extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         binding.videoView.setVisibility(View.INVISIBLE);
+        FMnames = ((global) this.getApplication()).getFMnamees();
 
         binding.selectImagebtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -73,6 +85,16 @@ public class CaretakerUploading extends AppCompatActivity {
                 selectVideo();
             }
         });
+        binding.chooserelationbtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+                showFamilyNameList();
+            }
+        });
+    }
+
+    public void showFamilyNameList(){
+
     }
 
     private void uploadImage(){
@@ -116,7 +138,25 @@ public class CaretakerUploading extends AppCompatActivity {
                     Uri downloadUri = task.getResult();
                     downloadedUri = downloadUri.toString();
 
-                    //upload downloaded url to specific user on firestore
+                    //upload and create a new document for this uploaded media to firestore
+                    Map<String, Object> media = new HashMap<>();
+                    media.put("Uri", downloadedUri);
+                    media.put("ClickedTime", 0);
+                    media.put("Belonged", "NULL");
+                    media.put("Type", MeidaType);
+                    db.collection("users")
+                            .document(user.getUid()).collection("Media").document(downloadedUri).set(media).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d("db", "Media Successfully Uploaded to Firestore");
+                                    }
+                                    else{
+                                        Toast.makeText(CaretakerUploading.this, "Fail to Upload a media to cloud", Toast.LENGTH_SHORT).show();
+                                        Log.d("db", "Fail to Upload a family member without avatar to the firestore");
+                                    }
+                                }
+                            });
                     db.collection("users").document(user.getUid()).update("media", FieldValue.arrayUnion(downloadedUri))
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -138,6 +178,7 @@ public class CaretakerUploading extends AppCompatActivity {
     }
 
     private void selectImage(){
+        MeidaType = "picture";
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -145,6 +186,7 @@ public class CaretakerUploading extends AppCompatActivity {
     }
 
     private void selectVideo(){
+        MeidaType = "video";
         Intent intent = new Intent();
         intent.setType("video/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
