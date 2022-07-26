@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/uploadBtn"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:text="Upload photos"
+            android:text="Upload Media"
             android:textColor="@color/text_color"
             android:textSize="25dp"
             android:textStyle="bold" />

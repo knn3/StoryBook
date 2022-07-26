@@ -23,13 +23,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="293dp"
-        android:layout_height="277dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="67dp"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -38,12 +38,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_below="@+id/imageView"
+        android:layout_above="@+id/videoBtn"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="77dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="10dp"
         android:text="Select Image"
         android:textColor="#2E7D32"
         android:textSize="27sp"
@@ -56,9 +56,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="63dp"
-        android:layout_marginEnd="63dp"
-        android:layout_marginBottom="62dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="24dp"
         android:text="Upload Media"
         android:textColor="@color/text_color"
         android:textSize="27sp"
@@ -66,29 +66,26 @@
 
     <VideoView
         android:id="@+id/videoView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="278dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="520dp"
         tools:visibility="invisible" />
 
     <Button
         android:id="@+id/videoBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/selectImagebtn"
+        android:layout_above="@+id/chooserelationbtn"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="83dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="84dp"
-        android:layout_marginBottom="422dp"
+        android:layout_marginBottom="474dp"
         android:minHeight="48dp"
         android:text="Select Video"
         android:textColor="#2E7D32"
@@ -97,17 +94,16 @@
 
     <Button
         android:id="@+id/chooserelationbtn"
-        android:layout_width="wrap_content"
+        android:layout_width="194dp"
         android:layout_height="wrap_content"
         android:layout_above="@id/uploadBtn"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="106dp"
+        android:layout_marginStart="108dp"
         android:layout_marginTop="-468dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="109dp"
+        android:layout_marginBottom="18dp"
         android:text="choose belong to" />
-
 
 
 </RelativeLayout>

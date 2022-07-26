@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.storbook.databinding.ActivityFamilyMemberMainPageBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -37,6 +38,9 @@ public class FamilyMemberMainPage extends AppCompatActivity {
     List<String> mRelation;
     List<String> mInfo;
 
+    // This mode defines the behaviour of this page: 0 = default view mode, 1 = choose name to uploading page
+    int mode;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +63,24 @@ public class FamilyMemberMainPage extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        // fetch the mode from intent
+        mode = 0;
+        Intent intent = this.getIntent();
+        // Get the carried out information
+        if (intent != null){
+
+            mode = intent.getIntExtra("Mode", 0);
+
+        }
+
         //Refresh the page with the stored information
         if (!((global) this.getApplication()).AllFMembers.isEmpty()) {
             FM_listAdapter listAdapter = new FM_listAdapter(FamilyMemberMainPage.this, ((global) this.getApplication()).AllFMembers);
             binding.FamilyMemberlist.setAdapter(listAdapter);
         }
-        // The add new family member option is only available for caretakers
-        if (((global) this.getApplication()).isCaretaker()){
+        // The add new family member option is only available for caretakers and in view mode
+        if (((global) this.getApplication()).isCaretaker() && mode == 0){
             binding.AddFM.setVisibility(View.VISIBLE);
             binding.AddFM.setEnabled(true);
         }
@@ -154,13 +169,22 @@ public class FamilyMemberMainPage extends AppCompatActivity {
         binding.FamilyMemberlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                // View the Family member page for the clicked the family member
+                if (mode == 0) {
+                    Intent i = new Intent(FamilyMemberMainPage.this, FamilyMemberPage.class);
+                    i.putExtra("Name", FmNames.get(position));
+                    i.putExtra("Relation", FmRelations.get(position));
+                    i.putExtra("imageID", FmAvatars.get(position));
+                    i.putExtra("Info", FmInfos.get(position));
+                    startActivity(i);
+                }
 
-                Intent i = new Intent(FamilyMemberMainPage.this, FamilyMemberPage.class);
-                i.putExtra("Name",FmNames.get(position));
-                i.putExtra("Relation",FmRelations.get(position));
-                i.putExtra("imageID", FmAvatars.get(position));
-                i.putExtra("Info", FmInfos.get(position));
-                startActivity(i);
+                // pass the name back to the uploading page
+                else if (mode == 1){
+                    Intent i = new Intent(FamilyMemberMainPage.this, CaretakerUploading.class);
+                    i.putExtra("Name", FmNames.get(position));
+                    startActivity(i);
+                }
 
             }
         });
@@ -169,10 +193,15 @@ public class FamilyMemberMainPage extends AppCompatActivity {
     //back button
     public void onBackClick(View v){
         Intent myIntent;
-        // Go back to the manage page if in caretaker mode
-        if (((global) this.getApplication()).isCaretaker()){
+        // Go back to the manage page if in caretaker mode and default view mode
+        if (((global) this.getApplication()).isCaretaker() && mode == 0){
             myIntent = new Intent (this, CaretakerManage.class);
         }
+        // Go back to the uploading page if in caretaker mode and choose name mode
+        else if (((global) this.getApplication()).isCaretaker() && mode == 1) {
+            myIntent = new Intent (this, CaretakerUploading.class);
+        }
+        // Go back to the pwd page if in pwd mode
         else {
             myIntent = new Intent(this, peopleActivity.class);
         }

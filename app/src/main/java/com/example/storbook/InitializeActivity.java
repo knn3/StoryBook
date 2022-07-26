@@ -40,10 +40,12 @@ public class InitializeActivity extends AppCompatActivity {
         // Refresh the local FM list if have internet access
         if (isNetworkAvailable()) {
             ((global) this.getApplication()).refreshFMlist();
+            ((global) this.getApplication()).refreshpictureUrls();
             Toast.makeText(getApplicationContext(), "Synced with cloud", Toast.LENGTH_SHORT).show();
         }
         else{
             ((global) this.getApplication()).refreshFMlist();
+            ((global) this.getApplication()).refreshpictureUrls();
             Toast.makeText(getApplicationContext(), "No internet, Entering offline mode!", Toast.LENGTH_SHORT).show();
         }
     }

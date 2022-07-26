@@ -29,6 +29,7 @@ public class global extends Application {
 
     private FirebaseUser user;
     private FirebaseFirestore mDatabaseRef;
+    /////////////////////
     // CareTaker mode
 
     boolean isCaretaker = false;
@@ -39,15 +40,7 @@ public class global extends Application {
         isCaretaker = caretaker;
     }
 
-    //
-    private String someVariable;
-    public String getSomeVariable() {
-        return someVariable;
-    }
-    public void setSomeVariable(String someVariable) {
-        this.someVariable = someVariable;
-    }
-
+    /////////////////////
     // All stored FM
     ArrayList<FamilyMember> AllFMembers;
 
@@ -117,5 +110,67 @@ public class global extends Application {
         }
         return avatars;
     }
+    /////////////////////
+    // Urls for all pictures
+    ArrayList<String> picutreUrls;
+
+    // Refresh urls
+    public void refreshpictureUrls(){
+        this.picutreUrls = new ArrayList<>();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        mDatabaseRef = FirebaseFirestore.getInstance();
+        mDatabaseRef.collection("users")
+                .document(user.getUid())
+                .collection("Media")
+                .whereEqualTo("Type", "picture")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Map aMedia =  document.getData();
+                                    picutreUrls.add(aMedia.get("Url").toString());
+                                }
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(), "Refresh media data from online failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+    }
+    /////////////////////
+    // Urls for picture linked to one family member
+
+    public ArrayList<String> refreshpictureUrlsforFM(String targetName){
+        ArrayList<String> picutreUrlsforFM = new ArrayList<>();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        mDatabaseRef = FirebaseFirestore.getInstance();
+        mDatabaseRef.collection("users")
+                .document(user.getUid())
+                .collection("Media")
+                .whereEqualTo("Type", "picture")
+                .whereEqualTo("Belonged", targetName)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Map aMedia =  document.getData();
+                                    picutreUrlsforFM.add(aMedia.get("Url").toString());
+                                }
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(), "Refresh media data from online failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+        return picutreUrlsforFM;
+    }
+
+
 
 }

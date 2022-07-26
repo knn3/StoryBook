@@ -48,7 +48,6 @@ public class CaretakerUploading extends AppCompatActivity {
 
     // The member that the media linked to (limit to one)
     String Belonged;
-    ArrayList<String> FMnames;
 
     // picture, video, audio
     String MeidaType;
@@ -59,11 +58,13 @@ public class CaretakerUploading extends AppCompatActivity {
         binding = ActivityCaretakerUploadingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        MeidaType = "";
+
+
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         binding.videoView.setVisibility(View.INVISIBLE);
-        FMnames = ((global) this.getApplication()).getFMnamees();
 
         binding.selectImagebtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -86,95 +87,133 @@ public class CaretakerUploading extends AppCompatActivity {
             }
         });
         binding.chooserelationbtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-                showFamilyNameList();
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CaretakerUploading.this, FamilyMemberMainPage.class);
+                i.putExtra("Mode",1);
+                startActivity(i);
             }
         });
     }
 
-    public void showFamilyNameList(){
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Belonged = "";
+        binding.chooserelationbtn.setText("choose belong to");
+
+        Intent intent = this.getIntent();
+        // Get the carried out information
+        if (intent != null){
+            String name = intent.getStringExtra("Name");
+            if (name != null) {
+                Belonged = name;
+                binding.chooserelationbtn.setText("Belong to " + Belonged);
+            }
+        }
 
     }
 
     private void uploadImage(){
+        if (MeidaType.equals("")){
+            Toast.makeText(CaretakerUploading.this, "Choose the media first", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading.....");
+            progressDialog.show();
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Uploading.....");
-        progressDialog.show();
+            // To get the file name as the current time
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
+            Date now = new Date();
+            String fileName = formatter.format(now);
 
-        // To get the file name as the current time
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
-        Date now = new Date();
-        String fileName = formatter.format(now);
+            storageReference = FirebaseStorage.getInstance().getReference("images/" + fileName);
 
-        storageReference = FirebaseStorage.getInstance().getReference("images/"+fileName);
+            // uploading to firestore and cloud storage
+            UploadTask uploadTask = storageReference.putFile(mediaUrl);
+            Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
 
-        // uploading to firestore and cloud storage
-        UploadTask uploadTask = storageReference.putFile(mediaUrl);
-        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-            @Override
-            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                if (!task.isSuccessful()) {
-                    throw task.getException();
-                }
-
-                //handle progressDialog
-                binding.imageView.setImageURI(null);
-                Toast.makeText(CaretakerUploading.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
-                }
-
-                // Continue with the task to get the download URL
-                return storageReference.getDownloadUrl();
-            }
-        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-            @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-                if (task.isSuccessful()) {
-
-                    // get download Url
-                    Uri downloadUri = task.getResult();
-                    downloadedUri = downloadUri.toString();
-
-                    //upload and create a new document for this uploaded media to firestore
-                    Map<String, Object> media = new HashMap<>();
-                    media.put("Uri", downloadedUri);
-                    media.put("ClickedTime", 0);
-                    media.put("Belonged", "NULL");
-                    media.put("Type", MeidaType);
-                    db.collection("users")
-                            .document(user.getUid()).collection("Media").document(downloadedUri).set(media).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Log.d("db", "Media Successfully Uploaded to Firestore");
-                                    }
-                                    else{
-                                        Toast.makeText(CaretakerUploading.this, "Fail to Upload a media to cloud", Toast.LENGTH_SHORT).show();
-                                        Log.d("db", "Fail to Upload a family member without avatar to the firestore");
-                                    }
-                                }
-                            });
-                    db.collection("users").document(user.getUid()).update("media", FieldValue.arrayUnion(downloadedUri))
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(CaretakerUploading.this, "Successfully Uploaded to Firestore", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-
-                } else {
-                    if (progressDialog.isShowing()){
+                    //handle progressDialog
+                    binding.imageView.setImageURI(null);
+                    Toast.makeText(CaretakerUploading.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
+                    if (progressDialog.isShowing()) {
                         progressDialog.dismiss();
                     }
-                    Toast.makeText(CaretakerUploading.this, "Failed to Upload", Toast.LENGTH_SHORT).show();
+
+                    // Continue with the task to get the download URL
+                    return storageReference.getDownloadUrl();
                 }
-            }
-        });
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+
+                        // get download Url
+                        Uri downloadUri = task.getResult();
+                        downloadedUri = downloadUri.toString();
+
+                        //upload and create a new document for this uploaded media to firestore
+                        Map<String, Object> media = new HashMap<>();
+                        media.put("Url", downloadedUri);
+                        media.put("ClickedTime", 0);
+                        // Synced with target family member if selected
+                        if (!Belonged.equals("")){
+                            db.collection("users").document(user.getUid()).collection("FamilyMember").document(Belonged).update("media", FieldValue.arrayUnion(downloadedUri))
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(CaretakerUploading.this, "Successfully Synced with target Family Member", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        }
+                        media.put("Belonged", Belonged);
+                        media.put("Type", MeidaType);
+                        db.collection("users")
+                                .document(user.getUid())
+                                .collection("Media")
+                                .document(fileName)
+                                .set(media).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Log.d("db", "Media Successfully Uploaded to Firestore");
+                                        } else {
+                                            Toast.makeText(CaretakerUploading.this, "Fail to Upload a media to cloud", Toast.LENGTH_SHORT).show();
+                                            Log.d("db", "Fail to Upload a family member without avatar to the firestore");
+                                        }
+                                    }
+                                });
+
+
+                        db.collection("users").document(user.getUid()).update("media", FieldValue.arrayUnion(downloadedUri))
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(CaretakerUploading.this, "Successfully Uploaded to Firestore", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
+
+                    } else {
+                        if (progressDialog.isShowing()) {
+                            progressDialog.dismiss();
+                        }
+                        Toast.makeText(CaretakerUploading.this, "Failed to Upload", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
     private void selectImage(){
