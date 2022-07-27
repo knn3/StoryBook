@@ -18,16 +18,20 @@
         android:theme="@style/Theme.Storbook.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".GalleryFinal"
+            android:exported="false" />
+        <activity
             android:name=".InitializeActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".friends_page"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".FamilyMemberPage"
             android:exported="false" />
