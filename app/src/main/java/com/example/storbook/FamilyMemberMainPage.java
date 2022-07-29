@@ -49,6 +49,12 @@ public class FamilyMemberMainPage extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
+        //Refresh the page with the stored information
+        if (!((global) this.getApplication()).AllFMembers.isEmpty()) {
+            FM_listAdapter listAdapter = new FM_listAdapter(FamilyMemberMainPage.this, ((global) this.getApplication()).AllFMembers);
+            binding.FamilyMemberlist.setAdapter(listAdapter);
+        }
+
         Intent i = new Intent(this, FamilyMemberCreatePage.class);
         binding.AddFM.setOnClickListener(new View.OnClickListener(){
             @Override

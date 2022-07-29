@@ -60,6 +60,7 @@ public class global extends Application {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Map aFM =  document.getData();
 
+                                    // "No avatar" avatar if no avatar
                                     String thispic;
                                     if (aFM.get("Avatar").toString().equals("")) {
                                         thispic = "https://firebasestorage.googleapis.com/v0/b/cmpt-276-storybook.appspot.com/o/images%2FCleanShot%202022-07-20%20at%2013.12.37%402x.png?alt=media&token=771c7d59-17c2-4538-ad76-c0ab54a5d0de";
