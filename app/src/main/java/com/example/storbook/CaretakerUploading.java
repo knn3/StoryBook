@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -45,6 +48,11 @@ public class CaretakerUploading extends AppCompatActivity {
     String media;
     String email;
     String downloadedUri;
+    String title;
+    String description;
+    EditText titleBox;
+    EditText descriptionBox;
+
 
     // The member that the media linked to (limit to one)
     String Belonged;
@@ -112,7 +120,6 @@ public class CaretakerUploading extends AppCompatActivity {
                 binding.chooserelationbtn.setText("Belong to " + Belonged);
             }
         }
-
     }
 
     private void uploadImage(){
@@ -158,10 +165,17 @@ public class CaretakerUploading extends AppCompatActivity {
                         // get download Url
                         Uri downloadUri = task.getResult();
                         downloadedUri = downloadUri.toString();
+                        //Get title and description
+                        titleBox = (EditText) findViewById(R.id.titleText);
+                        descriptionBox = (EditText) findViewById(R.id.descriptionText);
+                        title = titleBox.getText().toString();
+                        description = descriptionBox.getText().toString();
 
                         //upload and create a new document for this uploaded media to firestore
                         Map<String, Object> media = new HashMap<>();
                         media.put("Url", downloadedUri);
+                        media.put("Title", title);
+                        media.put("Description", description);
                         media.put("ClickedTime", 0);
                         // Synced with target family member if selected
                         if (!Belonged.equals("")){
@@ -216,6 +230,10 @@ public class CaretakerUploading extends AppCompatActivity {
         }
         // refresh the local url in the end
         ((global) this.getApplication()).refreshpictureUrls();
+
+        //Clear text boxes
+        titleBox.getText().clear();
+        descriptionBox.getText().clear();
     }
 
     private void selectImage(){
