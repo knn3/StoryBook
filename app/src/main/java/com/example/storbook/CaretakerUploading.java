@@ -67,6 +67,9 @@ public class CaretakerUploading extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         MeidaType = "";
+        //Set EditText values
+        titleBox = (EditText) findViewById(R.id.titleText);
+        descriptionBox = (EditText) findViewById(R.id.descriptionText);
 
 
         db = FirebaseFirestore.getInstance();
@@ -166,8 +169,6 @@ public class CaretakerUploading extends AppCompatActivity {
                         Uri downloadUri = task.getResult();
                         downloadedUri = downloadUri.toString();
                         //Get title and description
-                        titleBox = (EditText) findViewById(R.id.titleText);
-                        descriptionBox = (EditText) findViewById(R.id.descriptionText);
                         title = titleBox.getText().toString();
                         description = descriptionBox.getText().toString();
 
@@ -177,6 +178,11 @@ public class CaretakerUploading extends AppCompatActivity {
                         media.put("Title", title);
                         media.put("Description", description);
                         media.put("ClickedTime", 0);
+
+                        //Clear text boxes
+                        titleBox.getText().clear();
+                        descriptionBox.getText().clear();
+
                         // Synced with target family member if selected
                         if (!Belonged.equals("")){
                             db.collection("users").document(user.getUid()).collection("FamilyMember").document(Belonged).update("media", FieldValue.arrayUnion(downloadedUri))
@@ -230,10 +236,6 @@ public class CaretakerUploading extends AppCompatActivity {
         }
         // refresh the local url in the end
         ((global) this.getApplication()).refreshpictureUrls();
-
-        //Clear text boxes
-        titleBox.getText().clear();
-        descriptionBox.getText().clear();
     }
 
     private void selectImage(){

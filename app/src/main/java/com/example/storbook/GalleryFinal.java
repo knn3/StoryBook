@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -18,9 +19,13 @@ import java.util.List;
 public class GalleryFinal extends AppCompatActivity {
 
     private List<String> mImgUrl;
+    private List<String> mImgTitle;
+    private List<String> mImgDesc;
     int currentEntry = 0;
     int sizeOfList;
     ImageView imageView;
+    TextView title;
+    TextView desc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +33,19 @@ public class GalleryFinal extends AppCompatActivity {
         setContentView(R.layout.activity_gallery_final);
         imageView = findViewById(R.id.imageView2);
         //Get URLs
+
+        title = (TextView) findViewById(R.id.titleView);
+        desc = (TextView) findViewById(R.id.descView);
+
         mImgUrl = ((global) this.getApplication()).picutreUrls;
+        mImgTitle = ((global) this.getApplication()).picutreTitles;
+        mImgDesc = ((global) this.getApplication()).picutreDescriptions;
         sizeOfList = mImgUrl.size();
 
         if(sizeOfList > 0) {
             Glide.with(this).load(mImgUrl.get(0)).into(imageView);
+            title.setText(mImgTitle.get(0));
+            desc.setText(mImgDesc.get(0));
         }
         else{
             Toast.makeText(this, "Error: No photos uploaded!", Toast.LENGTH_LONG).show();
@@ -52,9 +65,13 @@ public class GalleryFinal extends AppCompatActivity {
         if(currentEntry<0){
             currentEntry = sizeOfList-1;
             Glide.with(this).load(mImgUrl.get(currentEntry)).into(imageView);
+            title.setText(mImgTitle.get(currentEntry));
+            desc.setText(mImgDesc.get(currentEntry));
         }
         else{
             Glide.with(this).load(mImgUrl.get(currentEntry)).into(imageView);
+            title.setText(mImgTitle.get(currentEntry));
+            desc.setText(mImgDesc.get(currentEntry));
         }
     }
 
@@ -63,9 +80,13 @@ public class GalleryFinal extends AppCompatActivity {
         if(currentEntry>=sizeOfList){
             currentEntry = 0;
             Glide.with(this).load(mImgUrl.get(currentEntry)).into(imageView);
+            title.setText(mImgTitle.get(currentEntry));
+            desc.setText(mImgDesc.get(currentEntry));
         }
         else{
             Glide.with(this).load(mImgUrl.get(currentEntry)).into(imageView);
+            title.setText(mImgTitle.get(currentEntry));
+            desc.setText(mImgDesc.get(currentEntry));
         }
     }
 }

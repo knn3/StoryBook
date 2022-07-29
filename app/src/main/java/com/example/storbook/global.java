@@ -113,10 +113,14 @@ public class global extends Application {
     /////////////////////
     // Urls for all pictures
     ArrayList<String> picutreUrls;
+    ArrayList<String> picutreTitles;
+    ArrayList<String> picutreDescriptions;
 
     // Refresh urls
     public void refreshpictureUrls(){
         this.picutreUrls = new ArrayList<>();
+        this.picutreTitles = new ArrayList<>();
+        this.picutreDescriptions = new ArrayList<>();
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseRef = FirebaseFirestore.getInstance();
         mDatabaseRef.collection("users")
@@ -131,6 +135,8 @@ public class global extends Application {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Map aMedia =  document.getData();
                                     picutreUrls.add(aMedia.get("Url").toString());
+                                    picutreTitles.add(aMedia.get("Title").toString());
+                                    picutreDescriptions.add(aMedia.get("Description").toString());
                                 }
                             }
                             else {
