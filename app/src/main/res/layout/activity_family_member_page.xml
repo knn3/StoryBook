@@ -149,6 +149,7 @@
             android:layout_marginStart="160dp"
             android:layout_marginEnd="160dp"
             android:layout_marginBottom="16dp"
+            android:onClick="deleteOrMeida"
             android:text="Media" />
 
         <Button
@@ -159,6 +160,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="45dp"
             android:layout_marginBottom="12dp"
+            android:onClick="cancel"
             android:text="cancel" />
 
         <Button

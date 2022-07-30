@@ -93,9 +93,9 @@ public class FamilyMemberPage extends AppCompatActivity {
             binding.fminformation.setEnabled(true);
             binding.fmname.setEnabled(true);
             binding.profileImage.setClickable(true);
+            binding.mediabtn.setText("delete");
         }
         else{
-            binding.mediabtn.setVisibility(View.VISIBLE);
             binding.changebtn.setEnabled(false);
             binding.cancelbtn.setEnabled(false);
             binding.changebtn.setVisibility(View.INVISIBLE);
@@ -107,6 +107,7 @@ public class FamilyMemberPage extends AppCompatActivity {
             binding.fminformation.setEnabled(false);
             binding.fmname.setEnabled(false);
             binding.profileImage.setClickable(false);
+            binding.mediabtn.setText("media");
         }
 
     }
@@ -133,161 +134,28 @@ public class FamilyMemberPage extends AppCompatActivity {
         if (newName.isEmpty() || newRelation.isEmpty()){
             Toast.makeText(getApplicationContext(), "Name, relation fields cannot be empty.", Toast.LENGTH_SHORT).show();
         }
-        // case where the name is not changed
-        else if (!isAvatarset){
-            // Delete the old document
-            db.collection("user").document(user.getUid()).collection("FamilyMember").document(name)
-                    .delete()
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Log.d("db", "DocumentSnapshot successfully deleted!");
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w("db", "Error deleting document", e);
-                        }
-                    });
-            // remove it in the local family member list
-            ((global) this.getApplication()).AllFMembers.remove(positionIndex);
-
-
-
-            FamilyMember newFM = new FamilyMember(newName, newRelation, newInfo, imageurl);
-            //put the family member into the data base.
-            Map<String, Object> familyMember = new HashMap<>();
-            familyMember.put("FMName", newName);
-            familyMember.put("FMRelation", newRelation);
-            familyMember.put("Avatar", imageurl);
-            familyMember.put("FMInfo", newInfo);
-            // Put the new family member into cloud
-            db.collection("users")
-                    .document(fAuth.getUid()).collection("FamilyMember").document(newName).set(familyMember).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Log.d("db", "Upload a family member with avatar to the firestore");
-                                updateLocalList(newFM);
-                            }
-                            else{
-                                Toast.makeText(FamilyMemberPage.this, "Fail to Upload to firestore", Toast.LENGTH_SHORT).show();
-                                Log.d("db", "Fail to Upload a family member with avatar to the firestore");
-                            }
-                        }
-                    });
-            // End actions
-            Toast.makeText(FamilyMemberPage.this, "Family Member Changed!", Toast.LENGTH_SHORT).show();
-            isAvatarset = false;
-        }
-
-
-
-        // case where the avatar is set
         else{
-            // Delete the old document
-            db.collection("user").document(user.getUid()).collection("FamilyMember").document(name)
-                    .delete()
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Log.d("db", "DocumentSnapshot successfully deleted!");
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w("db", "Error deleting document", e);
-                        }
-                    });
-            // remove it in the local family member list
-            ((global) this.getApplication()).AllFMembers.remove(positionIndex);
-
-
-
-            progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Updating.....");
-            progressDialog.show();
-
-            // To get the file name as the current time
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
-            Date now = new Date();
-            String fileName = formatter.format(now);
-
-            storageReference = FirebaseStorage.getInstance().getReference("images/" + fileName);
-
-            // uploading to firestore and cloud storage
-            UploadTask uploadTask = storageReference.putFile(imageUri);
-            Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                    if (!task.isSuccessful()) {
-                        throw task.getException();
-                    }
-
-                    //handle progressDialog
-                    binding.profileImage.setImageURI(null);
-                    //Toast.makeText(FamilyMemberCreatePage.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
-                    if (progressDialog.isShowing()) {
-                        progressDialog.dismiss();
-                        binding.profileImage.setImageURI(imageUri); // change the hint picture back after the uploading tab
-                    }
-
-                    // Continue with the task to get the download URL
-                    return storageReference.getDownloadUrl();
-                }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if (task.isSuccessful()) {
-                        // get download Url
-                        Uri downloadUri = task.getResult();
-                        downloadedUri = downloadUri.toString();
-                        String newInfo = binding.fminformation.getText().toString();
-                        FamilyMember newFM = new FamilyMember(newName, newRelation, newInfo, downloadedUri);
-                        //put the family member into the data base.
-                        Map<String, Object> familyMember = new HashMap<>();
-                        familyMember.put("FMName", newName);
-                        familyMember.put("FMRelation", newRelation);
-                        familyMember.put("Avatar", downloadedUri);
-                        familyMember.put("FMInfo", newInfo);
-                        // Put the new family member into cloud
-                        db.collection("users")
-                                .document(fAuth.getUid()).collection("FamilyMember").document(newName).set(familyMember).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            Log.d("db", "Upload a family member with avatar to the firestore");
-                                            updateLocalList(newFM);
-                                        }
-                                        else{
-                                            Toast.makeText(FamilyMemberPage.this, "Fail to Upload to firestore", Toast.LENGTH_SHORT).show();
-                                            Log.d("db", "Fail to Upload a family member with avatar to the firestore");
-                                        }
-                                    }
-                                });
-                    }
-                    // The case where the upload is unsuccessful
-                    else
-                    {
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
-                        Toast.makeText(FamilyMemberPage.this, "Failed to Upload, check Internet", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-            // End actions
-            Toast.makeText(FamilyMemberPage.this, "Family Member Changed!", Toast.LENGTH_SHORT).show();
-            isAvatarset = false;
+            if (isAvatarset) {
+                ((global) this.getApplication()).familyMembermodification(newName, newInfo, newRelation, positionIndex, imageUri);
+            }
+            else{
+                ((global) this.getApplication()).familyMembermodification(newName, newInfo, newRelation, positionIndex, null);
+            }
         }
+
+        // End actions
+        isAvatarset = false;
         Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
         this.startActivity(myIntent);
     }
 
-    public void delete(View v){
-
+    public void deleteOrMeida(View v){
+        if (((global) this.getApplication()).isCaretaker) {
+            ((global) this.getApplication()).deleteFamilyMember(name, positionIndex);
+            Toast.makeText(getApplicationContext(), "Family Member Deleted!", Toast.LENGTH_SHORT).show();
+            Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
+            this.startActivity(myIntent);
+        }
     }
 
     public void chooseavatar(View v){
