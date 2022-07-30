@@ -44,10 +44,11 @@ public class VideoGallery extends AppCompatActivity {
         videoView = findViewById(R.id.videoView2);
 
         if(sizeOfList > 0) {
-            videoView.setVideoPath(mVideoUrl.get(0));
+            videoView.setVideoURI(Uri.parse(mVideoUrl.get(0)));
             title.setText(mVideoTitle.get(0));
             desc.setText(mVideoDesc.get(0));
 
+            //        add playback video
             MediaController mediaController = new MediaController(this);
             mediaController.setAnchorView(videoView);
             videoView.setMediaController(mediaController);
@@ -62,53 +63,45 @@ public class VideoGallery extends AppCompatActivity {
     }
 
     public void onBackClick(View v){
-        Intent myIntent = new Intent(this, MainActivity.class);
+        Intent myIntent = new Intent(this, GalleryOfPhotoAndVideo.class);
         this.startActivity(myIntent);
     }
 
+//    move to last video
     public void onLeftClick(View v){
         currentEntry = currentEntry -1;
-        if(currentEntry<0){
-            currentEntry = sizeOfList-1;
-            videoView.setVideoURI(Uri.parse(mVideoUrl.get(currentEntry)));
-            title.setText(mVideoTitle.get(currentEntry));
-            desc.setText(mVideoDesc.get(currentEntry));
-
-            MediaController mediaController = new MediaController(this);
-            videoView.setMediaController(mediaController);
-            mediaController.setAnchorView(videoView);
+        if(currentEntry<0) {
+            currentEntry = sizeOfList - 1;
         }
-        else{
-            videoView.setVideoURI(Uri.parse(mVideoUrl.get(currentEntry)));
-            title.setText(mVideoTitle.get(currentEntry));
-            desc.setText(mVideoDesc.get(currentEntry));
 
-            MediaController mediaController = new MediaController(this);
-            videoView.setMediaController(mediaController);
-            mediaController.setAnchorView(videoView);
-        }
+        videoView.setVideoURI(Uri.parse(mVideoUrl.get(currentEntry)));
+        title.setText(mVideoTitle.get(currentEntry));
+        desc.setText(mVideoDesc.get(currentEntry));
+
+        //        add playback video
+        MediaController mediaController = new MediaController(this);
+        videoView.setMediaController(mediaController);
+        mediaController.setAnchorView(videoView);
+        videoView.start();
+
     }
 
+    // move to next video
     public void onRightClick(View v){
         currentEntry = currentEntry +1;
         if(currentEntry>=sizeOfList){
             currentEntry = 0;
-            videoView.setVideoURI(Uri.parse(mVideoUrl.get(currentEntry)));
-            title.setText(mVideoTitle.get(currentEntry));
-            desc.setText(mVideoDesc.get(currentEntry));
-
-            MediaController mediaController = new MediaController(this);
-            videoView.setMediaController(mediaController);
-            mediaController.setAnchorView(videoView);
         }
-        else{
-            videoView.setVideoURI(Uri.parse(mVideoUrl.get(currentEntry)));
-            title.setText(mVideoTitle.get(currentEntry));
-            desc.setText(mVideoDesc.get(currentEntry));
 
-            MediaController mediaController = new MediaController(this);
-            videoView.setMediaController(mediaController);
-            mediaController.setAnchorView(videoView);
-        }
+        videoView.setVideoURI(Uri.parse(mVideoUrl.get(currentEntry)));
+        title.setText(mVideoTitle.get(currentEntry));
+        desc.setText(mVideoDesc.get(currentEntry));
+
+//        add playback video
+        MediaController mediaController = new MediaController(this);
+        videoView.setMediaController(mediaController);
+        mediaController.setAnchorView(videoView);
+        videoView.start();
+
     }
 }
