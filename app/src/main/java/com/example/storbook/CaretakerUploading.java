@@ -181,7 +181,7 @@ public class CaretakerUploading extends AppCompatActivity {
 
                         // Synced with target family member if selected
                         if (!Belonged.equals("")){
-                            db.collection("users").document(user.getUid()).collection("FamilyMember").document(Belonged).update("media", FieldValue.arrayUnion(downloadedUri))
+                            db.collection("users").document(user.getUid()).collection("FamilyMember").document(Belonged).update("media", FieldValue.arrayUnion(fileName))
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {

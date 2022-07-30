@@ -56,7 +56,7 @@ public class VideoGallery extends AppCompatActivity {
             videoView.start();
         }
         else{
-            Toast.makeText(this, "Error: No photos uploaded!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error: No video uploaded!", Toast.LENGTH_LONG).show();
             Intent myIntent = new Intent(this, MainActivity.class);
             this.startActivity(myIntent);
         }

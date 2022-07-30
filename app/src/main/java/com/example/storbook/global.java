@@ -33,6 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -86,8 +87,13 @@ public class global extends Application {
                                         thispic = aFM.get("Avatar").toString();
                                     }
                                     FamilyMember familyMember = new FamilyMember(aFM.get("FMName").toString(),aFM.get("FMRelation").toString(),aFM.get("FMInfo").toString(),thispic);
+                                    if (document.getData().get("media") != null) {
+                                        List<String> imgUrls = (List<String>) document.get("media");
+                                        familyMember = new FamilyMember(aFM.get("FMName").toString(),aFM.get("FMRelation").toString(),aFM.get("FMInfo").toString(),thispic, imgUrls);
+                                    }
                                     AllFMembers.add(familyMember);
                                 }
+                                Log.d("db", "Family member refreshed from database");
                                 // Occurs too often so crossed out for now
                                 //Toast.makeText(getApplicationContext(), "Local Family Member Refreshed from cloud!", Toast.LENGTH_SHORT).show();
                             }
@@ -291,7 +297,9 @@ public class global extends Application {
                     .document(user.getUid())
                     .collection("Media")
                     .document(newname)
-                    .update("FMRelation",newRelation, "FMInfo", newInfo, "Avatar",newAvatar).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    .update("FMRelation",newRelation,
+                            "FMInfo", newInfo,
+                            "Avatar",newAvatar).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Log.d("db", "DocumentSnapshot successfully updated!");
@@ -319,6 +327,7 @@ public class global extends Application {
             familyMember.put("FMRelation", newRelation);
             familyMember.put("Avatar", newAvatar);
             familyMember.put("FMInfo", newInfo);
+            familyMember.put("media", this.AllFMembers.get(position).relatedMedia);
             // Put the new family member into cloud
             db.collection("users")
                     .document(user.getUid()).collection("FamilyMember").document(newname).set(familyMember).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -335,6 +344,8 @@ public class global extends Application {
                         }
                     });
 
+            updateRelativeFmMeida(newname, position);
+
             // Local modification
             this.AllFMembers.get(position).info = newInfo;
             this.AllFMembers.get(position).relationship = newRelation;
@@ -343,7 +354,7 @@ public class global extends Application {
         }
     }
 
-    // Set the position to -1 if don't want to remove it in the local array
+    // Set the position to -1 for temporary deletion
     public void deleteFamilyMember(String targetName, int position){
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -363,8 +374,52 @@ public class global extends Application {
                         Toast.makeText(getApplicationContext(), "Family Member Cannot be deleted", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+        // True deletion
         if (position != -1){
+            if (this.AllFMembers.get(position).relatedMedia != null) {
+                List<String> media = this.AllFMembers.get(position).relatedMedia;
+                for (int i = 0; i < media.size(); i++) {
+                    db.collection("users").document(user.getUid()).collection("Media").document(media.get(i))
+                            .update("Belonged", "").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d("db", "FM related media updated!");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w("db", "Error updating document", e);
+                                }
+                            });
+                }
+            }
             this.AllFMembers.remove(position);
+        }
+    }
+
+    public void updateRelativeFmMeida(String newName, int position){
+        db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        // Update all the relative media if have them
+        if (this.AllFMembers.get(position).relatedMedia != null) {
+            List<String> media = this.AllFMembers.get(position).relatedMedia;
+            for (int i = 0; i < media.size(); i++) {
+                db.collection("users").document(user.getUid()).collection("Media").document(media.get(i))
+                        .update("Belonged", newName).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("db", "FM related media updated!");
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("db", "Error updating document", e);
+                            }
+                        });
+            }
         }
     }
 

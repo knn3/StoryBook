@@ -31,6 +31,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.InputStream;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -128,25 +129,34 @@ public class FamilyMemberPage extends AppCompatActivity {
         String newName = binding.fmname.getText().toString();
         String newRelation = binding.fmrelation.getText().toString();
         String newInfo = binding.fminformation.getText().toString();
+        boolean noDuplication = true;
         if (newInfo.isEmpty()){
             newInfo = "No Information.";
+        }
+        // check if the name is already existed
+        for (int i = 0; i < ((global) this.getApplication()).AllFMembers.size(); i++){
+            if (((global) this.getApplication()).AllFMembers.get(i).name.equals(newName)){
+                noDuplication = false;
+                Toast.makeText(getApplicationContext(), "Family member has the same name already exists!", Toast.LENGTH_SHORT).show();
+            }
         }
         if (newName.isEmpty() || newRelation.isEmpty()){
             Toast.makeText(getApplicationContext(), "Name, relation fields cannot be empty.", Toast.LENGTH_SHORT).show();
         }
-        else{
+        else if (noDuplication){
             if (isAvatarset) {
                 ((global) this.getApplication()).familyMembermodification(newName, newInfo, newRelation, positionIndex, imageUri);
             }
             else{
                 ((global) this.getApplication()).familyMembermodification(newName, newInfo, newRelation, positionIndex, null);
             }
+            // go back if the edit success
+            Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
+            this.startActivity(myIntent);
         }
 
         // End actions
         isAvatarset = false;
-        Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
-        this.startActivity(myIntent);
     }
 
     public void deleteOrMeida(View v){
