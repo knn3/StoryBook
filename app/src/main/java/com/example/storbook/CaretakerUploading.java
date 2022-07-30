@@ -4,18 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MediaController;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.example.storbook.databinding.ActivityCaretakerUploadingBinding;
 import com.google.android.gms.tasks.Continuation;
@@ -30,7 +27,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -58,7 +54,7 @@ public class CaretakerUploading extends AppCompatActivity {
     String Belonged;
 
     // picture, video, audio
-    String MeidaType;
+    String MediaType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +62,7 @@ public class CaretakerUploading extends AppCompatActivity {
         binding = ActivityCaretakerUploadingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        MeidaType = "";
+        MediaType = "";
         //Set EditText values
         titleBox = (EditText) findViewById(R.id.titleText);
         descriptionBox = (EditText) findViewById(R.id.descriptionText);
@@ -126,7 +122,7 @@ public class CaretakerUploading extends AppCompatActivity {
     }
 
     private void uploadImage(){
-        if (MeidaType.equals("")){
+        if (MediaType.equals("")){
             Toast.makeText(CaretakerUploading.this, "Choose the media first", Toast.LENGTH_SHORT).show();
         }
         else {
@@ -196,7 +192,7 @@ public class CaretakerUploading extends AppCompatActivity {
                                     });
                         }
                         media.put("Belonged", Belonged);
-                        media.put("Type", MeidaType);
+                        media.put("Type", MediaType);
                         db.collection("users")
                                 .document(user.getUid())
                                 .collection("Media")
@@ -239,7 +235,7 @@ public class CaretakerUploading extends AppCompatActivity {
     }
 
     private void selectImage(){
-        MeidaType = "picture";
+        MediaType = "picture";
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -247,7 +243,7 @@ public class CaretakerUploading extends AppCompatActivity {
     }
 
     private void selectVideo(){
-        MeidaType = "video";
+        MediaType = "video";
         Intent intent = new Intent();
         intent.setType("video/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);

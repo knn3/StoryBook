@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
        // MainActivity.this.startActivity(myIntent);
     }
     public void goGallery (View view){
-        Intent myIntent = new Intent(MainActivity.this, GalleryFinal.class);
+        Intent myIntent = new Intent(MainActivity.this, VideoGallery.class);
         MainActivity.this.startActivity(myIntent);
     }
     public void goPeople (View view){
