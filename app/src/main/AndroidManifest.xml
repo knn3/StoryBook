@@ -18,6 +18,12 @@
         android:theme="@style/Theme.Storbook.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".GalleryOfPhotoAndVideo"
+            android:exported="false" />
+        <activity
+            android:name=".VideoGallery"
+            android:exported="false" />
+        <activity
             android:name=".GalleryFinal"
             android:exported="false" />
         <activity
@@ -85,11 +91,6 @@
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Storbook.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

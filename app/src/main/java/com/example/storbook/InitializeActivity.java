@@ -25,18 +25,13 @@ public class InitializeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         mAuth = FirebaseAuth.getInstance();
-         currentUser = mAuth.getCurrentUser();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        currentUser = mAuth.getCurrentUser();
 
         // Jump to login page if did not log in
         if(currentUser == null){
             Intent i = new Intent(InitializeActivity.this, CaretakerLogin.class);
-            startActivity(i);
-        }
-        // So already logged in go the the main page
-        else{
-            Intent i = new Intent(InitializeActivity.this, MainActivity.class);
             startActivity(i);
         }
         // Refresh the local FM list if have internet access
@@ -50,13 +45,14 @@ public class InitializeActivity extends AppCompatActivity {
             ((global) this.getApplication()).refreshpictureUrls();
             Toast.makeText(getApplicationContext(), "No internet, Entering offline mode!", Toast.LENGTH_SHORT).show();
         }
+        // So already logged in go the the main page
+        Intent i = new Intent(InitializeActivity.this, MainActivity.class);
+        startActivity(i);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
 
         // Jump to login page if did not log in
         if(currentUser == null){

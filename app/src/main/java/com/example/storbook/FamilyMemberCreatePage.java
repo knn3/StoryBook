@@ -87,10 +87,9 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
         }
 
         // The case If no avatar selected only the other information will be sent to the database
-        else if (isAvatarset == false)
-        {
+        else if (isAvatarset == false) {
             downloadedUri = "";
-            FamilyMember newFM = new FamilyMember(FamilyMemberName, FamilyMemberRelation, FamilyMemberInfo, downloadedUri);
+            FamilyMember newFM = new FamilyMember(FamilyMemberName, FamilyMemberRelation, FamilyMemberInfo, "https://firebasestorage.googleapis.com/v0/b/cmpt-276-storybook.appspot.com/o/images%2FCleanShot%202022-07-20%20at%2013.12.37%402x.png?alt=media&token=771c7d59-17c2-4538-ad76-c0ab54a5d0de");
             Map<String, Object> familyMember = new HashMap<>();
                 familyMember.put("FMName", FamilyMemberName);
                 familyMember.put("FMRelation", FamilyMemberRelation);
@@ -102,6 +101,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 Log.d("db", "Upload a family member without avatar to the firestore");
+                                updateLocalList(newFM);
                             }
                             else{
                                 Toast.makeText(FamilyMemberCreatePage.this, "Fail to Upload a family member without avatar to cloud", Toast.LENGTH_SHORT).show();
@@ -116,7 +116,6 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
             mFamilyMemberName.getText().clear();
             mFamilyMemberRelation.getText().clear();
             mFamilyMemberInfo.getText().clear();
-            ((global) this.getApplication()).AllFMembers.add(newFM);
         }
         // The case avatar is selected
         else {
@@ -175,6 +174,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Log.d("db", "Upload a family member with avatar to the firestore");
+                                    updateLocalList(newFM);
                                 }
                                 else{
                                     Toast.makeText(FamilyMemberCreatePage.this, "Fail to Upload to firestore", Toast.LENGTH_SHORT).show();
@@ -190,7 +190,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
                         if (progressDialog.isShowing()) {
                             progressDialog.dismiss();
                         }
-                        Toast.makeText(FamilyMemberCreatePage.this, "Failed to Upload", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FamilyMemberCreatePage.this, "Failed to Upload, check Internet", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -199,9 +199,8 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
             Avatar.setImageURI(homeUri);
             mFamilyMemberName.getText().clear();
             mFamilyMemberRelation.getText().clear();
-            ((global) this.getApplication()).AllFMembers.add(newFM);
         }
-        ((global) this.getApplication()).refreshFMlist();
+        //((global) this.getApplication()).refreshFMlist();
     }
 
     public void selectImage(View v){
@@ -230,7 +229,9 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
     public void onBackClick(View v){
         Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
         this.startActivity(myIntent);
+    }
 
-
+    public void updateLocalList (FamilyMember newFM){
+        ((global) this.getApplication()).AllFMembers.add(newFM);
     }
 }
