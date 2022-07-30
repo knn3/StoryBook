@@ -167,7 +167,7 @@ public class FamilyMemberMainPage extends AppCompatActivity {
         binding.FamilyMemberlist.setClickable(true);
         //Set each item on list clickable and when click it will direct to the family member's page
 
-        ArrayList<String> FmNames = ((global) this.getApplication()).getFMnamees();
+        ArrayList<String> FmNames = ((global) this.getApplication()).getFMnames();
         ArrayList<String> FmRelations = ((global) this.getApplication()).getFMrelations();
         ArrayList<String> FmInfos = ((global) this.getApplication()).getFMinfos();
         ArrayList<String> FmAvatars = ((global) this.getApplication()).getFMavatars();
@@ -182,6 +182,7 @@ public class FamilyMemberMainPage extends AppCompatActivity {
                     i.putExtra("Relation", FmRelations.get(position));
                     i.putExtra("imageID", FmAvatars.get(position));
                     i.putExtra("Info", FmInfos.get(position));
+                    i.putExtra("position", position);
                     startActivity(i);
                 }
 

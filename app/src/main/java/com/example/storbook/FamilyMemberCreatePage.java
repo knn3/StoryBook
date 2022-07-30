@@ -28,6 +28,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -77,17 +78,28 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
         String FamilyMemberName = mFamilyMemberName.getText().toString();
         String FamilyMemberRelation = mFamilyMemberRelation.getText().toString();
         String FamilyMemberInfo = mFamilyMemberInfo.getText().toString();
-// Information can be empty
+
+
+        // Information can be empty
         if (FamilyMemberInfo.isEmpty()){FamilyMemberInfo = "No Information.";}
 
         // Preconditions
+        boolean noDuplicated = true;
+        // No duplication allowed
+        ArrayList<String> FmNames = ((global) this.getApplication()).getFMnames();
+        for (int i = 0; i < FmNames.size(); i++) {
+            if (FmNames.get(i).equals(FamilyMemberName)) {
+                noDuplicated = false;
+                Toast.makeText(FamilyMemberCreatePage.this, "Family member with the same name already exists", Toast.LENGTH_SHORT).show();
+            }
+        }
         // Do nothing if one of the field is empty
-        if (FamilyMemberName.isEmpty() || FamilyMemberRelation.isEmpty()) {
+        if (FamilyMemberName.isEmpty() || FamilyMemberRelation.isEmpty() && noDuplicated) {
             Toast.makeText(FamilyMemberCreatePage.this, "Name and relationship cannot be empty", Toast.LENGTH_SHORT).show();
         }
 
         // The case If no avatar selected only the other information will be sent to the database
-        else if (isAvatarset == false) {
+        else if (isAvatarset == false && noDuplicated) {
             downloadedUri = "";
             FamilyMember newFM = new FamilyMember(FamilyMemberName, FamilyMemberRelation, FamilyMemberInfo, "https://firebasestorage.googleapis.com/v0/b/cmpt-276-storybook.appspot.com/o/images%2FCleanShot%202022-07-20%20at%2013.12.37%402x.png?alt=media&token=771c7d59-17c2-4538-ad76-c0ab54a5d0de");
             Map<String, Object> familyMember = new HashMap<>();
@@ -118,8 +130,7 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
             mFamilyMemberInfo.getText().clear();
         }
         // The case avatar is selected
-        else {
-            FamilyMember newFM = new FamilyMember(FamilyMemberName, FamilyMemberRelation, FamilyMemberInfo, downloadedUri);
+        else if(noDuplicated){
             progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading.....");
             progressDialog.show();
@@ -161,6 +172,8 @@ public class FamilyMemberCreatePage extends AppCompatActivity {
                         // get download Url
                         Uri downloadUri = task.getResult();
                         downloadedUri = downloadUri.toString();
+
+                        FamilyMember newFM = new FamilyMember(FamilyMemberName, FamilyMemberRelation, FamilyMemberInfo, downloadedUri);
                         //put the family member into the data base.
                         Map<String, Object> familyMember = new HashMap<>();
                             familyMember.put("FMName", FamilyMemberName);

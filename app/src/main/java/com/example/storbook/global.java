@@ -83,7 +83,7 @@ public class global extends Application {
                 });
     }
 
-    public ArrayList<String> getFMnamees(){
+    public ArrayList<String> getFMnames(){
         ArrayList<String> names = new ArrayList<>();
         for (int i = 0; i < this.AllFMembers.size(); i++){
             names.add(AllFMembers.get(i).name);
