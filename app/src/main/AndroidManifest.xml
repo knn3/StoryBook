@@ -18,6 +18,12 @@
         android:theme="@style/Theme.Storbook.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".GalleryOfPhotoAndVideo"
+            android:exported="false" />
+        <activity
+            android:name=".VideoGallery"
+            android:exported="false" />
+        <activity
             android:name=".GalleryFinal"
             android:exported="false" />
         <activity

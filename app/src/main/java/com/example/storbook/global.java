@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -117,6 +118,12 @@ public class global extends Application {
     ArrayList<String> picutreTitles;
     ArrayList<String> picutreDescriptions;
 
+    // Urls for all videos
+    ArrayList<String> videoUrls;
+    ArrayList<String> videoTitles;
+    ArrayList<String> videoDescriptions;
+
+
     // Refresh urls
     public void refreshpictureUrls(){
         this.picutreUrls = new ArrayList<>();
@@ -142,6 +149,28 @@ public class global extends Application {
                             }
                             else {
                                 Toast.makeText(getApplicationContext(), "Refresh media data from online failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+
+        // refresh for videos
+        this.videoUrls = new ArrayList<>();
+        this.videoTitles = new ArrayList<>();
+        this.videoDescriptions = new ArrayList<>();
+        mDatabaseRef.collection("users")
+                .document(user.getUid())
+                .collection("Media")
+                .whereEqualTo("Type","video")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Map aMedia =  document.getData();
+                                videoUrls.add(aMedia.get("Url").toString());
+                                videoTitles.add(aMedia.get("Title").toString());
+                                videoDescriptions.add(aMedia.get("Description").toString());
                             }
                         }
                     }

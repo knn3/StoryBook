@@ -56,7 +56,7 @@ public class GalleryFinal extends AppCompatActivity {
 
     //back button
     public void onBackClick(View v){
-        Intent myIntent = new Intent(this, MainActivity.class);
+        Intent myIntent = new Intent(this, GalleryOfPhotoAndVideo.class);
         this.startActivity(myIntent);
     }
 
