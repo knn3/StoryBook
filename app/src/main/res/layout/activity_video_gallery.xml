@@ -4,22 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GalleryFinal">
+    tools:context=".VideoGallery">
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <FrameLayout
+        android:id="@+id/frameLayout3"
         android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="250dp"
+        android:layout_height="265dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleView"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/titleView2"
+        app:layout_constraintVertical_bias="0.219">
+
+        <VideoView
+            android:id="@+id/videoView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:srcCompat="@tools:sample/avatars" />
+    </FrameLayout>
 
     <ImageButton
-        android:id="@+id/backButton"
+        android:id="@+id/backButtonForVideo"
         android:layout_width="69dp"
         android:layout_height="59dp"
         android:background="#00FFFFFF"
@@ -33,7 +39,7 @@
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <Button
-        android:id="@+id/leftButton"
+        android:id="@+id/leftButtonForVideo"
         android:layout_width="121dp"
         android:layout_height="69dp"
         android:text="Last"
@@ -42,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/rightButton"
+        android:id="@+id/rightButtonForVideo"
         android:layout_width="115dp"
         android:layout_height="73dp"
         android:text="Next"
@@ -51,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/titleView"
+        android:id="@+id/titleView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -61,16 +67,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/descView"
+        android:id="@+id/descView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_marginBottom="100dp"
         android:textSize="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/titleView2"
+        app:layout_constraintVertical_bias="0.884" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
