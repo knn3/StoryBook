@@ -19,12 +19,14 @@ import java.net.URL;
 public class InitializeActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
+         currentUser = mAuth.getCurrentUser();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         // Jump to login page if did not log in
@@ -38,12 +40,12 @@ public class InitializeActivity extends AppCompatActivity {
             startActivity(i);
         }
         // Refresh the local FM list if have internet access
-        if (isNetworkAvailable()) {
+        if (isNetworkAvailable() && (currentUser != null)) {
             ((global) this.getApplication()).refreshFMlist();
             ((global) this.getApplication()).refreshpictureUrls();
             Toast.makeText(getApplicationContext(), "Synced with cloud", Toast.LENGTH_SHORT).show();
         }
-        else{
+        else if (currentUser != null){
             ((global) this.getApplication()).refreshFMlist();
             ((global) this.getApplication()).refreshpictureUrls();
             Toast.makeText(getApplicationContext(), "No internet, Entering offline mode!", Toast.LENGTH_SHORT).show();
