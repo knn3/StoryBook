@@ -66,6 +66,7 @@ public class FamilyMemberPage extends AppCompatActivity {
         user = fAuth.getCurrentUser();
         isAvatarset = false;
 
+
         Intent intent = this.getIntent();
         // Get the carried out information
         if (intent != null){
@@ -76,6 +77,7 @@ public class FamilyMemberPage extends AppCompatActivity {
             imageurl = intent.getStringExtra("imageID");
             positionIndex = intent.getIntExtra("position",0);
 
+
             binding.fmname.setText(name);
             binding.fmrelation.setText(relation);
             binding.fminformation.setText(info);
@@ -83,6 +85,9 @@ public class FamilyMemberPage extends AppCompatActivity {
             Glide.with(this).load(imageurl).into(binding.profileImage);
 
         }
+
+        // Prepare for the member's gallery
+        ((global)this.getApplication()).getpictureUrlsforFM(name);
 
         // Enable edit buttons when in caretaker mode
         if (((global) this.getApplication()).isCaretaker()){
@@ -113,11 +118,6 @@ public class FamilyMemberPage extends AppCompatActivity {
 
     }
 
-    //back button
-    public void onBackClick(View v){
-        Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
-        this.startActivity(myIntent);
-    }
 
     public void cancel(View v){
         Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
@@ -166,6 +166,16 @@ public class FamilyMemberPage extends AppCompatActivity {
             Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
             this.startActivity(myIntent);
         }
+        else{
+            Intent i = new Intent(this, GalleryActivity.class);
+            i.putExtra("Name", name);
+            i.putExtra("Relation", relation);
+            i.putExtra("imageID", imageurl);
+            i.putExtra("Info", info);
+            i.putExtra("position", positionIndex);
+            startActivity(i);
+            this.startActivity(i);
+        }
     }
 
     public void chooseavatar(View v){
@@ -188,6 +198,18 @@ public class FamilyMemberPage extends AppCompatActivity {
 
     public void updateLocalList (FamilyMember newFM){
         ((global) this.getApplication()).AllFMembers.add(newFM);
+    }
+
+    //back button
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
+        this.startActivity(myIntent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent myIntent = new Intent(this, FamilyMemberMainPage.class);
+        this.startActivity(myIntent);
     }
 
 }

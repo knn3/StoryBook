@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +30,12 @@ public class GalleryActivity extends AppCompatActivity {
     private FirebaseFirestore mDatabaseRef;
     private List<ImageUrls> mImgUrl;
 
+    String name;
+    String relation;
+    String info;
+    String imageurl;
+    int positionIndex;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +50,28 @@ public class GalleryActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseRef = FirebaseFirestore.getInstance();
 
+
+        Intent intent = this.getIntent();
+        // Get the carried out information
+        if (intent != null){
+
+            name = intent.getStringExtra("Name");
+            relation = intent.getStringExtra("Relation");
+            info = intent.getStringExtra("Info");
+            imageurl = intent.getStringExtra("imageID");
+            positionIndex = intent.getIntExtra("position",0);
+
+        }
+
+
+        for (String FMurl : ((global) this.getApplication()).pictureUrlsforFM){
+            ImageUrls imageUrl = new ImageUrls(FMurl);
+            mImgUrl.add(imageUrl);
+        }
+        mAdapter = new ImageAdapter(GalleryActivity.this, mImgUrl);
+
+        mRecyclerView.setAdapter(mAdapter);
+        /*
         mDatabaseRef.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -66,12 +95,32 @@ public class GalleryActivity extends AppCompatActivity {
                 }
             }
         });
+
+         */
     }
 
     //back button
     public void onBackClick(View v){
-        Intent myIntent = new Intent(this, MainActivity.class);
-        this.startActivity(myIntent);
+        Intent i = new Intent(this, FamilyMemberPage.class);
+        i.putExtra("Name", name);
+        i.putExtra("Relation", relation);
+        i.putExtra("imageID", imageurl);
+        i.putExtra("Info", info);
+        i.putExtra("position", positionIndex);
+        startActivity(i);
+        this.startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, FamilyMemberPage.class);
+        i.putExtra("Name", name);
+        i.putExtra("Relation", relation);
+        i.putExtra("imageID", imageurl);
+        i.putExtra("Info", info);
+        i.putExtra("position", positionIndex);
+        startActivity(i);
+        this.startActivity(i);
     }
 
 }

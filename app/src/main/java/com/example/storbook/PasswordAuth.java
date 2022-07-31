@@ -91,6 +91,12 @@ public class PasswordAuth extends AppCompatActivity {
         this.startActivity(myIntent);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent myIntent = new Intent(this, Setting.class);
+        this.startActivity(myIntent);
+    }
+
     private void setToCT(){
             ((global) this.getApplication()).setCaretaker(true);
         }

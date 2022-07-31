@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +26,7 @@ public class CaretakerLogin extends AppCompatActivity {
     TextView mLoginBtn;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
+    boolean doubleBackToExitPressedOnce = false;
 
     public void registerLinkClicked(View view){
         Intent myIntent = new Intent(CaretakerLogin.this, CaretakerRegister.class);
@@ -95,5 +98,27 @@ public class CaretakerLogin extends AppCompatActivity {
         if (FirebaseAuth.getInstance().getCurrentUser() != null){
             startActivity(new Intent(CaretakerLogin.this, MainActivity.class));
         }
+    }
+
+    // Double click back to exit
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }

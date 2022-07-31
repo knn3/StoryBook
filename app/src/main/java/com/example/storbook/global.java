@@ -197,35 +197,49 @@ public class global extends Application {
                     }
                 });
     }
+
+    // Helper function to find the family member
+    public FamilyMember findFamilyMemberWithName(String name){
+        for (int i = 0; i < this.AllFMembers.size(); i++){
+            if (this.AllFMembers.get(i).name.equals(name)){
+                return this.AllFMembers.get(i);
+            }
+        }
+        return this.AllFMembers.get(0);
+    }
     /////////////////////
     // Urls for picture linked to one family member
 
-    public ArrayList<String> refreshpictureUrlsforFM(String targetName){
-        ArrayList<String> picutreUrlsforFM = new ArrayList<>();
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        mDatabaseRef = FirebaseFirestore.getInstance();
-        mDatabaseRef.collection("users")
-                .document(user.getUid())
-                .collection("Media")
-                .whereEqualTo("Type", "picture")
-                .whereEqualTo("Belonged", targetName)
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()){
+    ArrayList<String> pictureUrlsforFM;
+
+    public void getpictureUrlsforFM(String targetName){
+        this.pictureUrlsforFM = new ArrayList<>();
+        // get if the target has any related media
+        if (findFamilyMemberWithName(targetName).relatedMedia != null) {
+            user = FirebaseAuth.getInstance().getCurrentUser();
+            mDatabaseRef = FirebaseFirestore.getInstance();
+            mDatabaseRef.collection("users")
+                    .document(user.getUid())
+                    .collection("Media")
+                    .whereEqualTo("Type", "picture")
+                    .whereEqualTo("Belonged", targetName)
+                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Map aMedia =  document.getData();
-                                    picutreUrlsforFM.add(aMedia.get("Url").toString());
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        Map aMedia = document.getData();
+                                        pictureUrlsforFM.add(aMedia.get("Url").toString());
+                                    }
+                                    Log.d("db", "Related FM picture url refreshed");
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Refresh media data from online failed", Toast.LENGTH_SHORT).show();
                                 }
                             }
-                            else {
-                                Toast.makeText(getApplicationContext(), "Refresh media data from online failed", Toast.LENGTH_SHORT).show();
-                            }
                         }
-                    }
-                });
-        return picutreUrlsforFM;
+                    });
+        }
     }
 
     ////////////////////////

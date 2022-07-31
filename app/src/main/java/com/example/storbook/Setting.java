@@ -71,6 +71,8 @@ public class Setting extends AppCompatActivity {
             Intent intent = getIntent();
             finish();
             startActivity(intent);
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
         }
         else{
             Intent i = new Intent(this, PasswordAuth.class);
@@ -80,6 +82,11 @@ public class Setting extends AppCompatActivity {
 
     //back button
     public void onBackClick(View v){
+        Intent myIntent = new Intent(this, MainActivity.class);
+        this.startActivity(myIntent);
+    }
+    @Override
+    public void onBackPressed() {
         Intent myIntent = new Intent(this, MainActivity.class);
         this.startActivity(myIntent);
     }

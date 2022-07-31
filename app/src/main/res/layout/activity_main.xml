@@ -165,17 +165,18 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/gallerybtn"
             android:layout_centerHorizontal="true"
-            android:text="View Gallery"
+            android:text="Gallery"
             android:textColor="@color/text_color"
             android:textSize="35dp"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/people"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/peoplebtn"
             android:layout_centerHorizontal="true"
-            android:text="View People"
+            android:text="People"
             android:textColor="@color/text_color"
             android:textSize="35dp"
             android:textStyle="bold" />

@@ -48,7 +48,7 @@ public class GalleryFinal extends AppCompatActivity {
             desc.setText(mImgDesc.get(0));
         }
         else{
-            Toast.makeText(this, "Error: No photos uploaded!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No photos uploaded!", Toast.LENGTH_LONG).show();
             Intent myIntent = new Intent(this, MainActivity.class);
             this.startActivity(myIntent);
         }
