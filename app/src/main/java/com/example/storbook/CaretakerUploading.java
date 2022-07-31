@@ -268,6 +268,7 @@ public class CaretakerUploading extends AppCompatActivity {
             MediaController mediaController = new MediaController(this);
             binding.videoView.setMediaController(mediaController);
             mediaController.setAnchorView(binding.videoView);
+            binding.videoView.start();
         }
     }
 
