@@ -36,7 +36,7 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
     private FirebaseFirestore mDatabaseRef;
     private List<ImageUrls> mImgUrl;
     private String fileName;
-
+    ArrayList<String> mImgUrls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,33 +61,14 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseRef = FirebaseFirestore.getInstance();
 
-        // get whole document with user's UID
-        mDatabaseRef.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()){
-                    //get document
-                    DocumentSnapshot document = task.getResult();
-                    if(document.exists()){
-                        // No gallery building if no media uploaded
-                        if (document.getData().get("media") != null) {
-                            // direct to media field
-                            List<String> imgUrls = (List<String>) document.get("media");
+        // get array of imageUrls
+        mImgUrls = ((global) this.getApplication()).picutreUrls;
 
-                            mImgUrl.clear();
+        for(String imgUrl : mImgUrls) {
+            ImageUrls imageUrl = new ImageUrls(imgUrl);
+            mImgUrl.add(imageUrl);
+        }
 
-                            //loop through each entry of array media to get each image url
-                            for (String imgUrl : imgUrls) {
-                                ImageUrls imageUrl = new ImageUrls(imgUrl);
-                                mImgUrl.add(imageUrl);
-                            }
-
-                            mAdapter.notifyDataSetChanged();
-                        }
-                    }
-                }
-            }
-        });
     }
 
 
