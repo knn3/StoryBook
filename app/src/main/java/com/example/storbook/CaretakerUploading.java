@@ -193,6 +193,7 @@ public class CaretakerUploading extends AppCompatActivity {
                         }
                         media.put("Belonged", Belonged);
                         media.put("Type", MediaType);
+                        media.put("FileName", fileName);
                         db.collection("users")
                                 .document(user.getUid())
                                 .collection("Media")

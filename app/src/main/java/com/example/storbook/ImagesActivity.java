@@ -18,11 +18,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ImagesActivity extends AppCompatActivity implements ImageAdapter.OnItemClickListener {
     private RecyclerView mRecyclerView;
@@ -32,6 +35,8 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
     private FirebaseUser user;
     private FirebaseFirestore mDatabaseRef;
     private List<ImageUrls> mImgUrl;
+    private String fileName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,12 +106,33 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         // reference to firestore and use url to delete in the array using arrayRemove()
         mDatabaseRef.collection("users").document(user.getUid()).update("media", FieldValue.arrayRemove(selectedImg));
 
+        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").whereEqualTo("Url", selectedImg).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()){
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Map aMedia =  document.getData();
+                        fileName = aMedia.get("FileName").toString();
+
+                        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").document(fileName).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(ImagesActivity.this, "Successfully Deleted from Media Document", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }
+            }
+        });
+
+
+
         // delete image in firebase cloud storage
         StorageReference imageRef = mStorage.getReferenceFromUrl(selectedImg);
         imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(ImagesActivity.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ImagesActivity.this, "Successfully Deleted from Storage", Toast.LENGTH_SHORT).show();
 
                 // after deleted, refresh the activity to render the images again
                 finish();
