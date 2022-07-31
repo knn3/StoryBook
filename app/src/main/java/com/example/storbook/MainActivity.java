@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             pwdpage.setEnabled(false);
             ctpage.setEnabled(true);
             ctpage.setVisibility(View.VISIBLE);
-            mtoolbar.setSubtitle("Caretaker page");
+            mtoolbar.setSubtitle("Caretaker main page");
 
         }
         else{
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             ctpage.setEnabled(false);
             pwdpage.setEnabled(true);
             pwdpage.setVisibility(View.VISIBLE);
-            mtoolbar.setSubtitle("pwd page");
+            mtoolbar.setSubtitle("Main page");
         }
     }
 
