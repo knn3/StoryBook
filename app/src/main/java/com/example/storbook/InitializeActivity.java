@@ -46,7 +46,6 @@ public class InitializeActivity extends AppCompatActivity {
             //((global) this.getApplication()).refreshFMlist();
             ((global) this.getApplication()).refreshpictureUrls();
 
-            ((global) this.getApplication()).refreshpictureUrls();
             Toast.makeText(getApplicationContext(), "Synced with cloud", Toast.LENGTH_SHORT).show();
         }
         else{
@@ -54,7 +53,6 @@ public class InitializeActivity extends AppCompatActivity {
             ((global) this.getApplication()).refreshpictureUrls();
 
             ((global) this.getApplication()).refreshFRlist();
-            ((global) this.getApplication()).refreshpictureUrls();
             Toast.makeText(getApplicationContext(), "No internet, Entering offline mode!", Toast.LENGTH_SHORT).show();
         }
         // So already logged in go the the main page

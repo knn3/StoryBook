@@ -24,6 +24,9 @@
             android:name=".FriendMemberCreatePage"
             android:exported="false" />
         <activity
+            android:name=".VideoActivity"
+            android:exported="false" />
+        <activity
             android:name=".GalleryOfPhotoAndVideo"
             android:exported="false" />
         <activity
@@ -93,6 +96,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Storbook.NoActionBar" />
+
     </application>
 
 </manifest>

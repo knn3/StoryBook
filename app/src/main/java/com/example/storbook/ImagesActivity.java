@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -36,6 +39,8 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
     private FirebaseFirestore mDatabaseRef;
     private List<ImageUrls> mImgUrl;
     private String fileName;
+    private String belonged;
+    ArrayList<String> mImgUrls;
 
 
     @Override
@@ -61,35 +66,17 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseRef = FirebaseFirestore.getInstance();
 
-        // get whole document with user's UID
-        mDatabaseRef.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()){
-                    //get document
-                    DocumentSnapshot document = task.getResult();
-                    if(document.exists()){
-                        // No gallery building if no media uploaded
-                        if (document.getData().get("media") != null) {
-                            // direct to media field
-                            List<String> imgUrls = (List<String>) document.get("media");
+        // get array of imageUrls
 
-                            mImgUrl.clear();
 
-                            //loop through each entry of array media to get each image url
-                            for (String imgUrl : imgUrls) {
-                                ImageUrls imageUrl = new ImageUrls(imgUrl);
-                                mImgUrl.add(imageUrl);
-                            }
+        mImgUrls = ((global) this.getApplication()).picutreUrls;
 
-                            mAdapter.notifyDataSetChanged();
-                        }
-                    }
-                }
-            }
-        });
+        for(String imgUrl : mImgUrls) {
+            ImageUrls imageUrl = new ImageUrls(imgUrl);
+            mImgUrl.add(imageUrl);
+        }
+
     }
-
 
     // normal click on image
     @Override
@@ -106,25 +93,32 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         // reference to firestore and use url to delete in the array using arrayRemove()
         mDatabaseRef.collection("users").document(user.getUid()).update("media", FieldValue.arrayRemove(selectedImg));
 
-        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").whereEqualTo("Url", selectedImg).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()){
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        Map aMedia =  document.getData();
-                        fileName = aMedia.get("FileName").toString();
+//        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").whereEqualTo("Url", selectedImg).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if (task.isSuccessful()){
+//                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                        Map aMedia =  document.getData();
+//                        fileName = aMedia.get("FileName").toString();
+//                        belonged = aMedia.get("Belonged").toString();
+//
+//                        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").document(fileName).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                            @Override
+//                            public void onSuccess(Void unused) {
+//                                Toast.makeText(ImagesActivity.this, "Successfully Deleted from Media Document", Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+//                    }
+//                }
+//            }
+//        });
 
-                        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").document(fileName).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(ImagesActivity.this, "Successfully Deleted from Media Document", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                }
-            }
-        });
+        //
+        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").document(((global)this.getApplication()).picutreFilename.get(position)).delete();
 
+        if (!((global)this.getApplication()).picutreBelonged.get(position).equals("")){
+            mDatabaseRef.collection("users").document(user.getUid()).collection("FamilyMember").document(((global)this.getApplication()).picutreBelonged.get(position)).update("media", FieldValue.arrayRemove(((global)this.getApplication()).picutreFilename.get(position)));
+        }
 
 
         // delete image in firebase cloud storage
@@ -133,7 +127,7 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(ImagesActivity.this, "Successfully Deleted from Storage", Toast.LENGTH_SHORT).show();
-
+                deleteLocal(position);
                 // after deleted, refresh the activity to render the images again
                 finish();
                 startActivity(new Intent(ImagesActivity.this, ImagesActivity.class));
@@ -146,6 +140,11 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
     public void onBackClick(View v){
         Intent myIntent = new Intent(this, CaretakerManage.class);
         this.startActivity(myIntent);
+    }
+
+
+    public void deleteLocal(int position){
+        ((global) this.getApplication()).picutreUrls.remove(position);
     }
 
 }

@@ -246,6 +246,8 @@ public class global extends Application {
     ArrayList<String> picutreUrls;
     ArrayList<String> picutreTitles;
     ArrayList<String> picutreDescriptions;
+    ArrayList<String> picutreBelonged;
+    ArrayList<String> picutreFilename;
 
     // Urls for all videos
     ArrayList<String> videoUrls;
@@ -258,6 +260,8 @@ public class global extends Application {
         this.picutreUrls = new ArrayList<>();
         this.picutreTitles = new ArrayList<>();
         this.picutreDescriptions = new ArrayList<>();
+        this.picutreBelonged = new ArrayList<>();
+        this.picutreFilename = new ArrayList<>();
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseRef = FirebaseFirestore.getInstance();
         mDatabaseRef.collection("users")
@@ -274,6 +278,8 @@ public class global extends Application {
                                     picutreUrls.add(aMedia.get("Url").toString());
                                     picutreTitles.add(aMedia.get("Title").toString());
                                     picutreDescriptions.add(aMedia.get("Description").toString());
+                                    picutreBelonged.add(aMedia.get("Belonged").toString());
+                                    picutreFilename.add(aMedia.get("FileName").toString());
                                 }
                             }
                             else {
