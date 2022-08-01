@@ -93,26 +93,6 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         // reference to firestore and use url to delete in the array using arrayRemove()
         mDatabaseRef.collection("users").document(user.getUid()).update("media", FieldValue.arrayRemove(selectedImg));
 
-//        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").whereEqualTo("Url", selectedImg).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                if (task.isSuccessful()){
-//                    for (QueryDocumentSnapshot document : task.getResult()) {
-//                        Map aMedia =  document.getData();
-//                        fileName = aMedia.get("FileName").toString();
-//                        belonged = aMedia.get("Belonged").toString();
-//
-//                        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").document(fileName).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void unused) {
-//                                Toast.makeText(ImagesActivity.this, "Successfully Deleted from Media Document", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//                    }
-//                }
-//            }
-//        });
-
         //
         mDatabaseRef.collection("users").document(user.getUid()).collection("Media").document(((global)this.getApplication()).picutreFilename.get(position)).delete();
 

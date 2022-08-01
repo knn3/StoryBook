@@ -71,7 +71,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         // Create a context menu after do a long click
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-            contextMenu.setHeaderTitle("Edit Media");
             MenuItem delete = contextMenu.add(Menu.NONE, 1,1, "Delete");
 
             delete.setOnMenuItemClickListener(this);
