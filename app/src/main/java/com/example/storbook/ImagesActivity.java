@@ -39,7 +39,9 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
     private FirebaseFirestore mDatabaseRef;
     private List<ImageUrls> mImgUrl;
     private String fileName;
+    private String belonged;
     ArrayList<String> mImgUrls;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,28 +93,31 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         // reference to firestore and use url to delete in the array using arrayRemove()
         mDatabaseRef.collection("users").document(user.getUid()).update("media", FieldValue.arrayRemove(selectedImg));
 
-        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").whereEqualTo("Url", selectedImg).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()){
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        Map aMedia =  document.getData();
-                        fileName = aMedia.get("FileName").toString();
-
-                        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").document(fileName).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(ImagesActivity.this, "Successfully Deleted from Media Document", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                }
-            }
-        });
-
-//        ImageUrls imageUrl = new ImageUrls(selectedImg);
+//        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").whereEqualTo("Url", selectedImg).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if (task.isSuccessful()){
+//                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                        Map aMedia =  document.getData();
+//                        fileName = aMedia.get("FileName").toString();
+//                        belonged = aMedia.get("Belonged").toString();
 //
-//        mImgUrl.remove(imageUrl);
+//                        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").document(fileName).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                            @Override
+//                            public void onSuccess(Void unused) {
+//                                Toast.makeText(ImagesActivity.this, "Successfully Deleted from Media Document", Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+//                    }
+//                }
+//            }
+//        });
+
+        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").document(((global)this.getApplication()).picutreFilename.get(position));
+
+        if (!((global)this.getApplication()).picutreBelonged.get(position).equals("")){
+            mDatabaseRef.collection("users").document(user.getUid()).collection("FamilyMember").document(((global)this.getApplication()).picutreBelonged.get(position)).update("media", FieldValue.arrayRemove(((global)this.getApplication()).picutreFilename.get(position)));
+        }
 
 
         // delete image in firebase cloud storage
@@ -136,12 +141,6 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         this.startActivity(myIntent);
     }
 
-    public boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null;
-    }
 
     public void deleteLocal(int position){
         ((global) this.getApplication()).picutreUrls.remove(position);
