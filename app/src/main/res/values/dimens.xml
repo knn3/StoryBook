@@ -2,7 +2,12 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="activity_horizontal_margin">20dp</dimen>
     <dimen name="activity_horizontal_margin2">40dp</dimen>
+    <dimen name="input">300dp</dimen>
+    <dimen name="activity_horizontal_margin4">400dp</dimen>
+    <dimen name="textsize">25dp</dimen>
     <dimen name="photo_size">150dp</dimen>
     <dimen name="photo_size2">200dp</dimen>
+
+    <dimen name="photo_size3">300dp</dimen>
     <dimen name="activity_horizontal_margin3">60dp</dimen>
 </resources>

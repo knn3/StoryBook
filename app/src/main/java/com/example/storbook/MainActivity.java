@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
         if (isNetworkAvailable()) {
             ((global) this.getApplication()).refreshpictureUrls();
             ((global) this.getApplication()).refreshFMlist();
+
+            ((global) this.getApplication()).refreshpictureUrls();
+            ((global) this.getApplication()).refreshFRlist();
         }
     }
 

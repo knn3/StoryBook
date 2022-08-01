@@ -18,6 +18,12 @@
         android:theme="@style/Theme.Storbook.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".FriendMemberPage"
+            android:exported="false" />
+        <activity
+            android:name=".FriendMemberCreatePage"
+            android:exported="false" />
+        <activity
             android:name=".GalleryOfPhotoAndVideo"
             android:exported="false" />
         <activity
@@ -36,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".friends_page"
+            android:name=".FriendMemberMainPage"
             android:exported="false" />
         <activity
             android:name=".FamilyMemberPage"
@@ -66,10 +72,6 @@
             android:exported="false"
             android:label="Setting" />
         <activity
-            android:name=".CaretakerMain"
-            android:exported="false"
-            android:theme="@style/Theme.Storbook.NoActionBar" />
-        <activity
             android:name=".CaretakerUploading"
             android:exported="false" />
         <activity
@@ -90,8 +92,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Storbook.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.Storbook.NoActionBar" />
     </application>
 
 </manifest>

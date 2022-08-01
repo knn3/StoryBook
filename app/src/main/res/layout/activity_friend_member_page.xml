@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FamilyMemberPage">
+    tools:context=".FriendMemberPage">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_below="@+id/toolbar"
@@ -61,7 +61,7 @@
                 android:textSize="@dimen/fab_margin" />
 
             <EditText
-                android:id="@+id/fmname"
+                android:id="@+id/frname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Default"
@@ -90,15 +90,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Relation:"
+                android:text="Email:"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/fab_margin" />
 
             <EditText
-                android:id="@+id/fmrelation"
+                android:id="@+id/fremail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Relation"
+                android:text="Email"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize"/>
 
@@ -144,7 +144,7 @@
                 android:textSize="@dimen/fab_margin" />
 
             <EditText
-                android:id="@+id/fminformation"
+                android:id="@+id/frinformation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Info"
@@ -193,7 +193,6 @@
 
 
     </RelativeLayout>
-
 
 
 </RelativeLayout>

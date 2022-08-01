@@ -90,9 +90,9 @@ public class global extends Application {
     }
 
     /////////////////////
-    // All stored FM
+    // All stored FM and FR
     ArrayList<FamilyMember> AllFMembers;
-
+    ArrayList<FriendMember> AllFRembers;
     // Refresh FM list function
     public void refreshFMlist(){
         this.AllFMembers = new ArrayList<>();
@@ -136,6 +136,82 @@ public class global extends Application {
                     }
                 });
     }
+
+    // Refresh FR list function
+    public void refreshFRlist(){
+        this.AllFRembers = new ArrayList<>();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        mDatabaseRef = FirebaseFirestore.getInstance();
+        mDatabaseRef.collection("users")
+                .document(user.getUid())
+                .collection("FriendMember")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Map aFR =  document.getData();
+
+                                    // "No avatar" avatar if no avatar
+                                    String thispic;
+                                    if (aFR.get("Avatar").toString().equals("")) {
+                                        thispic = "https://firebasestorage.googleapis.com/v0/b/cmpt-276-storybook.appspot.com/o/images%2FCleanShot%202022-07-20%20at%2013.12.37%402x.png?alt=media&token=771c7d59-17c2-4538-ad76-c0ab54a5d0de";
+                                    }
+
+                                    else{
+                                        thispic = aFR.get("Avatar").toString();
+                                    }
+                                    FriendMember friendMember = new FriendMember(aFR.get("FRName").toString(),aFR.get("FREmail").toString(),aFR.get("FRInfo").toString(),thispic);
+                                    if (document.getData().get("media") != null) {
+                                        List<String> imgUrls = (List<String>) document.get("media");
+                                        friendMember = new FriendMember(aFR.get("FRName").toString(),aFR.get("FREmail").toString(),aFR.get("FRInfo").toString(),thispic, imgUrls);
+                                    }
+                                    AllFRembers.add(friendMember);
+                                }
+                                Log.d("db", "Friend member refreshed from database");
+                                // Occurs too often so crossed out for now
+                                //Toast.makeText(getApplicationContext(), "Local FriendMember Refreshed from cloud!", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(), "Refresh member data from online failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+    }
+
+
+    public ArrayList<String> getFRnames(){
+        ArrayList<String> names = new ArrayList<>();
+        for (int i = 0; i < this.AllFRembers.size(); i++){
+            names.add(AllFRembers.get(i).name);
+        }
+        return names;
+    }
+    public ArrayList<String> getFRemails(){
+        ArrayList<String> emails = new ArrayList<>();
+        for (int i = 0; i < this.AllFRembers.size(); i++){
+            emails.add(AllFRembers.get(i).email);
+        }
+        return emails;
+    }
+
+    public ArrayList<String> getFRinfos(){
+        ArrayList<String> infos = new ArrayList<>();
+        for (int i = 0; i < this.AllFRembers.size(); i++){
+            infos.add(AllFRembers.get(i).info);
+        }
+        return infos;
+    }
+    public ArrayList<String> getFRavatars(){
+        ArrayList<String> avatars = new ArrayList<>();
+        for (int i = 0; i < this.AllFRembers.size(); i++){
+            avatars.add(AllFRembers.get(i).mImageUrl);
+        }
+        return avatars;
+    }
+
 
     public ArrayList<String> getFMnames(){
         ArrayList<String> names = new ArrayList<>();
@@ -265,6 +341,50 @@ public class global extends Application {
                                         pictureUrlsforFM.add(aMedia.get("Url").toString());
                                     }
                                     Log.d("db", "Related FM picture url refreshed");
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Refresh media data from online failed", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    });
+        }
+    }
+
+
+    public FriendMember findFriendMemberWithName(String name){
+        for (int i = 0; i < this.AllFRembers.size(); i++){
+            if (this.AllFRembers.get(i).name.equals(name)){
+                return this.AllFRembers.get(i);
+            }
+        }
+        return this.AllFRembers.get(0);
+    }
+    /////////////////////
+    // Urls for picture linked to one friend member
+
+    ArrayList<String> pictureUrlsforFR;
+
+    public void getpictureUrlsforFR(String targetName){
+        this.pictureUrlsforFR = new ArrayList<>();
+        // get if the target has any related media
+        if (findFriendMemberWithName(targetName).relatedMedia != null) {
+            user = FirebaseAuth.getInstance().getCurrentUser();
+            mDatabaseRef = FirebaseFirestore.getInstance();
+            mDatabaseRef.collection("users")
+                    .document(user.getUid())
+                    .collection("Media")
+                    .whereEqualTo("Type", "picture")
+                    .whereEqualTo("Belonged", targetName)
+                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        Map aMedia = document.getData();
+                                        getpictureUrlsforFR(aMedia.get("Url").toString());
+                                    }
+                                    Log.d("db", "Related FR picture url refreshed");
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Refresh media data from online failed", Toast.LENGTH_SHORT).show();
                                 }
@@ -469,4 +589,194 @@ public class global extends Application {
         }
     }
 
+
+    public void friendMembermodification(String newname, String newInfo, String newEmail, int position, Uri newAvatar){
+        db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        // Upload the new avatar if it is set
+        if (newAvatar != null){
+
+            // To get the file name as the current time
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
+            Date now = new Date();
+            String fileName = formatter.format(now);
+
+            storageReference = FirebaseStorage.getInstance().getReference("images/" + fileName);
+
+            // uploading to firestore and cloud storage
+            UploadTask uploadTask = storageReference.putFile(newAvatar);
+            Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+
+                    //handle progressDialog
+                    //Toast.makeText(FriendMemberCreatePage.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
+
+                    // Continue with the task to get the download URL
+                    return storageReference.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        Log.d("db", "Image uploaded to cloud storage");
+                        // get download Url
+                        Uri downloadUri = task.getResult();
+                        String downloadedUri = downloadUri.toString();
+                        friendMembermodificationW(newname, newInfo, newEmail, position, downloadedUri);
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Failed to Upload, check Internet", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+
+
+
+        // if avatar is not changed
+        else {
+            friendMembermodificationW(newname, newInfo, newEmail, position, this.AllFRembers.get(position).mImageUrl);
+        }
+    }
+
+    public void friendMembermodificationW(String newname, String newInfo, String newEmail, int position, String newAvatar) {
+
+        // The case where the name is not changed
+        if (this.AllFRembers.get(position).name == newname) {
+
+            // Database modification
+            db.collection("users")
+                    .document(user.getUid())
+                    .collection("Media")
+                    .document(newname)
+                    .update("FREmail", newEmail,
+                            "FRInfo", newInfo,
+                            "Avatar", newAvatar).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d("db", "DocumentSnapshot successfully updated!");
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("db", "Error updating document", e);
+                        }
+                    });
+            // Local modification
+            this.AllFRembers.get(position).info = newInfo;
+            this.AllFRembers.get(position).email = newEmail;
+            this.AllFRembers.get(position).mImageUrl = newAvatar;
+        }
+        // The case where the name is changed so the whole document needs to be changed
+        else {
+            // First delete the old doc
+            deleteFriendMember(this.AllFRembers.get(position).name, -1);
+
+            // Then add the modified FR document back
+            Map<String, Object> friendMember = new HashMap<>();
+            friendMember.put("FRName", newname);
+            friendMember.put("FREmail", newEmail);
+            friendMember.put("Avatar", newAvatar);
+            friendMember.put("FRInfo", newInfo);
+            friendMember.put("media", this.AllFRembers.get(position).relatedMedia);
+            // Put the new friend member into cloud
+            db.collection("users")
+                    .document(user.getUid()).collection("FriendMember").document(newname).set(friendMember).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Log.d("db", "Friend Member Changed on firestore");
+                                Toast.makeText(getApplicationContext(), "Friend Member Changed!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Fail to Upload to firestore", Toast.LENGTH_SHORT).show();
+                                Log.d("db", "Fail to Upload a friend member with avatar to the firestore");
+                            }
+                        }
+                    });
+
+            updateRelativeFrMeida(newname, position);
+
+            // Local modification
+            this.AllFRembers.get(position).info = newInfo;
+            this.AllFRembers.get(position).email = newEmail;
+            this.AllFRembers.get(position).mImageUrl = newAvatar;
+            this.AllFRembers.get(position).name = newname;
+        }
+    }
+    // Set the position to -1 for temporary deletion
+    public void deleteFriendMember(String targetName, int position){
+        db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        // Delete the FR in firestore
+        db.collection("users").document(user.getUid()).collection("FriendMember").document(targetName)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("db", "DocumentSnapshot successfully deleted!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("db", "Error deleting document", e);
+                        Toast.makeText(getApplicationContext(), "Friend Member Cannot be deleted", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        // True deletion
+        if (position != -1){
+            if (this.AllFRembers.get(position).relatedMedia != null) {
+                List<String> media = this.AllFRembers.get(position).relatedMedia;
+                for (int i = 0; i < media.size(); i++) {
+                    db.collection("users").document(user.getUid()).collection("Media").document(media.get(i))
+                            .update("Belonged", "").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d("db", "FR related media updated!");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w("db", "Error updating document", e);
+                                }
+                            });
+                }
+            }
+            this.AllFRembers.remove(position);
+        }
+    }
+
+    public void updateRelativeFrMeida(String newName, int position){
+        db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        // Update all the relative media if have them
+        if (this.AllFRembers.get(position).relatedMedia != null) {
+            List<String> media = this.AllFRembers.get(position).relatedMedia;
+            for (int i = 0; i < media.size(); i++) {
+                db.collection("users").document(user.getUid()).collection("Media").document(media.get(i))
+                        .update("Belonged", newName).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("db", "FR related media updated!");
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("db", "Error updating document", e);
+                            }
+                        });
+            }
+        }
+    }
 }
