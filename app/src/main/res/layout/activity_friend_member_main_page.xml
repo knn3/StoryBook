@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".friends_page">
+    tools:context=".FriendMemberMainPage">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -21,12 +21,21 @@
         app:title="@string/app_name"
         app:titleMarginStart="90dp" />
 
-    <GridView
-        android:id="@+id/GridView1"
+    <ListView
+        android:id="@+id/FriendMemberlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
-        android:numColumns="3"
-        android:stretchMode="columnWidth"></GridView>
+        tools:listitem="@layout/friend_member_list_item" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/AddFR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/FriendMemberlist"
+        android:layout_alignBottom="@+id/FriendMemberlist"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
 
 </RelativeLayout>

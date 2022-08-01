@@ -232,6 +232,7 @@ public class CaretakerUploading extends AppCompatActivity {
         }
         // refresh the local url in the end
         ((global) this.getApplication()).refreshpictureUrls();
+
     }
 
     private void selectImage(){

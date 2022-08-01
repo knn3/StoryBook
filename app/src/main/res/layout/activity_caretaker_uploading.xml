@@ -22,27 +22,20 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="@dimen/photo_size3"
+        android:layout_height="@dimen/photo_size3"
         android:layout_below="@+id/toolbar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="67dp"
+        android:layout_centerHorizontal="true"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/selectImagebtn"
-        android:layout_width="266dp"
+        android:layout_width="@dimen/input"
         android:layout_height="wrap_content"
 
         android:layout_below="@+id/descriptionText"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="75dp"
+        android:layout_centerHorizontal="true"
+
         android:text="Select Image"
         android:textColor="#2E7D32"
         android:textSize="15sp"
@@ -50,14 +43,11 @@
 
     <Button
         android:id="@+id/uploadBtn"
-        android:layout_width="262dp"
+        android:layout_width="@dimen/input"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="72dp"
-        android:layout_marginEnd="77dp"
-        android:layout_marginBottom="8dp"
+        android:layout_below="@+id/chooserelationbtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="Upload Media"
         android:textColor="#2E7D32"
         android:textSize="15sp"
@@ -65,27 +55,20 @@
 
     <VideoView
         android:id="@+id/videoView"
-        android:layout_width="match_parent"
-        android:layout_height="278dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="0dp"
+        android:layout_width="@dimen/photo_size3"
+        android:layout_height="@dimen/photo_size3"
+        android:layout_centerHorizontal="true"
+
+        android:layout_below="@+id/toolbar"
         tools:visibility="invisible" />
 
     <Button
         android:id="@+id/videoBtn"
-        android:layout_width="265dp"
+        android:layout_width="@dimen/input"
         android:layout_height="wrap_content"
         android:layout_below="@+id/selectImagebtn"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="75dp"
-        android:minHeight="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="Select Video"
         android:textColor="#2E7D32"
         android:textSize="15sp"
@@ -93,14 +76,11 @@
 
     <Button
         android:id="@+id/chooserelationbtn"
-        android:layout_width="264dp"
+        android:layout_width="@dimen/input"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/uploadBtn"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="72dp"
-        android:layout_marginEnd="75dp"
-        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/videoBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="choose belong to"
         android:textColor="#2E7D32"
         android:textSize="15sp"
@@ -108,28 +88,22 @@
 
     <EditText
         android:id="@+id/descriptionText"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/input"
         android:layout_height="wrap_content"
         android:layout_below="@+id/titleText"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="79dp"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:ems="10"
         android:hint="Description"
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/titleText"
-        android:layout_width="248dp"
+        android:layout_width="@dimen/input"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="366dp"
-        android:layout_marginEnd="83dp"
+        android:layout_below="@+id/imageView"
         android:ems="10"
         android:hint="Title"
         android:inputType="textPersonName" />

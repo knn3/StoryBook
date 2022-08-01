@@ -20,7 +20,7 @@ public class peopleActivity extends AppCompatActivity {
 
     }
     public void onfriendClicked(View view){
-        Intent i = new Intent(this, friends_page.class);
+        Intent i = new Intent(this, FriendMemberMainPage.class);
         this.startActivity(i);
 
     }

@@ -38,10 +38,15 @@ public class InitializeActivity extends AppCompatActivity {
         else if (isNetworkAvailable()) {
             //((global) this.getApplication()).refreshFMlist();
             ((global) this.getApplication()).refreshpictureUrls();
+
+            ((global) this.getApplication()).refreshpictureUrls();
             Toast.makeText(getApplicationContext(), "Synced with cloud", Toast.LENGTH_SHORT).show();
         }
         else{
             ((global) this.getApplication()).refreshFMlist();
+            ((global) this.getApplication()).refreshpictureUrls();
+
+            ((global) this.getApplication()).refreshFRlist();
             ((global) this.getApplication()).refreshpictureUrls();
             Toast.makeText(getApplicationContext(), "No internet, Entering offline mode!", Toast.LENGTH_SHORT).show();
         }

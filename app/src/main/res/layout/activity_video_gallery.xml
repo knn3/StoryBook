@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VideoGallery">
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue"
+        app:logo="@drawable/gallery"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:subtitle="caretaker page"
+        app:title="@string/app_name"
+        android:onClick="onBackClick"
+        app:titleMarginStart="90dp"
+        />
     <FrameLayout
         android:id="@+id/frameLayout3"
         android:layout_width="400dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="@dimen/activity_horizontal_margin2"
         android:layout_height="265dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,25 +37,13 @@
             tools:srcCompat="@tools:sample/avatars" />
     </FrameLayout>
 
-    <ImageButton
-        android:id="@+id/backButtonForVideo"
-        android:layout_width="69dp"
-        android:layout_height="59dp"
-        android:background="#00FFFFFF"
-        android:onClick="onBackClick"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.002"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <Button
         android:id="@+id/leftButtonForVideo"
         android:layout_width="121dp"
         android:layout_height="69dp"
         android:text="Last"
+        android:layout_below="@+id/descView2"
         android:onClick="onLeftClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -51,7 +52,9 @@
         android:id="@+id/rightButtonForVideo"
         android:layout_width="115dp"
         android:layout_height="73dp"
+        android:layout_below="@+id/descView2"
         android:text="Next"
+        android:layout_alignParentEnd="true"
         android:onClick="onRightClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -60,7 +63,9 @@
         android:id="@+id/titleView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/descView2"
+
         android:textSize="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,12 +76,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
-        android:textSize="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleView2"
-        app:layout_constraintVertical_bias="0.884" />
+        android:layout_below="@+id/frameLayout3"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:textSize="28dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
