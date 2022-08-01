@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Application;
+import android.app.UiModeManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -37,6 +40,7 @@ import android.text.util.Linkify;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
 import java.io.IOException;
@@ -49,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     private static ImageView profileImage;
     int[] images = {R.drawable.pwdstatus,R.drawable.ctstatus};
     boolean doubleBackToExitPressedOnce = false;
-
 
 
 

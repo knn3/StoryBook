@@ -3,6 +3,7 @@ package com.example.storbook;
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -46,6 +47,37 @@ public class global extends Application {
     FirebaseFirestore db;
     ProgressDialog progressDialog;
     StorageReference storageReference;
+
+
+    /////////////////////****************
+    // Shared preference All local changes can be stored in here!!!
+    public void writeIntToSharedPreference(String TargetName, int value){
+        SharedPreferences sharedPreferences = this.getSharedPreferences("com.example.storbook", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(TargetName, value);
+        editor.apply();
+    }
+
+    public void writeStringToSharedPreference(String TargetName, String value){
+        SharedPreferences sharedPreferences = this.getSharedPreferences("com.example.storbook", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(TargetName, value);
+        editor.apply();
+    }
+
+    public int readIntFromSharedPreference(String TargetName, int defaultValue){
+        SharedPreferences sharedPreferences = this.getSharedPreferences("com.example.storbook", Context.MODE_PRIVATE);
+        int integer = sharedPreferences.getInt(TargetName, defaultValue);
+        return integer;
+    }
+
+    public String readStringFromSharedPreference(String TargetName) {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("com.example.storbook", Context.MODE_PRIVATE);
+        String string = sharedPreferences.getString(TargetName, "");
+        return string;
+    }
+
+    /////////////////////****************
     /////////////////////
     // CareTaker mode
 

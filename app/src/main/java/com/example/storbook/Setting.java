@@ -3,15 +3,19 @@ package com.example.storbook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,9 +38,13 @@ import android.text.util.Linkify;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
+import java.util.Set;
 
 public class Setting extends AppCompatActivity {
     TextView status;
+    Switch nightmode;
 
 
     @Override
@@ -44,6 +52,34 @@ public class Setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         status = (TextView) findViewById(R.id.StatusText);
+
+        //Night mode switch
+        SharedPreferences sharedPreferences = this.getSharedPreferences("com.example.storbook", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        nightmode = findViewById(R.id.nightmodeswitch);
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            nightmode.setChecked(true);
+        }
+        else{
+            nightmode.setChecked(false);
+        }
+        nightmode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+                    editor.putInt("nightmode", 0);
+                    editor.apply();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    Toast.makeText(Setting.this, "Night Mode Off", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    editor.putInt("nightmode", 1);
+                    editor.apply();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    Toast.makeText(Setting.this, "Night Mode On", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
