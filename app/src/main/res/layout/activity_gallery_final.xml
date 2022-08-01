@@ -31,10 +31,13 @@
         android:id="@+id/leftButton"
         android:layout_width="121dp"
         android:layout_height="69dp"
-        android:text="Last"
+        android:layout_below="@id/imageView2"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:backgroundTint="@color/button"
         android:onClick="onLeftClick"
-        android:layout_below="@id/imageView2" />
+        android:text="Last"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/rightButton"
@@ -43,6 +46,9 @@
         android:layout_below="@id/imageView2"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:backgroundTint="@color/button"
+        android:textStyle="bold"
         android:onClick="onRightClick"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"

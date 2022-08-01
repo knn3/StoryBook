@@ -7,7 +7,7 @@
     <dimen name="textsize">25dp</dimen>
     <dimen name="photo_size">150dp</dimen>
     <dimen name="photo_size2">200dp</dimen>
-
+    <dimen name="layout">100dp</dimen>
     <dimen name="photo_size3">300dp</dimen>
     <dimen name="activity_horizontal_margin3">60dp</dimen>
 </resources>

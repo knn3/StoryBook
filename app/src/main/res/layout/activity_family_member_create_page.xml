@@ -84,9 +84,10 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
 
+            android:backgroundTint="@color/button"
             android:onClick="uploadFM"
             android:text="ADD"
-            android:textColor="@color/text_color"
+            android:textColor="@color/white"
             android:textSize="35sp"
             android:textStyle="bold" />
     </RelativeLayout>

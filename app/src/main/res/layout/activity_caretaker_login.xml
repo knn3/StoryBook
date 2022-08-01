@@ -24,15 +24,16 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/toolbar"
         android:layout_marginTop="@dimen/activity_horizontal_margin2">
+
         <TextView
+            android:id="@+id/userinfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/userinfo"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:text="Enter your Email:"
-            android:textStyle="bold"
             android:textColor="@color/text_color"
             android:textSize="35dp"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:textStyle="bold"
 
             />
 
@@ -66,17 +67,19 @@
             android:inputType="textPassword"/>
 
     </RelativeLayout>
+
     <Button
         android:id="@+id/loginButton"
         android:layout_width="247dp"
         android:layout_height="74dp"
-        android:layout_marginTop="88dp"
-        android:text="Login"
         android:layout_below="@+id/inputinfo"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="88dp"
+        android:text="Login"
+        android:backgroundTint="@color/button"
+        android:textColor="@color/white"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:textColor="@color/text_color"
 
         />
 
@@ -87,6 +90,7 @@
         android:layout_below="@id/loginButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:backgroundTint="@color/button"
         android:onClick="registerLinkClicked"
         android:text="No account? Register"
         android:textStyle="bold" />

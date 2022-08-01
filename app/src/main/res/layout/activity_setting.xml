@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Setting">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue"
+        app:logo="@drawable/gallery"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:subtitle="setting page"
+        android:onClick="onBackClick"
+        app:title="@string/app_name"
+        app:titleMarginStart="90dp" />
     <Button
         android:id="@+id/Caretakerbtn"
-        android:layout_width="200dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="76dp"
-        android:onClick="switchCTmode"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="@dimen/photo_size3"
+        android:gravity="bottom"
+        android:backgroundTint="@color/button"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nightmodeswitch"
+        android:layout_marginTop="@dimen/layout"
+        android:layout_centerHorizontal="true"
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="69dp"
-        android:layout_height="59dp"
-        android:background="#00FFFFFF"
-        android:onClick="onBackClick"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+        android:onClick="switchCTmode"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/StatusText"
@@ -31,22 +38,23 @@
         android:layout_marginTop="52dp"
         android:gravity="center"
         android:text="In Cared Mode"
-        android:textSize="24sp"
+        android:layout_below="@+id/toolbar"
+        android:textSize="@dimen/activity_horizontal_margin2"
+        android:textColor="@color/text_color"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true"
+        />
 
     <Switch
         android:id="@+id/nightmodeswitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_below="@+id/StatusText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/layout"
         android:text="NightMode"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/activity_horizontal_margin"
+
         app:layout_constraintTop_toBottomOf="@+id/StatusText" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

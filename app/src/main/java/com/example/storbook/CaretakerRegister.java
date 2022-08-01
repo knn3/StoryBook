@@ -110,4 +110,9 @@ public class CaretakerRegister extends AppCompatActivity {
 
 
     }
+    //back button
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, MainActivity.class);
+        this.startActivity(myIntent);
+    }
 }

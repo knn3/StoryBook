@@ -109,14 +109,14 @@
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/regist"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="Register"
-        android:textColor="@color/text_color"
-        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/button"
         android:textSize="30dp"
-        />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/registerLink"
@@ -124,6 +124,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:backgroundTint="@color/button"
+        android:textStyle="bold"
         android:text="Account already made? \nLogin"
         android:layout_below="@+id/loginButton"
         android:onClick="loginLinkClicked"/>

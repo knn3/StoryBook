@@ -37,7 +37,8 @@
         android:layout_centerHorizontal="true"
 
         android:text="Select Image"
-        android:textColor="#2E7D32"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/button"
         android:textSize="15sp"
         android:textStyle="bold" />
 
@@ -49,7 +50,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="Upload Media"
-        android:textColor="#2E7D32"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/button"
         android:textSize="15sp"
         android:textStyle="bold" />
 
@@ -69,8 +71,9 @@
         android:layout_below="@+id/selectImagebtn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:backgroundTint="@color/button"
         android:text="Select Video"
-        android:textColor="#2E7D32"
+        android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold" />
 
@@ -82,7 +85,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="choose belong to"
-        android:textColor="#2E7D32"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/button"
         android:textSize="15sp"
         tools:textStyle="bold" />
 

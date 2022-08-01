@@ -76,16 +76,16 @@
 
         <Button
             android:id="@+id/addFRbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/layout"
+            android:layout_height="@dimen/activity_horizontal_margin3"
             android:layout_below="@id/FriendNumberInfo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-
             android:onClick="uploadFR"
             android:text="ADD"
-            android:textColor="@color/text_color"
-            android:textSize="35sp"
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold"
+            android:backgroundTint="@color/button" />
     </RelativeLayout>
 </RelativeLayout>
