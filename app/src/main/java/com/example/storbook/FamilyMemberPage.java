@@ -134,12 +134,12 @@ public class FamilyMemberPage extends AppCompatActivity {
             newInfo = "No Information.";
         }
         // check if the name is already existed
-        for (int i = 0; i < ((global) this.getApplication()).AllFMembers.size(); i++){
-            if (((global) this.getApplication()).AllFMembers.get(i).name.equals(newName)){
-                noDuplication = false;
-                Toast.makeText(getApplicationContext(), "Family member has the same name already exists!", Toast.LENGTH_SHORT).show();
-            }
-        }
+//        for (int i = 0; i < ((global) this.getApplication()).AllFMembers.size(); i++){
+//            if (((global) this.getApplication()).AllFMembers.get(i).name.equals(newName)){
+//                noDuplication = false;
+//                Toast.makeText(getApplicationContext(), "Family member has the same name already exists!", Toast.LENGTH_SHORT).show();
+//            }
+//        }
         if (newName.isEmpty() || newRelation.isEmpty()){
             Toast.makeText(getApplicationContext(), "Name, relation fields cannot be empty.", Toast.LENGTH_SHORT).show();
         }
