@@ -50,13 +50,14 @@
 
 
         <ImageButton
-            android:id="@+id/manggefriends"
+            android:id="@+id/managefriends"
             android:layout_width="@dimen/photo_size"
             android:layout_height="@dimen/photo_size"
             android:layout_marginLeft="60dp"
             android:layout_toRightOf="@+id/fammanage"
             android:background="@drawable/friendship"
             android:onClick="manageFriends" />
+
 
         <TextView
             android:id="@+id/upload"

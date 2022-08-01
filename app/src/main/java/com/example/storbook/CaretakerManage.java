@@ -38,4 +38,10 @@ public class CaretakerManage extends AppCompatActivity {
         finish();
     }
 
+    public void manageStat(View view){
+        Intent intent = new Intent(this, CaretakerStat.class);
+        this.startActivity(intent);
+        finish();
+    }
+
 }

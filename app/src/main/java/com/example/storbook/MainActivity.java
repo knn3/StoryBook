@@ -110,10 +110,6 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(myIntent);
     }
 
-    public void goStat (View view){
-        //Intent myIntent = new Intent(MainActivity.this, CaretakerMain.class);
-       // MainActivity.this.startActivity(myIntent);
-    }
     public void goGallery (View view){
         Intent myIntent = new Intent(MainActivity.this, GalleryOfPhotoAndVideo.class);
         MainActivity.this.startActivity(myIntent);
@@ -122,6 +118,11 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(MainActivity.this, peopleActivity.class);
         MainActivity.this.startActivity(myIntent);
 
+    }
+
+    public void goStat(View view){
+        Intent myIntent = new Intent(MainActivity.this, CaretakerStat.class);
+        MainActivity.this.startActivity(myIntent);
     }
     public void goSettingActivity(View v){
         Intent myIntent = new Intent(MainActivity.this, Setting.class);

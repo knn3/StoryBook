@@ -67,7 +67,7 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/photo_size"
             android:background="@drawable/dashboard"
-            android:onClick="goGallery"
+            android:onClick="goStat"
             android:text="@string/image_edit"
             android:textColor="#455A64"
             android:visibility="visible" />
@@ -140,6 +140,7 @@
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content">
+
         <ImageButton
             android:id="@+id/gallerybtn"
             android:layout_width="@dimen/photo_size"
