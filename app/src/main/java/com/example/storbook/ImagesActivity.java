@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -62,6 +65,8 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         mDatabaseRef = FirebaseFirestore.getInstance();
 
         // get array of imageUrls
+
+
         mImgUrls = ((global) this.getApplication()).picutreUrls;
 
         for(String imgUrl : mImgUrls) {
@@ -70,7 +75,6 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         }
 
     }
-
 
     // normal click on image
     @Override
@@ -106,6 +110,9 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
             }
         });
 
+//        ImageUrls imageUrl = new ImageUrls(selectedImg);
+//
+//        mImgUrl.remove(imageUrl);
 
 
         // delete image in firebase cloud storage
@@ -114,7 +121,7 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(ImagesActivity.this, "Successfully Deleted from Storage", Toast.LENGTH_SHORT).show();
-
+                deleteLocal(position);
                 // after deleted, refresh the activity to render the images again
                 finish();
                 startActivity(new Intent(ImagesActivity.this, ImagesActivity.class));
@@ -127,6 +134,17 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
     public void onBackClick(View v){
         Intent myIntent = new Intent(this, CaretakerManage.class);
         this.startActivity(myIntent);
+    }
+
+    public boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null;
+    }
+
+    public void deleteLocal(int position){
+        ((global) this.getApplication()).picutreUrls.remove(position);
     }
 
 }
