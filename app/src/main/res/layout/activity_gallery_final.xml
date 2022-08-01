@@ -21,10 +21,10 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_horizontal_margin4"
         android:layout_below="@+id/toolbar"
+        android:layout_marginTop="50dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
@@ -32,7 +32,9 @@
         android:layout_width="121dp"
         android:layout_height="69dp"
         android:layout_below="@id/imageView2"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="@color/button"
         android:onClick="onLeftClick"
         android:text="Last"
@@ -45,12 +47,14 @@
         android:layout_height="73dp"
         android:layout_below="@id/imageView2"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:textSize="@dimen/activity_horizontal_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="@color/button"
-        android:textStyle="bold"
         android:onClick="onRightClick"
         android:text="Next"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
