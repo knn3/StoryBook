@@ -21,7 +21,7 @@ public class GalleryFinal extends AppCompatActivity {
     private List<String> mImgUrl;
     private List<String> mImgTitle;
     private List<String> mImgDesc;
-    int currentEntry = 0;
+    int currentEntry;
     int sizeOfList;
     ImageView imageView;
     TextView title;
@@ -34,6 +34,13 @@ public class GalleryFinal extends AppCompatActivity {
         imageView = findViewById(R.id.imageView2);
         //Get URLs
 
+        currentEntry = 0;
+        Intent intent = this.getIntent();
+        // Get the carried out information
+        if (intent != null) {
+            currentEntry = intent.getIntExtra("position",0);
+        }
+
         title = (TextView) findViewById(R.id.titleView);
         desc = (TextView) findViewById(R.id.descView);
 
@@ -43,9 +50,9 @@ public class GalleryFinal extends AppCompatActivity {
         sizeOfList = mImgUrl.size();
 
         if(sizeOfList > 0) {
-            Glide.with(this).load(mImgUrl.get(0)).into(imageView);
-            title.setText(mImgTitle.get(0));
-            desc.setText(mImgDesc.get(0));
+            Glide.with(this).load(mImgUrl.get(currentEntry)).into(imageView);
+            title.setText(mImgTitle.get(currentEntry));
+            desc.setText(mImgDesc.get(currentEntry));
         }
         else{
             Toast.makeText(this, "No photos uploaded!", Toast.LENGTH_LONG).show();
@@ -56,7 +63,7 @@ public class GalleryFinal extends AppCompatActivity {
 
     //back button
     public void onBackClick(View v){
-        Intent myIntent = new Intent(this, GalleryOfPhotoAndVideo.class);
+        Intent myIntent = new Intent(this, GalleryPictureScroll.class);
         this.startActivity(myIntent);
     }
 

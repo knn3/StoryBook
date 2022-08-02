@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -784,5 +785,26 @@ public class global extends Application {
                         });
             }
         }
+    }
+
+    ///////////////////////////////////////////
+    // Statistic part functions:
+
+    // To get the targetFile clicked time ++1
+    public void updateMediaTimeClicked(int position){
+        if (position >= this.picutreFilename.size()){return;}
+        String targetFileName = this.picutreFilename.get(position);
+        db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        db.collection("users").document(user.getUid()).collection("Media").document(targetFileName).update("ClickedTime", FieldValue.increment(1));
+    }
+
+    // To get the targetFile clicked time ++1
+    public void updateRecentTimeClicked(int position, String time){
+        if (position >= this.picutreFilename.size()){return;}
+        String targetFileName = this.picutreFilename.get(position);
+        db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        db.collection("users").document(user.getUid()).collection("Media").document(targetFileName).update("RecentTimeClicked", time);
     }
 }
