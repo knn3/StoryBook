@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -49,6 +51,47 @@ public class global extends Application {
     ProgressDialog progressDialog;
     StorageReference storageReference;
 
+    String UserName;
+    String passWord;
+
+    public void refreshUserNameandPassword(){
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+        // Gets user password from the database
+        DocumentReference docRef = db.collection("users").document(user.getUid());
+
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+
+                        passWord = (String) document.getString("passWord");
+                        UserName = (String) document.getString("userName");
+
+                        writeStringToSharedPreference("UserName", UserName);
+                        writeStringToSharedPreference("PassWord", passWord);
+
+                        UserName = readStringFromSharedPreference("UserName", UserName);
+                        passWord = readStringFromSharedPreference("PassWord", passWord);
+
+                        Log.d("db", "Refreshed the UserName and password");
+
+                    } else {
+                        Log.d("db", "No such document");
+                    }
+                } else {
+                    Log.d("db", "get failed with ", task.getException());
+                }
+            }
+        });
+        this.UserName = readStringFromSharedPreference("UserName", this.UserName);
+        this.passWord = readStringFromSharedPreference("PassWord", this.passWord);
+    }
+
+    public String getlocalUsername;
+
 
     /////////////////////****************
     // Shared preference All local changes can be stored in here!!!
@@ -72,9 +115,9 @@ public class global extends Application {
         return integer;
     }
 
-    public String readStringFromSharedPreference(String TargetName) {
+    public String readStringFromSharedPreference(String TargetName, String defaultString) {
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.example.storbook", Context.MODE_PRIVATE);
-        String string = sharedPreferences.getString(TargetName, "");
+        String string = sharedPreferences.getString(TargetName, defaultString);
         return string;
     }
 

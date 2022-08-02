@@ -2,6 +2,7 @@ package com.example.storbook;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -73,6 +74,17 @@ public class FamilyMemberMainPage extends AppCompatActivity {
 
             mode = intent.getIntExtra("Mode", 0);
 
+        }
+
+        Toolbar bar = findViewById(R.id.toolbar);
+        if (((global)this.getApplication()).isCaretaker && mode == 0){
+            bar.setSubtitle("Manage Family");
+        }
+        else if (((global)this.getApplication()).isCaretaker && mode == 1){
+            bar.setSubtitle("Choose Family");
+        }
+        else{
+            bar.setSubtitle("View Family");
         }
 
         //Refresh the page with the stored information

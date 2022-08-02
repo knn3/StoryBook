@@ -11,13 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/blue"
-        app:logo="@drawable/gallery"
         android:onClick="onBackClick"
+        app:logo="@drawable/gallery"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:subtitle="view people"
+        app:subtitle="View People"
         app:title="@string/app_name"
-        app:titleMarginStart="90dp"
-        />
+        app:titleMarginStart="90dp" />
 
     <RelativeLayout
         android:layout_width="wrap_content"

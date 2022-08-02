@@ -2,6 +2,7 @@ package com.example.storbook;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -51,6 +52,7 @@ public class FriendMemberMainPage extends AppCompatActivity {
 
 
 
+
         Intent i = new Intent(this, FriendMemberCreatePage.class);
         binding.AddFR.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -74,6 +76,17 @@ public class FriendMemberMainPage extends AppCompatActivity {
 
             mode = intent.getIntExtra("Mode", 0);
 
+        }
+
+        Toolbar bar = findViewById(R.id.toolbar);
+        if (((global)this.getApplication()).isCaretaker && mode == 0){
+            bar.setSubtitle("Manage Friend");
+        }
+        else if (((global)this.getApplication()).isCaretaker && mode == 1){
+            bar.setSubtitle("Choose Friend");
+        }
+        else{
+            bar.setSubtitle("View Friend");
         }
 
         //Refresh the page with the stored information

@@ -15,7 +15,7 @@ public class GalleryOfPhotoAndVideo extends AppCompatActivity {
         setContentView(R.layout.activity_gallery_of_photo_and_video);
         Toolbar bar = findViewById(R.id.toolbar);
         if (((global)this.getApplication()).isCaretaker){
-            bar.setSubtitle("Upload Page");
+            bar.setSubtitle("Statistic Gallery Page");
         }
         else{
             bar.setSubtitle("Gallery Page");

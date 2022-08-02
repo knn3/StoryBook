@@ -1,6 +1,7 @@
 package com.example.storbook;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,6 +40,8 @@ public class GalleryVideoScroll extends AppCompatActivity implements VideoPwdAda
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
+        Toolbar bar = findViewById(R.id.toolbar);
+        bar.setSubtitle("Video Gallery");
 
         mStorage = FirebaseStorage.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -85,7 +88,7 @@ public class GalleryVideoScroll extends AppCompatActivity implements VideoPwdAda
         ((global) this.getApplication()).videoUrls.remove(position);
     }
     public void onBackClick(View v){
-        Intent myIntent = new Intent(this, ManageVideoAndPhotoPage.class);
+        Intent myIntent = new Intent(this, GalleryOfPhotoAndVideo.class);
         this.startActivity(myIntent);
     }
 }

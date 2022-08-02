@@ -2,6 +2,7 @@ package com.example.storbook;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.Application;
 import android.content.Intent;
@@ -29,8 +30,6 @@ public class PasswordAuth extends AppCompatActivity {
     Button Accessbtn;
     FirebaseAuth fAuth;
     FirebaseFirestore db;
-    DocumentSnapshot document;
-    String truepwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,30 +40,11 @@ public class PasswordAuth extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        // Gets user password from the database
-        DocumentReference docRef = db.collection("users").document(fAuth.getUid());
 
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
+        String Turepassword = ((global)this.getApplication()).passWord;
 
-                        Log.d("db", "DocumentSnapshot data: " + document.getData());
-                        Log.d("db", "db firstName getString() is: " + document.getString("passWord"));
-                        truepwd = (String) document.getString("passWord");
-
-                        Log.d("db", "pwd is: " + truepwd);
-
-                    } else {
-                        Log.d("db", "No such document");
-                    }
-                } else {
-                    Log.d("db", "get failed with ", task.getException());
-                }
-            }
-        });
+        Toolbar bar = findViewById(R.id.toolbar);
+        bar.setSubtitle("Use password to access");
 
         // Click the "ACCESS" button
         Accessbtn.setOnClickListener(new View.OnClickListener(){
@@ -72,7 +52,7 @@ public class PasswordAuth extends AppCompatActivity {
             public void onClick(View v) {
                 // Compare the password entered with the password retrieved from the database
                 String password = CTpassword.getText().toString().trim();
-                if (password.equals(truepwd)) {
+                if (password.equals(Turepassword)) {
                     // If correct set to CT mode and jump back to setting page
                     setToCT();
                     Toast.makeText(PasswordAuth.this, "Switched to CareTaker mode!", Toast.LENGTH_SHORT).show();

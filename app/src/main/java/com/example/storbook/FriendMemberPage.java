@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 
@@ -64,6 +65,14 @@ public class FriendMemberPage extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         user = fAuth.getCurrentUser();
         isAvatarset = false;
+
+        Toolbar bar = findViewById(R.id.toolbar);
+        if (((global)this.getApplication()).isCaretaker){
+            bar.setSubtitle("Edit Friend Member");
+        }
+        else{
+            bar.setSubtitle("Friend Member");
+        }
 
 
         Intent intent = this.getIntent();
@@ -112,7 +121,7 @@ public class FriendMemberPage extends AppCompatActivity {
             binding.frinformation.setEnabled(false);
             binding.frname.setEnabled(false);
             binding.profileImage.setClickable(false);
-            binding.mediabtn.setText("media");
+            binding.mediabtn.setText("Contact");
         }
 
     }
@@ -158,7 +167,7 @@ public class FriendMemberPage extends AppCompatActivity {
         isAvatarset = false;
     }
 
-    public void deleteOrMeida(View v){
+    public void deleteOrContact(View v){
         if (((global) this.getApplication()).isCaretaker) {
             ((global) this.getApplication()).deleteFriendMember(name, positionIndex);
             Toast.makeText(getApplicationContext(), "Friend Member Deleted!", Toast.LENGTH_SHORT).show();
@@ -166,14 +175,12 @@ public class FriendMemberPage extends AppCompatActivity {
             this.startActivity(myIntent);
         }
         else{
-            Intent i = new Intent(this, GalleryActivity.class);
-            i.putExtra("Name", name);
-            i.putExtra("Email", email);
-            i.putExtra("imageID", imageurl);
-            i.putExtra("Info", info);
-            i.putExtra("position", positionIndex);
-            startActivity(i);
-            this.startActivity(i);
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("plain/text");
+            intent.putExtra(Intent.EXTRA_EMAIL, "email");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "From Story Book");
+            intent.putExtra(Intent.EXTRA_TEXT, "To " + email + ": Hi " + name + " I am " + ((global)this.getApplication()).UserName);
+            startActivity(Intent.createChooser(intent, ""));
         }
     }
 

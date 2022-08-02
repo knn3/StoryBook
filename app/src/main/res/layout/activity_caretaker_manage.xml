@@ -6,18 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CaretakerManage">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/blue"
+        android:onClick="onBackClick"
         app:logo="@drawable/gallery"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:subtitle="manage page"
+        app:subtitle="Manage Page"
         app:title="@string/app_name"
-        android:onClick="onBackClick"
-        app:titleMarginStart="90dp"
-        />
+        app:titleMarginStart="90dp" />
 
     <RelativeLayout
         android:id="@+id/manageinfo"

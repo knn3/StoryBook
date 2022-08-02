@@ -71,7 +71,7 @@ public class VideoGallery extends AppCompatActivity {
     }
 
     public void onBackClick(View v){
-        Intent myIntent = new Intent(this, GalleryOfPhotoAndVideo.class);
+        Intent myIntent = new Intent(this, GalleryVideoScroll.class);
         this.startActivity(myIntent);
     }
 

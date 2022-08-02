@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         if (isNetworkAvailable()) {
             ((global) this.getApplication()).refreshpictureUrls();
             ((global) this.getApplication()).refreshFMlist();
-
+            ((global) this.getApplication()).refreshUserNameandPassword();
             ((global) this.getApplication()).refreshFRlist();
         }
     }
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             pwdpage.setEnabled(false);
             ctpage.setEnabled(true);
             ctpage.setVisibility(View.VISIBLE);
-            mtoolbar.setSubtitle("Caretaker main page");
+            mtoolbar.setSubtitle("Caretaker Main Page");
 
         }
         else{
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             ctpage.setEnabled(false);
             pwdpage.setEnabled(true);
             pwdpage.setVisibility(View.VISIBLE);
-            mtoolbar.setSubtitle("Main page");
+            mtoolbar.setSubtitle("Main Page");
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.storbook;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -66,6 +67,13 @@ public class FamilyMemberPage extends AppCompatActivity {
         user = fAuth.getCurrentUser();
         isAvatarset = false;
 
+        Toolbar bar = findViewById(R.id.toolbar);
+        if (((global)this.getApplication()).isCaretaker){
+            bar.setSubtitle("Edit Family Member");
+        }
+        else{
+            bar.setSubtitle("Family Member");
+        }
 
         Intent intent = this.getIntent();
         // Get the carried out information

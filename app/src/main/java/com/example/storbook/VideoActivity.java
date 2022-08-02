@@ -1,6 +1,7 @@
 package com.example.storbook;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +37,9 @@ public class VideoActivity extends AppCompatActivity implements VideoAdapter.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
+
+        Toolbar bar = findViewById(R.id.toolbar);
+        bar.setSubtitle("Hold to Delete Video");
 
         mStorage = FirebaseStorage.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();

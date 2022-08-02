@@ -2,6 +2,7 @@ package com.example.storbook;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,6 +49,9 @@ public class GalleryPictureScroll extends AppCompatActivity implements ImagePwdA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_images);
+
+        Toolbar bar = findViewById(R.id.toolbar);
+        bar.setSubtitle("Photo gallery");
 
         // set up recycler view
         mRecyclerView = findViewById(R.id.recycler_view);
@@ -101,7 +105,7 @@ public class GalleryPictureScroll extends AppCompatActivity implements ImagePwdA
 
     //back button
     public void onBackClick(View v){
-        Intent myIntent = new Intent(this, MainActivity.class);
+        Intent myIntent = new Intent(this, GalleryOfPhotoAndVideo.class);
         this.startActivity(myIntent);
     }
 

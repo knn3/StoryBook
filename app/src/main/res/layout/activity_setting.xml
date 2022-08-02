@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/blue"
+        android:onClick="onBackClick"
         app:logo="@drawable/gallery"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:subtitle="setting page"
-        android:onClick="onBackClick"
+        app:subtitle="Setting"
         app:title="@string/app_name"
         app:titleMarginStart="90dp" />
     <Button

@@ -2,6 +2,7 @@ package com.example.storbook;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,6 +47,9 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_images);
+
+        Toolbar bar = findViewById(R.id.toolbar);
+        bar.setSubtitle("Hold to Delete Photo");
 
         // set up recycler view
         mRecyclerView = findViewById(R.id.recycler_view);

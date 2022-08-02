@@ -1,6 +1,7 @@
 package com.example.storbook;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ public class ManageVideoAndPhotoPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_video_and_photo_page);
+        Toolbar bar = findViewById(R.id.toolbar1);
+        bar.setSubtitle("Manage Media");
     }
 
     public void onBackClick(View v){
