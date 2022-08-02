@@ -37,9 +37,8 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
     private FirebaseStorage mStorage;
     private FirebaseUser user;
     private FirebaseFirestore mDatabaseRef;
+
     private List<ImageUrls> mImgUrl;
-    private String fileName;
-    private String belonged;
     ArrayList<String> mImgUrls;
 
 
@@ -67,7 +66,6 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         mDatabaseRef = FirebaseFirestore.getInstance();
 
         // get array of imageUrls
-
 
         mImgUrls = ((global) this.getApplication()).picutreUrls;
 
@@ -118,7 +116,7 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
 
     //back button
     public void onBackClick(View v){
-        Intent myIntent = new Intent(this, CaretakerManage.class);
+        Intent myIntent = new Intent(this, ManageVideoAndPhotoPage.class);
         this.startActivity(myIntent);
     }
 

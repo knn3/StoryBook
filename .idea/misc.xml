@@ -44,18 +44,32 @@
         <entry key="app/src/main/res/layout/activity_caretaker_uploading.xml" value="0.324761372183197" />
         <entry key="app/src/main/res/layout/activity_family_member_create_page.xml" value="0.32853271124693667" />
         <entry key="app/src/main/res/layout/activity_family_member_main_page.xml" value="0.26055733999147906" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_family_member_page.xml" value="0.29814077362175323" />
         <entry key="app/src/main/res/layout/activity_gallery.xml" value="0.33133817870884996" />
         <entry key="app/src/main/res/layout/activity_gallery_final.xml" value="0.26328563953213147" />
         <entry key="app/src/main/res/layout/activity_gallery_picture_scroll.xml" value="0.16193063100710406" />
         <entry key="app/src/main/res/layout/activity_images.xml" value="0.15566234851650648" />
+=======
+        <entry key="app/src/main/res/layout/activity_gallery.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_gallery_final.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_gallery_of_photo_and_video.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_images.xml" value="0.3098958333333333" />
+>>>>>>> deleteVideo
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5871212121212122" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.14322359982898675" />
+        <entry key="app/src/main/res/layout/activity_manage_video_and_photo_page.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_overall_setting.xml" value="0.3055029199953315" />
         <entry key="app/src/main/res/layout/activity_password_auth.xml" value="0.2812115611321042" />
         <entry key="app/src/main/res/layout/activity_pwd.xml" value="0.1899365367180417" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.3260086340086742" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_user.xml" value="0.2801114781750728" />
+=======
+        <entry key="app/src/main/res/layout/activity_user.xml" value="0.16193063100710406" />
+        <entry key="app/src/main/res/layout/activity_video.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_video_gallery.xml" value="0.3098958333333333" />
+>>>>>>> deleteVideo
         <entry key="app/src/main/res/layout/family_member_list_item.xml" value="0.16193063100710406" />
         <entry key="app/src/main/res/layout/fragment__member_view.xml" value="0.16193063100710406" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.2624283117430492" />

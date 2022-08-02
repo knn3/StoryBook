@@ -6,8 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".VideoActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue"
+        android:onClick="onBackClick"
+        app:logo="@drawable/gallery"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:subtitle="upload page"
+        app:title="@string/app_name"
+        app:titleMarginStart="90dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_for_edit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"/>
 </RelativeLayout>

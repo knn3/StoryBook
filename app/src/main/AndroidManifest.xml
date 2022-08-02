@@ -21,6 +21,9 @@
             android:name=".GalleryPictureScroll"
             android:exported="false" />
         <activity
+            android:name=".ManageVideoAndPhotoPage"
+            android:exported="false" />
+        <activity
             android:name=".FriendMemberPage"
             android:exported="false" />
         <activity
