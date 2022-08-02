@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Storbook.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".ManageVideoAndPhotoPage"
+            android:exported="false" />
+        <activity
             android:name=".FriendMemberPage"
             android:exported="false" />
         <activity
@@ -96,7 +99,6 @@
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Storbook.NoActionBar" />
-
     </application>
 
 </manifest>

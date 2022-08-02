@@ -253,6 +253,8 @@ public class global extends Application {
     ArrayList<String> videoUrls;
     ArrayList<String> videoTitles;
     ArrayList<String> videoDescriptions;
+    ArrayList<String> videoBelonged;
+    ArrayList<String> videoFilename;
 
 
     // Refresh urls
@@ -293,6 +295,8 @@ public class global extends Application {
         this.videoUrls = new ArrayList<>();
         this.videoTitles = new ArrayList<>();
         this.videoDescriptions = new ArrayList<>();
+        this.videoBelonged = new ArrayList<>();
+        this.videoFilename = new ArrayList<>();
         mDatabaseRef.collection("users")
                 .document(user.getUid())
                 .collection("Media")
@@ -306,6 +310,8 @@ public class global extends Application {
                                 videoUrls.add(aMedia.get("Url").toString());
                                 videoTitles.add(aMedia.get("Title").toString());
                                 videoDescriptions.add(aMedia.get("Description").toString());
+                                videoBelonged.add(aMedia.get("Belonged").toString());
+                                videoFilename.add(aMedia.get("FileName").toString());
                             }
                         }
                     }

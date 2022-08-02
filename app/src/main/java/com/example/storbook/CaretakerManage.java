@@ -33,7 +33,7 @@ public class CaretakerManage extends AppCompatActivity {
     }
 
     public void manageGallery(View view){
-        Intent intent = new Intent(this, ImagesActivity.class);
+        Intent intent = new Intent(this, ManageVideoAndPhotoPage.class);
         this.startActivity(intent);
         finish();
     }
