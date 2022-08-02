@@ -84,11 +84,11 @@ public class GalleryPictureScroll extends AppCompatActivity implements ImagePwdA
         Intent i = new Intent(GalleryPictureScroll.this, GalleryFinal.class);
         i.putExtra("position", position);
         if(!((global)this.getApplication()).isCaretaker()) {
-            ((global) this.getApplication()).updateMediaTimeClicked(position);
+            ((global) this.getApplication()).updatePictureTimeClicked(position);
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.CANADA);
             Date now = new Date();
             String time = formatter.format(now);
-            ((global) this.getApplication()).updateRecentTimeClicked(position, time);
+            ((global) this.getApplication()).updateRecentTimeClickedforPicture(position, time);
         }
         startActivity(i);
     }

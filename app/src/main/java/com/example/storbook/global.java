@@ -796,8 +796,8 @@ public class global extends Application {
     ///////////////////////////////////////////
     // Statistic part functions:
 
-    // To get the targetFile clicked time ++1
-    public void updateMediaTimeClicked(int position){
+    // To get the target picture clicked time ++1
+    public void updatePictureTimeClicked(int position){
         if (position >= this.picutreFilename.size()){return;}
         String targetFileName = this.picutreFilename.get(position);
         db = FirebaseFirestore.getInstance();
@@ -805,10 +805,28 @@ public class global extends Application {
         db.collection("users").document(user.getUid()).collection("Media").document(targetFileName).update("ClickedTime", FieldValue.increment(1));
     }
 
-    // To get the targetFile clicked time ++1
-    public void updateRecentTimeClicked(int position, String time){
+    // To get the update the targetFile's most recent time clicked
+    public void updateRecentTimeClickedforPicture(int position, String time){
         if (position >= this.picutreFilename.size()){return;}
         String targetFileName = this.picutreFilename.get(position);
+        db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        db.collection("users").document(user.getUid()).collection("Media").document(targetFileName).update("RecentTimeClicked", time);
+    }
+
+    // To get the target picture clicked time ++1
+    public void updateVideoTimeClicked(int position){
+        if (position >= this.videoFilename.size()){return;}
+        String targetFileName = this.videoFilename.get(position);
+        db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        db.collection("users").document(user.getUid()).collection("Media").document(targetFileName).update("ClickedTime", FieldValue.increment(1));
+    }
+
+    // To get the update the targetFile's most recent time clicked
+    public void updateRecentTimeClickedforVideo(int position, String time){
+        if (position >= this.videoFilename.size()){return;}
+        String targetFileName = this.videoFilename.get(position);
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         db.collection("users").document(user.getUid()).collection("Media").document(targetFileName).update("RecentTimeClicked", time);

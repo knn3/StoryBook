@@ -22,7 +22,7 @@ public class VideoGallery extends AppCompatActivity {
     private ArrayList<String> mVideoUrl;
     private ArrayList<String> mVideoTitle;
     private ArrayList<String> mVideoDesc;
-    int currentEntry = 0;
+    int currentEntry;
     int sizeOfList;
     VideoView videoView;
     TextView title;
@@ -32,6 +32,14 @@ public class VideoGallery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_gallery);
+
+
+        currentEntry = 0;
+        Intent intent = this.getIntent();
+        // Get the carried out information
+        if (intent != null) {
+            currentEntry = intent.getIntExtra("position",0);
+        }
 
         title = (TextView) findViewById(R.id.titleView2);
         desc = (TextView) findViewById(R.id.descView2);
@@ -44,9 +52,9 @@ public class VideoGallery extends AppCompatActivity {
         videoView = findViewById(R.id.videoView2);
 
         if(sizeOfList > 0) {
-            videoView.setVideoURI(Uri.parse(mVideoUrl.get(0)));
-            title.setText(mVideoTitle.get(0));
-            desc.setText(mVideoDesc.get(0));
+            videoView.setVideoURI(Uri.parse(mVideoUrl.get(currentEntry)));
+            title.setText(mVideoTitle.get(currentEntry));
+            desc.setText(mVideoDesc.get(currentEntry));
 
             //        add playback video
             MediaController mediaController = new MediaController(this);

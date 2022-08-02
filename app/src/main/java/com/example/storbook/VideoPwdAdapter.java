@@ -17,13 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
+public class VideoPwdAdapter extends RecyclerView.Adapter<VideoPwdAdapter.VideoViewHolder> {
     private Context mContext;
     private List<VideoUrls> mVideoUrl;
-    private VideoAdapter.OnItemClickListener mListener;
+    private VideoPwdAdapter.OnItemClickListener mListener;
 
 
-    public VideoAdapter (Context context, List<VideoUrls> url){
+    public VideoPwdAdapter (Context context, List<VideoUrls> url){
         mContext = context;
         mVideoUrl = url;
     }
@@ -36,7 +36,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VideoAdapter.VideoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull VideoPwdAdapter.VideoViewHolder holder, int position) {
         VideoUrls vidCurrent = mVideoUrl.get(position);
 
         holder.videoView.setVideoURI(Uri.parse(vidCurrent.getVideoUrl()));
@@ -93,11 +93,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-            //contextMenu.setHeaderTitle("Edit");
 
-            MenuItem delete = contextMenu.add(Menu.NONE, 1,1, "Delete");
-
-            delete.setOnMenuItemClickListener(this);
         }
 
     }
