@@ -15,12 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
+public class ImagePwdAdapter extends RecyclerView.Adapter<ImagePwdAdapter.ImageViewHolder> {
     private Context mContext;
     private List<ImageUrls> mImageUrl;
     private OnItemClickListener mListener;
 
-    public ImageAdapter(Context context, List<ImageUrls> url){
+    public ImagePwdAdapter(Context context, List<ImageUrls> url){
         mContext = context;
         mImageUrl = url;
     }
@@ -71,9 +71,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         // Create a context menu after do a long click
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-            MenuItem delete = contextMenu.add(Menu.NONE, 1,1, "Delete");
 
-            delete.setOnMenuItemClickListener(this);
         }
 
         @Override

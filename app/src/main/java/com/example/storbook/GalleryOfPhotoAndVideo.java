@@ -21,7 +21,7 @@ public class GalleryOfPhotoAndVideo extends AppCompatActivity {
     }
 
     public void onPhotoClick (View v){
-        Intent myIntent = new Intent(this, GalleryFinal.class);
+        Intent myIntent = new Intent(this, GalleryPictureScroll.class);
         this.startActivity((myIntent));
         this.finish();
     }
