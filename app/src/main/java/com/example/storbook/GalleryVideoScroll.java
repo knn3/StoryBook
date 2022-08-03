@@ -41,7 +41,12 @@ public class GalleryVideoScroll extends AppCompatActivity implements VideoPwdAda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
         Toolbar bar = findViewById(R.id.toolbar);
-        bar.setSubtitle("Video Gallery");
+        if (((global)this.getApplication()).isCaretaker){
+            bar.setSubtitle("Statistic Video Gallery");
+        }
+        else{
+            bar.setSubtitle("Video Gallery");
+        }
 
         mStorage = FirebaseStorage.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();

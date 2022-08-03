@@ -27,6 +27,7 @@ public class VideoGallery extends AppCompatActivity {
     VideoView videoView;
     TextView title;
     TextView desc;
+    TextView stat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class VideoGallery extends AppCompatActivity {
 
         title = (TextView) findViewById(R.id.titleView2);
         desc = (TextView) findViewById(R.id.descView2);
+        stat = (TextView) findViewById(R.id.VideoStat);
 
         mVideoUrl = ((global) this.getApplication()).videoUrls;
         mVideoTitle = ((global) this.getApplication()).videoTitles;
@@ -56,6 +58,9 @@ public class VideoGallery extends AppCompatActivity {
             title.setText(mVideoTitle.get(currentEntry));
             desc.setText(mVideoDesc.get(currentEntry));
 
+            // Add stat part for caretaker mode
+            stat.setText("Time Clicked: " + ((global) this.getApplication()).videoTimeClicked.get(currentEntry) + "\n" + "Recent time clicked: " + ((global) this.getApplication()).videoRecentTimeClicked.get(currentEntry));
+
             //        add playback video
             MediaController mediaController = new MediaController(this);
             mediaController.setAnchorView(videoView);
@@ -68,6 +73,11 @@ public class VideoGallery extends AppCompatActivity {
             Intent myIntent = new Intent(this, MainActivity.class);
             this.startActivity(myIntent);
         }
+        // Show the stat only for caretakers
+        if (((global)this.getApplication()).isCaretaker) {
+            stat.setVisibility(View.VISIBLE);
+        }
+        else{stat.setVisibility(View.INVISIBLE);}
     }
 
     public void onBackClick(View v){

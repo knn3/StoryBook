@@ -51,7 +51,12 @@ public class GalleryPictureScroll extends AppCompatActivity implements ImagePwdA
         setContentView(R.layout.activity_images);
 
         Toolbar bar = findViewById(R.id.toolbar);
-        bar.setSubtitle("Photo gallery");
+        if (((global)this.getApplication()).isCaretaker){
+            bar.setSubtitle("Statistic Photo Gallery Page");
+        }
+        else{
+            bar.setSubtitle("Photo Gallery");
+        }
 
         // set up recycler view
         mRecyclerView = findViewById(R.id.recycler_view);

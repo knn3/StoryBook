@@ -26,6 +26,7 @@ public class GalleryFinal extends AppCompatActivity {
     ImageView imageView;
     TextView title;
     TextView desc;
+    TextView stat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,22 +44,33 @@ public class GalleryFinal extends AppCompatActivity {
 
         title = (TextView) findViewById(R.id.titleView);
         desc = (TextView) findViewById(R.id.descView);
+        stat = (TextView) findViewById(R.id.PictureStat);
 
         mImgUrl = ((global) this.getApplication()).picutreUrls;
         mImgTitle = ((global) this.getApplication()).picutreTitles;
         mImgDesc = ((global) this.getApplication()).picutreDescriptions;
+
         sizeOfList = mImgUrl.size();
 
         if(sizeOfList > 0) {
             Glide.with(this).load(mImgUrl.get(currentEntry)).into(imageView);
             title.setText(mImgTitle.get(currentEntry));
             desc.setText(mImgDesc.get(currentEntry));
+
+            //Add stat part for caretaker mode
+            stat.setText("Time Clicked: " + ((global) this.getApplication()).pictureTimeClicked.get(currentEntry) + "\n" + "Recent time clicked: " + ((global) this.getApplication()).pictureRecentTimeClicked.get(currentEntry));
         }
         else{
             Toast.makeText(this, "No photos uploaded!", Toast.LENGTH_LONG).show();
             Intent myIntent = new Intent(this, MainActivity.class);
             this.startActivity(myIntent);
         }
+
+        // Show the stat only for caretakers
+        if (((global)this.getApplication()).isCaretaker) {
+            stat.setVisibility(View.VISIBLE);
+        }
+        else{stat.setVisibility(View.INVISIBLE);}
     }
 
     //back button
