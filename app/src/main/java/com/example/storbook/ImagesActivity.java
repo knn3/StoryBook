@@ -96,26 +96,33 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         mDatabaseRef.collection("users").document(user.getUid()).update("media", FieldValue.arrayRemove(selectedImg));
 
         //
-        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").document(((global)this.getApplication()).picutreFilename.get(position)).delete();
-
-        if (!((global)this.getApplication()).picutreBelonged.get(position).equals("")){
-            mDatabaseRef.collection("users").document(user.getUid()).collection("FamilyMember").document(((global)this.getApplication()).picutreBelonged.get(position)).update("media", FieldValue.arrayRemove(((global)this.getApplication()).picutreFilename.get(position)));
-        }
-
-
-        // delete image in firebase cloud storage
-        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedImg);
-        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+        mDatabaseRef.collection("users").document(user.getUid()).collection("Media").document(((global)this.getApplication()).picutreFilename.get(position)).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(ImagesActivity.this, "Successfully Deleted from Storage", Toast.LENGTH_SHORT).show();
-                deleteLocal(position);
-                // after deleted, refresh the activity to render the images again
-                finish();
-                startActivity(new Intent(ImagesActivity.this, ImagesActivity.class));
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+
+                    // reference to firestore and use url to delete in the array using arrayRemove()
+                    mDatabaseRef.collection("users").document(user.getUid()).update("media", FieldValue.arrayRemove(selectedImg));
+                    updateRelatedMember(position);
+
+                    // delete image in firebase cloud storage
+                    StorageReference imageRef = mStorage.getReferenceFromUrl(selectedImg);
+                    imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(ImagesActivity.this, "Successfully Deleted from Storage", Toast.LENGTH_SHORT).show();
+                            deleteLocal(position);
+                            // after deleted, refresh the activity to render the images again
+                            finish();
+                            startActivity(new Intent(ImagesActivity.this, ImagesActivity.class));
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(ImagesActivity.this, "Unsuccessfully Deletion", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
     }
 
     //back button
@@ -127,6 +134,19 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
 
     public void deleteLocal(int position){
         ((global) this.getApplication()).picutreUrls.remove(position);
+        ((global) this.getApplication()).picutreFilename.remove(position);
+        ((global) this.getApplication()).picutreBelonged.remove(position);
+    }
+
+    public void updateRelatedMember(int position){
+        // To update the related member
+        if (!((global)this.getApplication()).picutreBelonged.get(position).equals("")){
+            mDatabaseRef.collection("users").document(user.getUid()).collection("FamilyMember").document(((global)this.getApplication()).picutreBelonged.get(position)).update("media", FieldValue.arrayRemove(((global)this.getApplication()).picutreFilename.get(position)));
+        }
+    }
+
+    public void refreshAllurl(){
+        ((global)this.getApplication()).refreshpictureUrls();
     }
 
 }
