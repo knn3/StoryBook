@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
@@ -36,8 +38,9 @@ public class ImagePwdAdapter extends RecyclerView.Adapter<ImagePwdAdapter.ImageV
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         ImageUrls imgCurrent = mImageUrl.get(position);
         // Using Picasso to load the image to the imageView
-        Picasso.with(mContext)
-                .load(imgCurrent.getUrl()).fit().centerCrop().into(holder.imageView);
+//        Picasso.with(mContext)
+//                .load(imgCurrent.getUrl()).fit().centerCrop().into(holder.imageView);
+        Glide.with(mContext).load(imgCurrent.getUrl()).centerCrop().into(holder.imageView);
     }
 
     @Override
