@@ -50,7 +50,8 @@
         android:textStyle="bold"
         android:backgroundTint="@color/button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/rightButtonForVideo"
@@ -65,7 +66,8 @@
         android:layout_alignParentEnd="true"
         android:onClick="onRightClick"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/titleView2"
