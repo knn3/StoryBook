@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.storbook" >
+    package="com.example.storbook">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,7 +16,10 @@
         android:roundIcon="@drawable/icon2"
         android:supportsRtl="true"
         android:theme="@style/Theme.Storbook.NoActionBar"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".CaretakerStat"
+            android:exported="false" />
         <activity
             android:name=".GalleryVideoScroll"
             android:exported="false" />
@@ -46,7 +49,7 @@
             android:exported="false" />
         <activity
             android:name=".InitializeActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

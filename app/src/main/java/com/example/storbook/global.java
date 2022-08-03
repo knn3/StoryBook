@@ -294,6 +294,7 @@ public class global extends Application {
     ArrayList<String> picutreFilename;
     ArrayList<String> pictureTimeClicked;
     ArrayList<String> pictureRecentTimeClicked;
+    ArrayList<Integer> pictureTimeClickedInt;
 
     // Urls for all videos
     ArrayList<String> videoUrls;
@@ -303,6 +304,7 @@ public class global extends Application {
     ArrayList<String> videoFilename;
     ArrayList<String> videoTimeClicked;
     ArrayList<String> videoRecentTimeClicked;
+    ArrayList<Integer> videoTimeClickedInt;
 
 
     // Refresh urls
@@ -314,6 +316,7 @@ public class global extends Application {
         this.picutreFilename = new ArrayList<>();
         this.pictureTimeClicked = new ArrayList<>();
         this.pictureRecentTimeClicked = new ArrayList<>();
+        this.pictureTimeClickedInt = new ArrayList<>();
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseRef = FirebaseFirestore.getInstance();
         mDatabaseRef.collection("users")
@@ -333,7 +336,8 @@ public class global extends Application {
                                     picutreBelonged.add(aMedia.get("Belonged").toString());
                                     picutreFilename.add(aMedia.get("FileName").toString());
                                     pictureTimeClicked.add(aMedia.get("ClickedTime").toString());
-                                    pictureRecentTimeClicked.add(aMedia.get("RecentTimeClicked").toString());
+                                    pictureRecentTimeClicked.add(document.getString("RecentTimeClicked"));
+                                    pictureTimeClickedInt.add(document.getLong("ClickedTime").intValue());
                                 }
                             }
                             else {
@@ -351,6 +355,7 @@ public class global extends Application {
         this.videoFilename = new ArrayList<>();
         this.videoTimeClicked = new ArrayList<>();
         this.videoRecentTimeClicked = new ArrayList<>();
+        this.videoTimeClickedInt = new ArrayList<>();
         mDatabaseRef.collection("users")
                 .document(user.getUid())
                 .collection("Media")
@@ -368,6 +373,7 @@ public class global extends Application {
                                 videoFilename.add(aMedia.get("FileName").toString());
                                 videoTimeClicked.add(aMedia.get("ClickedTime").toString());
                                 videoRecentTimeClicked.add(aMedia.get("RecentTimeClicked").toString());
+                                videoTimeClickedInt.add(document.getLong("ClickedTime").intValue());
                             }
                         }
                     }
