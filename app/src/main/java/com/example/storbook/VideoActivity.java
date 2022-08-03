@@ -100,6 +100,8 @@ public class VideoActivity extends AppCompatActivity implements VideoAdapter.OnI
     }
     public void deleteLocal(int position){
         ((global) this.getApplication()).videoUrls.remove(position);
+        ((global) this.getApplication()).videoFilename.remove(position);
+        ((global) this.getApplication()).videoBelonged.remove(position);
     }
     public void onBackClick(View v){
         Intent myIntent = new Intent(this, ManageVideoAndPhotoPage.class);
