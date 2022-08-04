@@ -34,6 +34,7 @@ public class PasswordAuth extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((global) this.getApplication()).refreshUserNameandPassword();
         setContentView(R.layout.activity_password_auth);
         CTpassword = (EditText) findViewById(R.id.goCTPassword);
         Accessbtn = (Button)findViewById(R.id.passwordauthbtn);

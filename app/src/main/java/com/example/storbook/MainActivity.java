@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             ((global) this.getApplication()).refreshpictureUrls();
             ((global) this.getApplication()).refreshFMlist();
             ((global) this.getApplication()).refreshFRlist();
+            ((global) this.getApplication()).refreshUserNameandPassword();
         }
     }
 
