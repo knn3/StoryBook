@@ -1,6 +1,7 @@
 package com.example.storbook;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -20,6 +21,8 @@ public class language extends AppCompatActivity implements View.OnClickListener 
         findViewById(R.id.english).setOnClickListener(this);
         findViewById(R.id.chinese).setOnClickListener(this);
 
+        findViewById(R.id.korean).setOnClickListener(this);
+
     }
     @Override
     public void onClick(View v) {
@@ -30,7 +33,9 @@ public class language extends AppCompatActivity implements View.OnClickListener 
             case R.id.english:
                 showSaveLanguage("en");
                 break;
-
+            case R.id.korean:
+                showSaveLanguage("ko");
+                break;
             default:
                 break;
         }
@@ -42,5 +47,11 @@ public class language extends AppCompatActivity implements View.OnClickListener 
             //保存设置的语言
             SpUserUtils.putString(this, "language", language);
         }
+
+    //back button
+    public void onBackClick(View v){
+        Intent myIntent = new Intent(this, Setting.class);
+        this.startActivity(myIntent);
+    }
 
 }

@@ -18,23 +18,27 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <string name="home_page">主页</string>
-    <string name="image_edit">Image Edit</string>
-    <string name="gallery">相簿</string>
+
     <string name="title_activity_overall_setting">overall_setting</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">下一页</string>
-    <string name="previous">上一页</string>
+
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="back">返回</string>
-    <string name="title_activity_family_member_page">家人页</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="back">返回</string>
+    <string name="title_activity_family_member_page">家人页</string>
+    <string name="home_page">主页</string>
+    <string name="image_edit">Image Edit</string>
+    <string name="gallery">相簿</string>
     <string name="manage">管理</string>
+    <string name="next">下一页</string>
+    <string name="previous">上一页</string>
     <string name="upload_media">上传</string>
     <string name="view_data">查看数据</string>
     <string name="people">人物</string>
@@ -43,6 +47,8 @@
     <string name="createpage">创作页面</string>
     <string name="english">英语</string>
     <string name="chinese">中文</string>
+    <string name="korean">한국어</string>
+
     <string name="create_page">创作页面</string>
     <string name="name">姓名:</string>
     <string name="enter_the_name">输入姓名</string>

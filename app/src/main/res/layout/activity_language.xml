@@ -23,18 +23,25 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/toolbar"
         android:layout_height="wrap_content">
+
         <Button
-            android:layout_width="@dimen/input"
             android:id="@+id/english"
-            android:text="@string/english"
+            android:layout_width="@dimen/input"
             android:layout_height="@dimen/activity_horizontal_margin2"
-            />
+            android:text="@string/english" />
         <Button
             android:layout_width="@dimen/input"
             android:layout_height="@dimen/activity_horizontal_margin2"
             android:layout_below="@+id/english"
             android:text="@string/chinese"
             android:id="@+id/chinese"
+            />
+        <Button
+            android:layout_width="@dimen/input"
+            android:layout_height="@dimen/activity_horizontal_margin2"
+            android:layout_below="@+id/chinese"
+            android:text="@string/korean"
+            android:id="@+id/korean"
             />
     </RelativeLayout>
 

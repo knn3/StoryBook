@@ -20,10 +20,12 @@ public class LanguageUtil {
      * */
     private static final String ENGLISH = "en";
     private static final String CHINESE = "ch";
+    private static final String KOREAN = "ko";
 
     private static HashMap<String, Locale> languagesList = new HashMap<String, Locale>(2) {{
         put(ENGLISH, Locale.ENGLISH);
         put(CHINESE, Locale.CHINESE);
+        put(KOREAN, Locale.KOREAN);
         //put(TRADITIONAL_CHINESE, Locale.TRADITIONAL_CHINESE);
     }};
     /**
