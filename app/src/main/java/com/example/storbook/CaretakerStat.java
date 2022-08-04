@@ -57,10 +57,12 @@ public class CaretakerStat extends AppCompatActivity {
         Titles = ((global) this.getApplication()).picutreTitles;
         clickedtimes = ((global) this.getApplication()).pictureTimeClicked;
         clickedTimeInt = ((global) this.getApplication()).pictureTimeClickedInt;
+        barArrayList = new ArrayList<BarEntry>();
+
 
         BarChart chart = findViewById(R.id.BarChart);
 
-        getData();
+        getData(barArrayList);
 
         BarDataSet bardataset = new BarDataSet(barArrayList,"Time clicked");
 
@@ -76,78 +78,82 @@ public class CaretakerStat extends AppCompatActivity {
 
         chart.getDescription().setEnabled(true);
 
+        initBarChart(chart);
+
 //        chart.setOnChartValueSelectedListener(new barChartOnChartValueSelectedListener());
 
     }
 
-    private void getData () {
-        barArrayList = new ArrayList();
-        //for (int i = 0; i < Titles.size(); i++){
-        barArrayList.add(new BarEntry(2f, clickedTimeInt.get(0)));
-        //}
+    private ArrayList getData (ArrayList<BarEntry> al) {
+
+        for (int i = 0; i < Titles.size(); i++){
+        al.add(new BarEntry(i, clickedTimeInt.get(i)));
+        }
+
+        return al;
     }
 
-//    private void initBarChart(BarChart barChart){
-//        //hiding the grey background of the chart, default false if not set
-//        barChart.setDrawGridBackground(false);
+    private void initBarChart(BarChart barChart){
+        //hiding the grey background of the chart, default false if not set
+        barChart.setDrawGridBackground(false);
 //        //remove the bar shadow, default false if not set
-//        barChart.setDrawBarShadow(false);
+        barChart.setDrawBarShadow(false);
 //        //remove border of the chart, default false if not set
-//        barChart.setDrawBorders(false);
+        barChart.setDrawBorders(false);
 //
 //        //remove the description label text located at the lower right corner
-//        Description description = new Description();
-//        description.setEnabled(false);
-//        barChart.setDescription(description);
+        Description description = new Description();
+       description.setEnabled(false);
+        barChart.setDescription(description);
 //
 //        //setting animation for y-axis, the bar will pop up from 0 to its value within the time we set
-//        barChart.animateY(1000);
+        barChart.animateY(1000);
 //        //setting animation for x-axis, the bar will pop up separately within the time we set
-//        barChart.animateX(1000);
+        barChart.animateX(1000);
 //
-//        XAxis xAxis = barChart.getXAxis();
+       XAxis xAxis = barChart.getXAxis();
 //        //change the position of x-axis to the bottom
-//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 //        //set the horizontal distance of the grid line
-//        xAxis.setGranularity(1f);
+        xAxis.setGranularity(1f);
 //        //hiding the x-axis line, default true if not set
-//        xAxis.setDrawAxisLine(false);
+        xAxis.setDrawAxisLine(false);
 //        //hiding the vertical grid lines, default true if not set
-//        xAxis.setDrawGridLines(false);
+        xAxis.setDrawGridLines(false);
 //
 //
 //
 //        //NOT SURE ABOUT THIS PART
-//        xAxis.setValueFormatter(new IndexAxisValueFormatter(Titles));
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(Titles));
 //
 //
 //
 //
 //
-//        YAxis leftAxis = barChart.getAxisLeft();
+        YAxis leftAxis = barChart.getAxisLeft();
 //        //hiding the left y-axis line, default true if not set
-//        leftAxis.setDrawAxisLine(false);
+        leftAxis.setDrawAxisLine(false);
 //
 //
 //
-//        YAxis rightAxis = barChart.getAxisRight();
+        YAxis rightAxis = barChart.getAxisRight();
 //        //hiding the right y-axis line, default true if not set
-//        rightAxis.setDrawAxisLine(false);
+        rightAxis.setDrawAxisLine(false);
 //
-//        Legend legend = barChart.getLegend();
+       Legend legend = barChart.getLegend();
 //        //setting the shape of the legend form to line, default square shape
-//        legend.setForm(Legend.LegendForm.LINE);
+        legend.setForm(Legend.LegendForm.LINE);
 //        //setting the text size of the legend
-//        legend.setTextSize(11f);
+        legend.setTextSize(11f);
 //        //setting the alignment of legend toward the chart
-//        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
-//        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
 //        //setting the stacking direction of legend
-//        legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
 //        //setting the location of legend outside the chart, default false if not set
-//        legend.setDrawInside(false);
+        legend.setDrawInside(false);
 //
-//    }
+    }
 //
 //    private class barChartOnChartValueSelectedListener implements OnChartValueSelectedListener{
 //
@@ -164,3 +170,4 @@ public class CaretakerStat extends AppCompatActivity {
 //    }
 
 }
+
