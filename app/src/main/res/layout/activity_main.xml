@@ -14,10 +14,9 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/blue"
         app:logo="@drawable/gallery"
-        app:subtitle="create page"
+        app:subtitle="@string/mainpage"
         app:title="@string/app_name"
-        app:titleMarginStart="90dp"
-        />
+        app:titleMarginStart="90dp" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -63,24 +62,46 @@
             android:id="@+id/statbtn"
             android:layout_width="@dimen/photo_size"
             android:layout_height="@dimen/photo_size"
-            android:layout_below="@+id/managebtn"
+            android:layout_below="@+id/upload"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/photo_size"
+            android:layout_marginTop="@dimen/activity_horizontal_margin2"
             android:background="@drawable/dashboard"
             android:onClick="goGallery"
             android:text="@string/image_edit"
             android:textColor="#455A64"
             android:visibility="visible" />
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/manageset"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/uploadBtn">
 
         <ImageButton
             android:id="@+id/managebtn"
             android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin2"
-            android:layout_toRightOf="@+id/uploadBtn"
+
             android:background="@drawable/time"
             android:onClick="goManage" />
+
+        <TextView
+
+            android:id="@+id/managetxt"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/managebtn"
+            android:layout_centerInParent="true"
+            android:text="@string/manage"
+            android:textColor="@color/text_color"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
 
         <TextView
             android:id="@+id/upload"
@@ -88,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/uploadBtn"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:text="Upload Media"
+            android:text="@string/upload_media"
             android:textColor="@color/text_color"
             android:textSize="25dp"
             android:textStyle="bold" />
@@ -98,9 +119,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/uploadBtn"
+            android:layout_centerInParent="true"
             android:layout_toRightOf="@+id/upload"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:text="Manage"
+            android:text="@string/manage"
             android:textColor="@color/text_color"
             android:textSize="25dp"
             android:textStyle="bold" />
@@ -112,7 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/statbtn"
             android:layout_marginLeft="@dimen/activity_horizontal_margin2"
-            android:text="View data"
+            android:text="@string/view_data"
             android:textColor="@color/text_color"
             android:textSize="25dp"
             android:textStyle="bold" />
@@ -124,10 +145,10 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:backgroundTint="@color/button"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:backgroundTint="@color/button"
             android:onClick="logOut"
-            android:text="Log Out"
+            android:text="@string/log_out"
             android:textColor="@color/white"
             android:textSize="@dimen/activity_horizontal_margin"
             android:textStyle="bold" />
@@ -167,7 +188,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/gallerybtn"
             android:layout_centerHorizontal="true"
-            android:text="Gallery"
+            android:text="@string/gallery"
             android:textColor="@color/text_color"
             android:textSize="35dp"
             android:textStyle="bold" />
@@ -178,7 +199,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/peoplebtn"
             android:layout_centerHorizontal="true"
-            android:text="People"
+            android:text="@string/people"
             android:textColor="@color/text_color"
             android:textSize="35dp"
             android:textStyle="bold" />

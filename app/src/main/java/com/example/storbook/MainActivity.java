@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             pwdpage.setEnabled(false);
             ctpage.setEnabled(true);
             ctpage.setVisibility(View.VISIBLE);
-            mtoolbar.setSubtitle("Caretaker Main Page");
+            mtoolbar.setSubtitle(R.string.caretakermain);
 
         }
         else{
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             ctpage.setEnabled(false);
             pwdpage.setEnabled(true);
             pwdpage.setVisibility(View.VISIBLE);
-            mtoolbar.setSubtitle("Main Page");
+            mtoolbar.setSubtitle(R.string.mainpage);
         }
     }
 

@@ -44,7 +44,7 @@ public class PasswordAuth extends AppCompatActivity {
         String Turepassword = ((global)this.getApplication()).passWord;
 
         Toolbar bar = findViewById(R.id.toolbar);
-        bar.setSubtitle("Use password to access");
+
 
         // Click the "ACCESS" button
         Accessbtn.setOnClickListener(new View.OnClickListener(){
@@ -55,11 +55,11 @@ public class PasswordAuth extends AppCompatActivity {
                 if (password.equals(Turepassword)) {
                     // If correct set to CT mode and jump back to setting page
                     setToCT();
-                    Toast.makeText(PasswordAuth.this, "Switched to CareTaker mode!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PasswordAuth.this, R.string.switchct, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(PasswordAuth.this, MainActivity.class));
                 } else {
                     // If incorrect display a message and do nothing
-                    Toast.makeText(PasswordAuth.this, "Incorrect Password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PasswordAuth.this, R.string.incorrectpw, Toast.LENGTH_SHORT).show();
                 }
             }
         });

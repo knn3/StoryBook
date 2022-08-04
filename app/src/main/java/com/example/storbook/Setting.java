@@ -87,20 +87,20 @@ public class Setting extends AppCompatActivity {
         super.onResume();
         Button v = (Button)findViewById(R.id.Caretakerbtn);
         if(((global) this.getApplication()).isCaretaker()){
-            v.setText("I am patient");
-            status.setText("In CareTaker Mode");
+            v.setText(R.string.patient);
+            status.setText(R.string.inct);
         }
         else{
-            v.setText("I am CareTaker");
-            status.setText("In Cared Mode");
+            v.setText(R.string.caretaker);
+            status.setText(R.string.incaredmode);
         }
     }
     //Button to switch the global CT mode on or off
     public void switchCTmode(View v) {
         Button b = (Button) v;
         if (((global) this.getApplication()).isCaretaker()) {
-            b.setText("I am patient");
-            status.setText("In CareTaker Mode");
+            b.setText(R.string.patient);
+            status.setText(R.string.caretaker);
             ((global) this.getApplication()).setCaretaker(false);
             Toast.makeText(Setting.this, "Switched to Patient mode!", Toast.LENGTH_SHORT).show();
             // To refresh the page
@@ -119,6 +119,11 @@ public class Setting extends AppCompatActivity {
     //back button
     public void onBackClick(View v){
         Intent myIntent = new Intent(this, MainActivity.class);
+        this.startActivity(myIntent);
+    }
+    //language setting button
+    public void goLanguage(View v) {
+        Intent myIntent = new Intent(this, language.class);
         this.startActivity(myIntent);
     }
     @Override

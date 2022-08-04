@@ -15,7 +15,7 @@
         android:onClick="onBackClick"
         app:logo="@drawable/gallery"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:subtitle="Upload Page"
+        app:subtitle="@string/uploadpage"
         app:title="@string/app_name"
         app:titleMarginStart="90dp" />
 
@@ -36,9 +36,9 @@
         android:layout_below="@+id/descriptionText"
         android:layout_centerHorizontal="true"
 
-        android:text="Select Image"
-        android:textColor="@color/white"
         android:backgroundTint="@color/button"
+        android:text="@string/select_image"
+        android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold" />
 
@@ -49,9 +49,9 @@
         android:layout_below="@+id/chooserelationbtn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:text="Upload Media"
-        android:textColor="@color/white"
         android:backgroundTint="@color/button"
+        android:text="@string/upload_media"
+        android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold" />
 
@@ -83,7 +83,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:backgroundTint="@color/button"
-        android:text="Select Video"
+        android:text="@string/select_video"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold" />
@@ -95,9 +95,9 @@
         android:layout_below="@+id/videoBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:text="choose belong to"
-        android:textColor="@color/white"
         android:backgroundTint="@color/button"
+        android:text="@string/choose_belong_to"
+        android:textColor="@color/white"
         android:textSize="15sp"
         tools:textStyle="bold" />
 
@@ -110,17 +110,17 @@
 
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:ems="10"
-        android:hint="Description"
+        android:hint="@string/description"
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/titleText"
         android:layout_width="@dimen/input"
-        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="Title"
+        android:hint="@string/title"
         android:inputType="textPersonName" />
 
 

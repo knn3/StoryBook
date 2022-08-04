@@ -14,18 +14,18 @@
         android:onClick="onBackClick"
         app:logo="@drawable/gallery"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:subtitle="create page"
+        app:subtitle="@string/create_page"
         app:title="@string/app_name"
         app:titleMarginStart="90dp"
         />
+
     <RelativeLayout
+        android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_centerHorizontal="true"
-        android:id="@+id/info"
-        >
+        android:layout_marginTop="@dimen/activity_horizontal_margin">
 
         <ImageButton
             android:id="@+id/Avatarbtn"
@@ -45,7 +45,7 @@
             android:layout_below="@+id/Avatarbtn"
             android:layout_marginTop="@dimen/activity_horizontal_margin2"
             android:ems="10"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="text"
             android:textSize="30sp"
 
@@ -58,7 +58,7 @@
             android:layout_below="@+id/FriendNumberEmail"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:ems="10"
-            android:hint="Name"
+            android:hint="@string/full_name"
             android:inputType="text"
             android:textSize="30sp" />
 
@@ -69,7 +69,7 @@
             android:layout_below="@+id/FriendNumberName"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:ems="10"
-            android:hint="Member's infomation"
+            android:hint="@string/member_s_infomation"
             android:inputType="text"
             android:textSize="30sp" />
 
@@ -81,11 +81,11 @@
             android:layout_below="@id/FriendNumberInfo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:backgroundTint="@color/button"
             android:onClick="uploadFR"
-            android:text="ADD"
+            android:text="@string/add"
             android:textColor="@color/white"
             android:textSize="@dimen/textsize"
-            android:textStyle="bold"
-            android:backgroundTint="@color/button" />
+            android:textStyle="bold" />
     </RelativeLayout>
 </RelativeLayout>

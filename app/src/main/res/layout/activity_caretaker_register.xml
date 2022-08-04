@@ -14,7 +14,7 @@
         android:background="@color/blue"
         app:logo="@drawable/gallery"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:subtitle="Register page"
+        app:subtitle="@string/registerpage"
         app:title="@string/app_name"
         app:titleMarginStart="90dp"
         />
@@ -28,15 +28,13 @@
         android:layout_below="@+id/toolbar">
 
         <TextView
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter your Email:"
+            android:text="@string/enter_your_email"
             android:textColor="@color/blue2"
             android:textSize="30dp"
-            android:textStyle="bold"
-            android:id="@+id/username"
-            />
-
+            android:textStyle="bold" />
 
 
         <EditText
@@ -45,19 +43,20 @@
             android:layout_height="52dp"
             android:layout_below="@+id/username"
             android:ems="10"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" />
+
         <TextView
+            android:id="@+id/nameinfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter your Full name:"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:id="@+id/nameinfo"
             android:layout_below="@+id/caretakerEmail"
-            android:textStyle="bold"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="@string/enter_your_full_name"
+            android:textColor="@color/blue2"
             android:textSize="30dp"
-            android:textColor="@color/blue2"/>
+            android:textStyle="bold" />
 
 
         <EditText
@@ -66,20 +65,18 @@
             android:layout_height="52dp"
             android:layout_below="@+id/nameinfo"
             android:ems="10"
-            android:hint="Full Name"
-            />
+            android:hint="@string/full_name" />
 
         <TextView
+            android:id="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter your password: "
             android:layout_below="@+id/caretakerFullName"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:id="@+id/password"
-            android:textSize="30dp"
-            android:textStyle="bold"
+            android:text="@string/enter_your_password"
             android:textColor="@color/blue2"
-            />
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/caretakerPassword"
@@ -88,20 +85,19 @@
             android:layout_below="@+id/password"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword"
-        />
+            android:hint="@string/password"
+            android:inputType="textPassword" />
 
 
         <EditText
             android:id="@+id/caretakerPassword2"
             android:layout_width="351dp"
             android:layout_height="52dp"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_below="@+id/caretakerPassword"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:ems="10"
-            android:hint="Repeat your Password"
-            android:inputType="textPassword"/>
+            android:hint="@string/repeat_your_password"
+            android:inputType="textPassword" />
     </RelativeLayout>
 
     <Button
@@ -111,9 +107,9 @@
         android:layout_below="@+id/regist"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:text="Register"
-        android:textColor="@color/white"
         android:backgroundTint="@color/button"
+        android:text="@string/register"
+        android:textColor="@color/white"
         android:textSize="30dp"
         android:textStyle="bold" />
 
@@ -121,13 +117,13 @@
         android:id="@+id/registerLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/loginButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:backgroundTint="@color/button"
-        android:textStyle="bold"
-        android:text="Account already made? \nLogin"
-        android:layout_below="@+id/loginButton"
-        android:onClick="loginLinkClicked"/>
+        android:onClick="loginLinkClicked"
+        android:text="@string/account_already_made_nlogin"
+        android:textStyle="bold" />
 
 
 

@@ -14,7 +14,7 @@
         android:onClick="onBackClick"
         app:logo="@drawable/gallery"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:subtitle="Setting"
+        app:subtitle="@string/setting"
         app:title="@string/app_name"
         app:titleMarginStart="90dp" />
     <Button
@@ -24,7 +24,7 @@
         android:backgroundTint="@color/button"
         android:textColor="@color/white"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nightmodeswitch"
+        android:layout_below="@+id/lang"
         android:layout_marginTop="@dimen/layout"
         android:layout_centerHorizontal="true"
 
@@ -52,9 +52,25 @@
         android:layout_below="@+id/StatusText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/layout"
-        android:text="NightMode"
+        android:text="@string/nightmode"
         android:textSize="@dimen/activity_horizontal_margin"
 
         app:layout_constraintTop_toBottomOf="@+id/StatusText" />
+
+    <Button
+        android:id="@+id/lang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nightmodeswitch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/layout"
+        android:backgroundTint="@color/button"
+        android:gravity="bottom"
+        android:onClick="goLanguage"
+        android:text="@string/change_language"
+        android:textColor="@color/white"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </RelativeLayout>

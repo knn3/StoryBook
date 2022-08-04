@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Storbook.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".language"
+            android:exported="false" />
+        <activity
             android:name=".CaretakerStat"
             android:exported="false" />
         <activity
@@ -75,10 +78,7 @@
             android:name=".FamilyMemberMainPage"
             android:exported="false"
             android:label="@string/title_activity_family_member_page" />
-        <activity
-            android:name=".pwd_activity"
-            android:exported="false"
-            android:theme="@style/Theme.Storbook.NoActionBar" />
+
         <activity
             android:name=".PasswordAuth"
             android:exported="false" />

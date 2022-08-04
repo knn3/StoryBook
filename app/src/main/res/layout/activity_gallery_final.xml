@@ -15,7 +15,7 @@
         android:onClick="onBackClick"
         app:logo="@drawable/gallery"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:subtitle="Gallery page"
+        app:subtitle="@string/gallerypage"
         app:title="@string/app_name"
         app:titleMarginStart="90dp" />
 

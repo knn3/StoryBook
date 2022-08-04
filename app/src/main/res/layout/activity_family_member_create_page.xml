@@ -16,10 +16,9 @@
         android:onClick="onBackClick"
         app:logo="@drawable/gallery"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:subtitle="create page"
+        app:subtitle="@string/create_page"
         app:title="@string/app_name"
-        app:titleMarginStart="90dp"
-        />
+        app:titleMarginStart="90dp" />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,12 +43,12 @@
             android:id="@+id/FamilyNumberRelation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/Avatarbtn"
             android:layout_marginTop="@dimen/activity_horizontal_margin2"
             android:ems="10"
-            android:textSize="30sp"
-            android:layout_below="@+id/Avatarbtn"
-            android:hint="Relation"
+            android:hint="@string/relation"
             android:inputType="text"
+            android:textSize="30sp"
 
             />
 
@@ -60,7 +59,7 @@
             android:layout_below="@+id/FamilyNumberRelation"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:ems="10"
-            android:hint="Name"
+            android:hint="@string/name"
             android:inputType="text"
             android:textSize="30sp" />
 
@@ -71,7 +70,7 @@
             android:layout_below="@+id/FamilyNumberName"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:ems="10"
-            android:hint="Member's infomation"
+            android:hint="@string/member_s_infomation"
             android:inputType="text"
             android:textSize="30sp" />
 
@@ -86,7 +85,7 @@
 
             android:backgroundTint="@color/button"
             android:onClick="uploadFM"
-            android:text="ADD"
+            android:text="@string/add"
             android:textColor="@color/white"
             android:textSize="35sp"
             android:textStyle="bold" />

@@ -15,6 +15,7 @@
         android:layout_marginTop="20dp"
         android:onClick="chooseavatar"
         android:src="@drawable/album" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
         android:onClick="onBackClick"
         app:logo="@drawable/gallery"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:subtitle="upload page"
+        app:subtitle="@string/uploadpage"
         app:title="@string/app_name"
         app:titleMarginStart="90dp" />
 
@@ -56,7 +57,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name:"
+                android:text="@string/name"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/fab_margin" />
 
@@ -90,7 +91,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Relation:"
+                android:text="@string/relation2"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/fab_margin" />
 
@@ -98,7 +99,7 @@
                 android:id="@+id/fmrelation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Relation"
+                android:text="@string/relation"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize" />
 
@@ -139,7 +140,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Information:"
+                android:text="@string/information"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/fab_margin" />
 
@@ -147,7 +148,7 @@
                 android:id="@+id/fminformation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Info"
+                android:text="@string/info"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize" />
 
@@ -167,7 +168,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/button"
             android:onClick="deleteOrMeida"
-            android:text="Media"
+            android:text="@string/media"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
@@ -181,7 +182,7 @@
             android:layout_marginBottom="12dp"
             android:backgroundTint="@color/button"
             android:onClick="cancel"
-            android:text="cancel"
+            android:text="@string/cancel"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
@@ -195,7 +196,7 @@
             android:layout_marginBottom="12dp"
             android:backgroundTint="@color/button"
             android:onClick="change"
-            android:text="change"
+            android:text="@string/change"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
