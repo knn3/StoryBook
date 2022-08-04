@@ -114,17 +114,7 @@
             android:textSize="25dp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/manage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/uploadBtn"
-            android:layout_centerInParent="true"
-            android:layout_toRightOf="@+id/upload"
-            android:text="@string/manage"
-            android:textColor="@color/text_color"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+
 
 
         <TextView
