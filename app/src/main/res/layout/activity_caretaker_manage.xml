@@ -63,34 +63,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fammanage"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:text="@string/manage_family"
             android:textColor="@color/text_color"
             android:textSize="25dp"
             android:textStyle="bold" />
 
+
         <TextView
             android:id="@+id/managefam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fammanage"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="27dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="-11dp"
+            android:layout_toEndOf="@+id/upload"
             android:layout_toRightOf="@+id/upload"
             android:text="@string/manage_friends"
             android:textColor="@color/text_color"
             android:textSize="25dp"
             android:textStyle="bold" />
 
-
         <TextView
             android:id="@+id/datainfo"
-            android:layout_width="wrap_content"
+            android:layout_width="254dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/managePhoto"
             android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="13dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin2"
             android:layout_marginTop="2dp"
+            android:layout_marginEnd="144dp"
             android:text="@string/manage_gallery"
             android:textColor="@color/text_color"
             android:textSize="25dp"
